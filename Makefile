@@ -1,10 +1,11 @@
-.PHONY: all summary resume json render pdf assets clean
+.PHONY: all summary resume json docx render pdf assets clean
 
 PYTHON       := .venv/bin/python
 RENDER       := scripts/render.py
 SUMMARY_TPL  := templates/summary.tex.j2
 RESUME_TPL   := templates/resume.tex.j2
 JSON_EXPORT  := scripts/export_json_resume.py
+DOCX_EXPORT  := scripts/export_docx.py
 SVG_CONVERT  := scripts/render_svg.py
 
 DATA_DIR := data
@@ -20,7 +21,7 @@ RESUME_TARGETS := \
 	$(OUT_DIR)/Torsten\ Uhlmann\ Resume.tex \
 	$(OUT_DIR)/Torsten\ Uhlmann\ Lebenslauf.tex
 
-all: summary resume json pdf
+all: summary resume json docx pdf
 
 # ---- Render Summary YAML → TeX ----
 summary: $(SUMMARY_TARGETS)
@@ -44,6 +45,15 @@ $(OUT_DIR)/Torsten\ Uhlmann\ Lebenslauf.tex: $(DATA_DIR)/resume-de.yaml $(RESUME
 json: | $(OUT_DIR)
 	$(PYTHON) $(JSON_EXPORT) "$(DATA_DIR)/resume-en.yaml" "$(OUT_DIR)/resume.json"
 	$(PYTHON) $(JSON_EXPORT) "$(DATA_DIR)/resume-de.yaml" "$(OUT_DIR)/lebenslauf.json"
+
+# ---- Export DOCX ----
+docx: | $(OUT_DIR)
+	$(PYTHON) $(DOCX_EXPORT) "$(DATA_DIR)/resume-en.yaml" "$(OUT_DIR)/Torsten Uhlmann Resume.docx" --style ats
+	$(PYTHON) $(DOCX_EXPORT) "$(DATA_DIR)/resume-en.yaml" "$(OUT_DIR)/Torsten Uhlmann Resume Styled.docx" --style styled
+	$(PYTHON) $(DOCX_EXPORT) "$(DATA_DIR)/resume-de.yaml" "$(OUT_DIR)/Torsten Uhlmann Lebenslauf.docx" --style ats
+	$(PYTHON) $(DOCX_EXPORT) "$(DATA_DIR)/resume-de.yaml" "$(OUT_DIR)/Torsten Uhlmann Lebenslauf Styled.docx" --style styled
+	$(PYTHON) $(DOCX_EXPORT) "$(DATA_DIR)/en.yaml" "$(OUT_DIR)/Torsten Uhlmann CV Summary.docx" --style styled
+	$(PYTHON) $(DOCX_EXPORT) "$(DATA_DIR)/de.yaml" "$(OUT_DIR)/Torsten Uhlmann CV Übersicht.docx" --style styled
 
 # ---- Render (backward compat alias) ----
 render: summary resume
