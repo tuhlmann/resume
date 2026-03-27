@@ -20,7 +20,7 @@ import yaml
 from docx import Document
 from docx.enum.style import WD_STYLE_TYPE
 from docx.enum.table import WD_TABLE_ALIGNMENT
-from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_LINE_SPACING
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Cm, Emu, Inches, Pt, RGBColor
@@ -318,6 +318,7 @@ def add_header_resume(doc: Document, data: dict, styled: bool) -> None:
             pp.paragraph_format.space_before = Pt(6)
             pp.paragraph_format.space_after = Pt(6)
             pp.paragraph_format.left_indent = Cm(0.3)
+            pp.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
             run = pp.add_run()
             run.add_picture(str(photo_path), width=Cm(2.5))
 
@@ -502,18 +503,32 @@ def add_work_section(doc: Document, data: dict, styled: bool) -> None:
         technologies = job.get("technologies", [])
 
         # Logo (styled only)
+        container = doc
         if styled:
             logo_path = resolve_logo(job.get("logo", ""))
+            
+            table = doc.add_table(rows=1, cols=2)
+            remove_table_borders(table)
+            
+            logo_cell = table.cell(0, 0)
+            set_cell_width(logo_cell, 800)  # ~1.25 cm
+            
             if logo_path:
-                p = doc.add_paragraph()
-                run = p.add_run()
+                lp = logo_cell.paragraphs[0]
+                lp.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
+                run = lp.add_run()
                 try:
-                    run.add_picture(str(logo_path), width=Cm(1.0))
+                    # make it slightly smaller to fit better in left margin context
+                    run.add_picture(str(logo_path), width=Cm(0.9))
                 except Exception:
                     pass  # Skip if image format is unsupported
+            
+            container = table.cell(0, 1)
+            p = container.paragraphs[0]
+        else:
+            p = doc.add_paragraph()
 
         # Position + date
-        p = doc.add_paragraph()
         run = p.add_run(position)
         run.bold = True
         run.font.size = Pt(11)
@@ -521,7 +536,7 @@ def add_work_section(doc: Document, data: dict, styled: bool) -> None:
             p.add_run(f"  |  {date_range}").font.color.rgb = LIGHT_GRAY
 
         # Company
-        p = doc.add_paragraph()
+        p = container.add_paragraph()
         run = p.add_run(company)
         run.font.color.rgb = ACCENT if styled else DARK
         run.bold = True
@@ -529,7 +544,7 @@ def add_work_section(doc: Document, data: dict, styled: bool) -> None:
 
         # Technologies
         if technologies:
-            p = doc.add_paragraph()
+            p = container.add_paragraph()
             run = p.add_run(", ".join(technologies))
             run.font.size = Pt(9)
             run.font.color.rgb = MID_GRAY
@@ -537,25 +552,28 @@ def add_work_section(doc: Document, data: dict, styled: bool) -> None:
         # Summary
         summary = job.get("summary", "")
         if summary:
-            doc.add_paragraph(clean_text(summary))
+            container.add_paragraph(clean_text(summary))
 
         # Highlights
         for h in job.get("highlights", []):
-            doc.add_paragraph(clean_text(h), style="List Bullet")
+            container.add_paragraph(clean_text(h), style="List Bullet")
 
         # Recommendations
         for rec in job.get("recommendations", []):
             quote = rec.get("quote", "")
             if quote:
-                p = doc.add_paragraph(style="Quote")
+                p = container.add_paragraph(style="Quote")
                 p.add_run(f"\u201C{clean_text(quote)}\u201D")
-                p = doc.add_paragraph()
+                p = container.add_paragraph()
                 author = rec.get("author", "")
                 role = rec.get("role", "")
                 run = p.add_run(f"\u2014 {author}, {role}")
                 run.font.size = Pt(9)
                 run.font.bold = True
                 run.font.color.rgb = DARK
+                
+        if styled:
+            doc.add_paragraph()
 
 
 def add_products_section(doc: Document, data: dict, styled: bool) -> None:
@@ -574,18 +592,31 @@ def add_products_section(doc: Document, data: dict, styled: bool) -> None:
         technologies = prod.get("technologies", [])
 
         # Logo (styled only)
+        container = doc
         if styled:
             logo_path = resolve_logo(prod.get("logo", ""))
+            
+            table = doc.add_table(rows=1, cols=2)
+            remove_table_borders(table)
+            
+            logo_cell = table.cell(0, 0)
+            set_cell_width(logo_cell, 800)  # ~1.25 cm
+            
             if logo_path:
-                p = doc.add_paragraph()
-                run = p.add_run()
+                lp = logo_cell.paragraphs[0]
+                lp.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
+                run = lp.add_run()
                 try:
-                    run.add_picture(str(logo_path), width=Cm(1.0))
+                    run.add_picture(str(logo_path), width=Cm(0.9))
                 except Exception:
                     pass
+            
+            container = table.cell(0, 1)
+            p = container.paragraphs[0]
+        else:
+            p = doc.add_paragraph()
 
         # Name + date
-        p = doc.add_paragraph()
         run = p.add_run(name)
         run.bold = True
         run.font.size = Pt(11)
@@ -594,7 +625,7 @@ def add_products_section(doc: Document, data: dict, styled: bool) -> None:
 
         # Technologies
         if technologies:
-            p = doc.add_paragraph()
+            p = container.add_paragraph()
             run = p.add_run(", ".join(technologies))
             run.font.size = Pt(9)
             run.font.color.rgb = MID_GRAY
@@ -603,7 +634,7 @@ def add_products_section(doc: Document, data: dict, styled: bool) -> None:
         if styled:
             url = prod.get("url", "")
             if url:
-                p = doc.add_paragraph()
+                p = container.add_paragraph()
                 run = p.add_run(url)
                 run.font.size = Pt(9)
                 run.font.color.rgb = ACCENT
@@ -611,11 +642,14 @@ def add_products_section(doc: Document, data: dict, styled: bool) -> None:
         # Summary
         summary = prod.get("summary", "")
         if summary:
-            doc.add_paragraph(clean_text(summary))
+            container.add_paragraph(clean_text(summary))
 
         # Highlights
         for h in prod.get("highlights", []):
-            doc.add_paragraph(clean_text(h), style="List Bullet")
+            container.add_paragraph(clean_text(h), style="List Bullet")
+            
+        if styled:
+            doc.add_paragraph()
 
 
 def add_education_section(doc: Document, data: dict, styled: bool) -> None:
@@ -831,6 +865,7 @@ def add_header_summary(doc: Document, data: dict, styled: bool) -> None:
             set_cell_width(photo_cell, 1600)  # ~2.8 cm
             pp = photo_cell.paragraphs[0]
             pp.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            pp.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
             run = pp.add_run()
             run.add_picture(str(photo_path), width=Cm(2.5))
 
