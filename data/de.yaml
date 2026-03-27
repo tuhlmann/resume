@@ -1,0 +1,131 @@
+# German CV Übersicht – Torsten Uhlmann
+
+meta:
+  language: de
+  last_updated: "März 2026"
+  pdf_title: "Torsten Uhlmann -- Lebenslaufübersicht"
+  footer_label: "Ausführlicher Lebenslauf"
+  footer_url: "https://agynamix.de/resume"
+  footer_url_text: "agynamix.de/resume"
+  footer_date_label: "Stand"
+
+basics:
+  name: "Torsten Uhlmann"
+  company: "AGYNAMIX"
+  title: "Senior Full Stack Software Engineer & Berater"
+  photo: "torsten_square.jpg"
+  address: "Buchenweg 5, 09380 Thalheim, Deutschland"
+  email: "tuhlmann@agynamix.de"
+  phone: "+49 151 12412427"
+  website:
+    url: "https://agynamix.de"
+    text: "agynamix.de"
+  profiles:
+    - url: "https://www.linkedin.com/in/torstenuhlmann"
+      text: "linkedin.com/in/torstenuhlmann"
+    - url: "https://github.com/tuhlmann"
+      text: "github.com/tuhlmann"
+
+summary:
+  title: "Profil"
+  url: "https://agynamix.de/resume"
+  text: >
+    Senior Full Stack Software Engineer mit knapp 30 Jahren Erfahrung in der Entwicklung
+    robuster, hochperformanter Softwarelösungen für unterschiedlichste Branchen.
+    Über AGYNAMIX begleite ich komplexe, systemkritische Anwendungen vom Prototyp bis
+    zur Produktion---ob als technische Leitung oder integriert in verteilte Teams,
+    stets als Brücke zwischen anspruchsvollen Backend-Architekturen und modernen,
+    responsiven Frontend-Frameworks.
+
+services:
+  title: "Kernleistungen & Beratung"
+  url: "https://agynamix.de/consulting"
+  entries:
+    - title: "End-to-End Anwendungsentwicklung"
+      description: >
+        Komplettlösungen von der Anforderungsanalyse über Implementierung bis zum Deployment.
+    - title: "Hochperformante Backend-Systeme"
+      description: >
+        Skalierbare, nebenläufige Backends mit Rust, Scala und Java.
+    - title: "Moderne Frontend-Architektur"
+      description: >
+        Schnelle, nutzerorientierte Oberflächen mit ReactJS, TypeScript und Angular.
+    - title: "Cloud & DevOps Integration"
+      description: >
+        Geschäftskritische Deployments und Containerisierung mit AWS, Docker und Ansible.
+
+tech_stack:
+  title: "Technologie Stack"
+  categories:
+    - label: "Sprachen"
+      content: "Scala, Java, Rust, Kotlin, TypeScript, JavaScript, Clojure"
+    - label: "Frameworks & UI"
+      content: "ReactJS, Angular, Lift, Jetpack Compose for Desktop, Vue"
+    - label: "Datenbanken"
+      content: "PostgreSQL, MongoDB, Oracle, MySQL"
+    - label: "Cloud & DevOps"
+      content: "AWS, Docker, Ansible"
+
+clients:
+  title: "Namhafte Kunden & Projekte"
+  url: "https://agynamix.de/clients"
+  entries:
+    - title: "Enterprise Collaboration---Scaled Agile, Inc."
+      years: "2019--2024"
+      description: >
+        Schlüsselrolle bei Entwicklung und Modernisierung einer Online-Planungsplattform
+        für Remote-Lernen, PI-Planung und kollaborative Events. Entwurf einer
+        Push-basierten Data-Warehouse-Integration.
+    - title: "Compliance Management---Ascendant"
+      years: "2013--2019"
+      description: >
+        Senior Engineer und Mentor für eine mandantenfähige SaaS-Plattform,
+        branchenspezifische Compliance-Anforderungen mit technischer Problemlösung vereint.
+    - title: "Social Privacy Platform---Sgrouples / MeWe"
+      years: "2011--2012"
+      description: >
+        Implementierung systemkritischer Funktionen und Verwaltung des AWS-Deployments
+        für eine sichere, gruppenbasierte Kommunikationsplattform.
+    - title: "Telekommunikation & Banking---T-Systems, 1822direct"
+      years: "2005--2011"
+      description: >
+        Hochperformante Datenextraktion, Migrations-Frameworks und
+        Korrespondenzmanagement-Lösungen.
+
+products:
+  title: "Eigene Produkte & Innovationen"
+  url: "https://agynamix.de/products"
+  entries:
+    - title: "AGYNAMIX Invoicer"
+      years: "2025--heute"
+      description: >
+        Moderne Desktop-Rechnungsanwendung (Kotlin, Jetpack Compose for Desktop) für den
+        DACH-Markt. Vollständig GoBD-konform mit ZUGFeRD- und XRechnung-Unterstützung.
+    - title: "Symnix---Cloud Provisioning Platform"
+      years: "2022--heute"
+      description: >
+        Mitgegründete Webanwendung mit hochperformantem Rust- / PostgreSQL-Backend
+        für Cloud-Server-Einrichtung und -Bereitstellung.
+    - title: "Net-Herald Monitoring Software"
+      years: "2005--2006"
+      description: >
+        Überwachungssystem für Wasserversorgungsunternehmen, entwickelt mit Java, Spring,
+        PostgreSQL und einer Eclipse-RCP-Oberfläche mit GEF zur Echtzeit-Datenvisualisierung.
+
+education:
+  title: "Ausbildung & Publikationen"
+  degree: "Diplom-Informatiker (Dipl.-Inf.)"
+  institution: "Technische Universität Chemnitz-Zwickau"
+  years: "1991--1996"
+  publication:
+    role: "Autor"
+    title: "Lift Web Applications How-To"
+    publisher: "Packt Publishing"
+    year: "2012"
+  speaking: "Sprecher bei ScalaDays & Scala Exchange, 2013"
+
+cta:
+  text: "Interesse an einer Zusammenarbeit? Ich freue mich auf Ihre Nachricht"
+  email: "tuhlmann@agynamix.de"
+  phone: "+49 151 12412427"
+  or: "oder"

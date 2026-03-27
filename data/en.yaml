@@ -1,0 +1,128 @@
+# English CV Summary – Torsten Uhlmann
+
+meta:
+  language: en
+  last_updated: "March 2026"
+  pdf_title: "Torsten Uhlmann -- CV Summary"
+  footer_label: "Full resume"
+  footer_url: "https://agynamix.de/resume"
+  footer_url_text: "agynamix.de/resume"
+
+basics:
+  name: "Torsten Uhlmann"
+  company: "AGYNAMIX"
+  title: "Senior Full Stack Software Engineer & Consultant"
+  photo: "torsten_square.jpg"
+  address: "Buchenweg 5, 09380 Thalheim, Germany"
+  email: "tuhlmann@agynamix.de"
+  phone: "+49 151 12412427"
+  website:
+    url: "https://agynamix.de"
+    text: "agynamix.de"
+  profiles:
+    - url: "https://www.linkedin.com/in/torstenuhlmann"
+      text: "linkedin.com/in/torstenuhlmann"
+    - url: "https://github.com/tuhlmann"
+      text: "github.com/tuhlmann"
+
+summary:
+  title: "Professional Summary"
+  url: "https://agynamix.de/resume"
+  text: >
+    Senior Full Stack Software Engineer with nearly 30 years of experience delivering robust,
+    high-performance software solutions across diverse industries. Operating through AGYNAMIX,
+    I specialize in taking complex, system-critical applications from prototype to
+    production---whether leading development efforts or integrating into distributed teams,
+    bridging intricate backend architectures with modern, responsive frontend frameworks.
+
+services:
+  title: "Core Services & Consulting"
+  url: "https://agynamix.de/consulting"
+  entries:
+    - title: "End-to-End Application Development"
+      description: >
+        Complete solutions from requirement gathering through implementation and deployment.
+    - title: "High-Performance Backend Systems"
+      description: >
+        Scalable, concurrent backends using Rust, Scala, and Java.
+    - title: "Modern Frontend Architecture"
+      description: >
+        Responsive, client-centric UIs with ReactJS, TypeScript, and Angular.
+    - title: "Cloud & DevOps Integration"
+      description: >
+        Mission-critical deployments and containerization with AWS, Docker, and Ansible.
+
+tech_stack:
+  title: "Technical Stack"
+  categories:
+    - label: "Languages"
+      content: "Scala, Java, Rust, Kotlin, TypeScript, JavaScript, Clojure"
+    - label: "Frameworks & UI"
+      content: "ReactJS, Angular, Lift, Jetpack Compose for Desktop, Vue"
+    - label: "Databases"
+      content: "PostgreSQL, MongoDB, Oracle, MySQL"
+    - label: "Cloud & DevOps"
+      content: "AWS, Docker, Ansible"
+
+clients:
+  title: "Notable Clients & Projects"
+  url: "https://agynamix.de/clients"
+  entries:
+    - title: "Enterprise Collaboration---Scaled Agile, Inc."
+      years: "2019--2024"
+      description: >
+        Key role in developing and modernizing an online planning platform for remote learning,
+        PI planning, and collaborative events. Designed a push-based data warehouse integration.
+    - title: "Compliance Management---Ascendant"
+      years: "2013--2019"
+      description: >
+        Senior engineer and mentor for a multi-tenant SaaS platform, balancing
+        industry-specific compliance with engineering problem-solving.
+    - title: "Social Privacy Platform---Sgrouples / MeWe"
+      years: "2011--2012"
+      description: >
+        Implemented system-critical features and managed AWS deployment for a secure,
+        group-based communication platform.
+    - title: "Telecommunications & Banking---T-Systems, 1822direct"
+      years: "2005--2011"
+      description: >
+        High-performance data extraction, migration frameworks, and correspondence
+        management solutions.
+
+products:
+  title: "Own Products & Innovations"
+  url: "https://agynamix.de/products"
+  entries:
+    - title: "AGYNAMIX Invoicer"
+      years: "2025--present"
+      description: >
+        Modern desktop invoicing application (Kotlin, Jetpack Compose for Desktop) for the
+        DACH market. Fully GoBD compliant with ZUGFeRD and XRechnung e-invoice support.
+    - title: "Symnix---Cloud Provisioning Platform"
+      years: "2022--present"
+      description: >
+        Co-founded web application with a high-performance Rust / PostgreSQL backend for
+        cloud server setup and provisioning.
+    - title: "Net-Herald Monitoring Software"
+      years: "2005--2006"
+      description: >
+        Monitoring system for water supply companies built with Java, Spring, PostgreSQL,
+        and an Eclipse RCP frontend using GEF for real-time data visualization.
+
+education:
+  title: "Education & Publications"
+  degree: "Diploma in Computer Science (Dipl.-Inf.)"
+  institution: "Technical University Chemnitz-Zwickau"
+  years: "1991--1996"
+  publication:
+    role: "Author"
+    title: "Lift Web Applications How-To"
+    publisher: "Packt Publishing"
+    year: "2012"
+  speaking: "Speaker at ScalaDays & Scala Exchange, 2013"
+
+cta:
+  text: "Interested in working together? I'd love to hear from you"
+  email: "tuhlmann@agynamix.de"
+  phone: "+49 151 12412427"
+  or: "or"

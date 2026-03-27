@@ -1,0 +1,168 @@
+\documentclass[a4paper,10pt]{article}
+
+%% ---- Packages ----
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper, left=1.4cm, right=1.4cm, top=0.8cm, bottom=0.8cm, footskip=0.5cm]{geometry}
+\usepackage{graphicx}
+\graphicspath{{../assets/}}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+%% ---- Colors ----
+\definecolor{accent}{HTML}{2B4C7E}
+\definecolor{darkgray}{HTML}{333333}
+\definecolor{medgray}{HTML}{666666}
+\definecolor{lightgray}{HTML}{999999}
+
+%% ---- Hyperref setup ----
+\hypersetup{
+  colorlinks=true,
+  urlcolor=accent,
+  linkcolor=accent,
+  pdfauthor={<<< basics.name >>>},
+  pdftitle={<<< meta.pdf_title >>>},
+}
+
+%% ---- Layout ----
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt plus 1pt minus 1pt}
+
+%% Section formatting (without titlesec)
+\renewcommand{\section}[1]{%
+  \vspace{5pt}%
+  \noindent{\large\bfseries\color{accent}#1}\par\nopagebreak%
+  \vspace{-2pt}\noindent{\color{accent}\rule{\textwidth}{0.4pt}}%
+  \vspace{1pt}\par\nopagebreak%
+}
+
+%% Compact itemize (without enumitem)
+\let\olditemize\itemize
+\let\oldenditemize\enditemize
+\renewenvironment{itemize}{%
+  \olditemize
+  \setlength{\itemsep}{1pt}%
+  \setlength{\parsep}{0pt}%
+  \setlength{\topsep}{2pt}%
+  \setlength{\leftmargin}{1.5em}%
+}{\oldenditemize}
+
+%% ---- Footer ----
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+<<< block_open >>> if meta.footer_date_label is defined <<< block_close >>>
+\fancyfoot[C]{\footnotesize\color{lightgray}%
+  <<< meta.footer_label >>>: \href{<<< meta.footer_url >>>}{<<< meta.footer_url_text >>>}%
+  \enspace\textbar\enspace <<< meta.footer_date_label >>>: <<< meta.last_updated >>>}
+<<< block_open >>> else <<< block_close >>>
+\fancyfoot[C]{\footnotesize\color{lightgray}%
+  <<< meta.footer_label >>>: \href{<<< meta.footer_url >>>}{<<< meta.footer_url_text >>>}%
+  \enspace\textbar\enspace Last updated: <<< meta.last_updated >>>}
+<<< block_open >>> endif <<< block_close >>>
+
+\begin{document}
+
+%% ==== HEADER ====
+\noindent
+\begin{minipage}[c]{0.16\textwidth}
+  \includegraphics[width=\linewidth]{<<< basics.photo >>>}
+\end{minipage}%
+\hfill
+\begin{minipage}[c]{0.80\textwidth}
+  {\LARGE\bfseries\color{darkgray} <<< basics.name >>>}\\[2pt]
+  {\large\color{accent} <<< basics.company >>>\textsuperscript{\textregistered} \enspace\textbar\enspace <<< basics.title | tex_escape >>>}\\[4pt]
+  {\small%
+    <<< basics.address >>>\\[1pt]
+    \href{mailto:<<< basics.email >>>}{<<< basics.email >>>}%
+    \enspace\textbar\enspace <<< basics.phone | tex_thinspace >>>%
+    \enspace\textbar\enspace \href{<<< basics.website.url >>>}{<<< basics.website.text >>>}\\[1pt]
+<<< block_open >>> for profile in basics.profiles <<< block_close >>>
+<<< block_open >>> if not loop.first <<< block_close >>>    \enspace\textbar\enspace <<< block_open >>> endif <<< block_close >>>\href{<<< profile.url >>>}{<<< profile.text >>>}%
+<<< block_open >>> endfor <<< block_close >>>
+  }
+\end{minipage}
+
+\vspace{4pt}
+\noindent{\color{accent}\rule{\textwidth}{1.5pt}}
+
+%% ==== SUMMARY ====
+<<< block_open >>> if summary.url is defined <<< block_close >>>
+\section{\href{<<< summary.url >>>}{<<< summary.title >>>}}
+<<< block_open >>> else <<< block_close >>>
+\section{<<< summary.title >>>}
+<<< block_open >>> endif <<< block_close >>>
+
+<<< summary.text | trim >>>
+
+%% ==== SERVICES ====
+<<< block_open >>> if services.url is defined <<< block_close >>>
+\section{\href{<<< services.url >>>}{<<< services.title | tex_escape >>>}}
+<<< block_open >>> else <<< block_close >>>
+\section{<<< services.title | tex_escape >>>}
+<<< block_open >>> endif <<< block_close >>>
+
+\begin{itemize}
+<<< block_open >>> for item in services.entries <<< block_close >>>
+  \item \textbf{<<< item.title | tex_escape >>>:} <<< item.description | tex_escape | trim >>>
+<<< block_open >>> endfor <<< block_close >>>
+\end{itemize}
+
+%% ==== TECH STACK ====
+\section{<<< tech_stack.title >>>}
+
+\noindent
+\begin{tabular}{@{}l@{\enspace}l@{}}
+<<< block_open >>> for cat in tech_stack.categories <<< block_close >>>
+\textbf{<<< cat.label | tex_escape >>>:} & <<< cat.content >>>\\
+<<< block_open >>> endfor <<< block_close >>>
+\end{tabular}
+
+%% ==== CLIENTS ====
+<<< block_open >>> if clients.url is defined <<< block_close >>>
+\section{\href{<<< clients.url >>>}{<<< clients.title | tex_escape >>>}}
+<<< block_open >>> else <<< block_close >>>
+\section{<<< clients.title | tex_escape >>>}
+<<< block_open >>> endif <<< block_close >>>
+
+\begin{itemize}
+<<< block_open >>> for item in clients.entries <<< block_close >>>
+  \item \textbf{<<< item.title | tex_escape | tex_thinspace >>>}
+    \hfill {\small\color{medgray}<<< item.years | tex_thinspace >>>}\\
+    <<< item.description | tex_escape | tex_thinspace | trim >>>
+<<< block_open >>> endfor <<< block_close >>>
+\end{itemize}
+
+%% ==== PRODUCTS ====
+<<< block_open >>> if products.url is defined <<< block_close >>>
+\section{\href{<<< products.url >>>}{<<< products.title | tex_escape >>>}}
+<<< block_open >>> else <<< block_close >>>
+\section{<<< products.title | tex_escape >>>}
+<<< block_open >>> endif <<< block_close >>>
+
+\begin{itemize}
+<<< block_open >>> for item in products.entries <<< block_close >>>
+  \item \textbf{<<< item.title | tex_escape | tex_thinspace >>>} \hfill {\small\color{medgray}<<< item.years | tex_thinspace >>>}\\
+    <<< item.description | tex_escape | tex_thinspace | trim >>>
+<<< block_open >>> endfor <<< block_close >>>
+\end{itemize}
+
+%% ==== EDUCATION ====
+\section{<<< education.title | tex_escape >>>}
+
+\textbf{<<< education.degree >>>} \enspace\textbar\enspace
+<<< education.institution >>>, <<< education.years | tex_thinspace >>>\\
+\textbf{<<< education.publication.role >>>:} \textit{<<< education.publication.title >>>} (<<< education.publication.publisher >>>, <<< education.publication.year >>>)
+\enspace\textbar\enspace <<< education.speaking | tex_escape >>>
+
+%% ==== CTA ====
+\vspace{4pt}
+\begin{center}
+  {\small\color{medgray}\textit{<<< cta.text >>>---\href{mailto:<<< cta.email >>>}{<<< cta.email >>>} <<< cta.or >>>
+  <<< cta.phone | tex_thinspace >>>}}
+\end{center}
+
+\end{document}
