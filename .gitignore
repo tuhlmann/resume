@@ -331,3 +331,4 @@ target/
 
 # Python virtual environment
 .venv/
+/assets/.DS_Store

@@ -1,10 +1,11 @@
-.PHONY: all summary resume json render pdf clean
+.PHONY: all summary resume json render pdf assets clean
 
 PYTHON       := .venv/bin/python
 RENDER       := scripts/render.py
 SUMMARY_TPL  := templates/summary.tex.j2
 RESUME_TPL   := templates/resume.tex.j2
 JSON_EXPORT  := scripts/export_json_resume.py
+SVG_CONVERT  := scripts/render_svg.py
 
 DATA_DIR := data
 OUT_DIR  := target
@@ -47,8 +48,12 @@ json: | $(OUT_DIR)
 # ---- Render (backward compat alias) ----
 render: summary resume
 
+# ---- Convert SVG/GIF assets → PDF ----
+assets:
+	$(PYTHON) $(SVG_CONVERT)
+
 # ---- TeX → PDF ----
-pdf: summary resume
+pdf: assets summary resume
 	@find "$(OUT_DIR)" -maxdepth 1 -name '*.tex' -print | while IFS= read -r f; do \
 		base="$$(basename "$$f")"; \
 		echo "Building: $$base"; \

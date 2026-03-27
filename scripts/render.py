@@ -130,6 +130,20 @@ def tech_join(techs: list) -> str:
     return " \\enspace\\textperiodcentered\\enspace ".join(escaped)
 
 
+def logo_path(path: str) -> str:
+    """Convert an image path to a pdflatex-compatible format.
+
+    SVG and GIF files are assumed to have been pre-converted to PDF by
+    render_svg.py, so we swap the extension.
+    """
+    if not path:
+        return path
+    p = Path(path)
+    if p.suffix.lower() in (".svg", ".gif"):
+        return str(p.with_suffix(".pdf"))
+    return path
+
+
 def build_env(template_dir: Path) -> jinja2.Environment:
     """Create a Jinja2 environment with TeX-friendly delimiters."""
     env = jinja2.Environment(
@@ -151,6 +165,7 @@ def build_env(template_dir: Path) -> jinja2.Environment:
     env.filters["fmt_date_range"] = fmt_date_range
     env.filters["fmt_year_range"] = fmt_year_range
     env.filters["tech_join"] = tech_join
+    env.filters["logo_path"] = logo_path
     return env
 
 

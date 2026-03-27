@@ -262,10 +262,17 @@
 <<< block_open >>> for job in work.entries <<< block_close >>>
 %% --- <<< job.company | tex_escape >>> ---
 \noindent
+<<< block_open >>> if job.logo is defined <<< block_close >>>%
+\begin{minipage}[t]{0.06\textwidth}
+  \vspace{2pt}\includegraphics[width=0.9cm,height=0.9cm,keepaspectratio]{<<< job.logo | logo_path >>>}
+\end{minipage}%
+\begin{minipage}[t]{0.94\textwidth}
+<<< block_open >>> else <<< block_close >>>%
 \begin{minipage}[t]{0.03\textwidth}
   \vspace{2pt}\timelinedot
 \end{minipage}%
 \begin{minipage}[t]{0.97\textwidth}
+<<< block_open >>> endif <<< block_close >>>%
   \noindent
   {\bfseries\color{dark}<<< job.position | tex_escape >>>}%
   \hfill%
@@ -315,10 +322,17 @@
 
 <<< block_open >>> for prod in products.entries <<< block_close >>>
 \noindent
+<<< block_open >>> if prod.logo is defined <<< block_close >>>%
+\begin{minipage}[t]{0.06\textwidth}
+  \vspace{2pt}\includegraphics[width=0.9cm,height=0.9cm,keepaspectratio]{<<< prod.logo | logo_path >>>}
+\end{minipage}%
+\begin{minipage}[t]{0.94\textwidth}
+<<< block_open >>> else <<< block_close >>>%
 \begin{minipage}[t]{0.03\textwidth}
   \vspace{2pt}\timelinedot
 \end{minipage}%
 \begin{minipage}[t]{0.97\textwidth}
+<<< block_open >>> endif <<< block_close >>>%
   {\bfseries\color{dark}<<< prod.name | tex_escape >>>}%
   \hfill%
   {\small\color{light}<<< prod.start_date | fmt_year_range(prod.end_date|default(""), meta.language) >>>}\\[-1pt]
