@@ -885,13 +885,65 @@ def add_about_section(doc: Document, data: dict, styled: bool) -> None:
 
     interests = about.get("interests", [])
     if interests:
-        for interest in interests:
-            p = doc.add_paragraph()
-            run = p.add_run(interest.get("title", ""))
-            run.bold = True
-            desc = interest.get("description", "")
-            if desc:
-                p.add_run(f" \u2014 {clean_text(desc)}")
+        if styled:
+            column_count = min(3, len(interests))
+            row_count = (len(interests) + column_count - 1) // column_count
+            table = doc.add_table(rows=row_count, cols=column_count)
+            table.alignment = WD_TABLE_ALIGNMENT.LEFT
+            table.autofit = False
+            remove_table_borders(table)
+            set_table_fixed_layout(table)
+
+            section = doc.sections[-1]
+            content_width_twips = Emu(
+                section.page_width - section.left_margin - section.right_margin
+            ).twips
+            column_width_twips = int(content_width_twips / column_count)
+            set_table_width_and_grid(table, [column_width_twips] * column_count)
+
+            for index, interest in enumerate(interests):
+                row = index // column_count
+                col = index % column_count
+                cell = table.cell(row, col)
+                set_cell_width(cell, column_width_twips)
+                set_cell_vertical_alignment(cell, "top")
+                set_cell_margins(cell, top=0, start=0, bottom=0, end=90)
+
+                title_paragraph = cell.paragraphs[0]
+                title_paragraph.paragraph_format.space_before = Pt(0)
+                title_paragraph.paragraph_format.space_after = Pt(1)
+                title_paragraph.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
+                run = title_paragraph.add_run(interest.get("title", ""))
+                run.bold = True
+
+                desc = clean_text(interest.get("description", ""))
+                if desc:
+                    desc_paragraph = cell.add_paragraph()
+                    desc_paragraph.paragraph_format.space_before = Pt(0)
+                    desc_paragraph.paragraph_format.space_after = Pt(0)
+                    desc_paragraph.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
+                    run = desc_paragraph.add_run(desc)
+                    run.font.size = Pt(9)
+                    run.font.color.rgb = MID_GRAY
+
+            for index in range(len(interests), row_count * column_count):
+                row = index // column_count
+                col = index % column_count
+                cell = table.cell(row, col)
+                set_cell_width(cell, column_width_twips)
+                set_cell_vertical_alignment(cell, "top")
+                set_cell_margins(cell, top=0, start=0, bottom=0, end=90)
+                empty_paragraph = cell.paragraphs[0]
+                empty_paragraph.paragraph_format.space_before = Pt(0)
+                empty_paragraph.paragraph_format.space_after = Pt(0)
+        else:
+            for interest in interests:
+                p = doc.add_paragraph()
+                run = p.add_run(interest.get("title", ""))
+                run.bold = True
+                desc = interest.get("description", "")
+                if desc:
+                    p.add_run(f" \u2014 {clean_text(desc)}")
 
 
 def add_open_source_section(doc: Document, data: dict, styled: bool) -> None:
