@@ -197,6 +197,106 @@ def set_cell_width(cell, width) -> None:
     tc_pr.append(tc_w)
 
 
+def set_table_fixed_layout(table) -> None:
+    """Force fixed-width table layout so Word keeps entry columns stable."""
+    tbl_pr = table._tbl.tblPr
+    if tbl_pr is None:
+        tbl_pr = OxmlElement("w:tblPr")
+        table._tbl.insert(0, tbl_pr)
+    tbl_layout = tbl_pr.find(qn("w:tblLayout"))
+    if tbl_layout is None:
+        tbl_layout = OxmlElement("w:tblLayout")
+        tbl_pr.append(tbl_layout)
+    tbl_layout.set(qn("w:type"), "fixed")
+
+
+def set_table_width_and_grid(table, column_widths) -> None:
+    """Set the table width and explicit grid column widths in twips."""
+    tbl = table._tbl
+    tbl_pr = tbl.tblPr
+    if tbl_pr is None:
+        tbl_pr = OxmlElement("w:tblPr")
+        tbl.insert(0, tbl_pr)
+
+    total_width = sum(int(width) for width in column_widths)
+    tbl_w = tbl_pr.find(qn("w:tblW"))
+    if tbl_w is None:
+        tbl_w = OxmlElement("w:tblW")
+        tbl_pr.append(tbl_w)
+    tbl_w.set(qn("w:w"), str(total_width))
+    tbl_w.set(qn("w:type"), "dxa")
+
+    existing_grid = tbl.tblGrid
+    if existing_grid is not None:
+        tbl.remove(existing_grid)
+
+    tbl_grid = OxmlElement("w:tblGrid")
+    for width in column_widths:
+        grid_col = OxmlElement("w:gridCol")
+        grid_col.set(qn("w:w"), str(int(width)))
+        tbl_grid.append(grid_col)
+    tbl.insert(1, tbl_grid)
+
+
+def set_cell_margins(cell, top=0, start=0, bottom=0, end=0) -> None:
+    """Set cell margins in twips."""
+    tc_pr = cell._tc.get_or_add_tcPr()
+    tc_mar = tc_pr.find(qn("w:tcMar"))
+    if tc_mar is None:
+        tc_mar = OxmlElement("w:tcMar")
+        tc_pr.append(tc_mar)
+    for edge, value in (("top", top), ("start", start), ("bottom", bottom), ("end", end)):
+        el = tc_mar.find(qn(f"w:{edge}"))
+        if el is None:
+            el = OxmlElement(f"w:{edge}")
+            tc_mar.append(el)
+        el.set(qn("w:w"), str(int(value)))
+        el.set(qn("w:type"), "dxa")
+
+
+def create_logo_content_container(doc: Document, logo_path: Path | None):
+    """Create a stable two-column entry layout with a left logo rail."""
+    table = doc.add_table(rows=1, cols=2)
+    table.alignment = WD_TABLE_ALIGNMENT.LEFT
+    table.autofit = False
+    remove_table_borders(table)
+    set_table_fixed_layout(table)
+
+    section = doc.sections[-1]
+    content_width_twips = Emu(section.page_width - section.left_margin - section.right_margin).twips
+    logo_width = Cm(1.2)
+    logo_width_twips = logo_width.twips
+    text_width_twips = max(content_width_twips - logo_width_twips, 0)
+    set_table_width_and_grid(table, [logo_width_twips, text_width_twips])
+
+    logo_cell = table.cell(0, 0)
+    text_cell = table.cell(0, 1)
+    set_cell_width(logo_cell, logo_width_twips)
+    set_cell_width(text_cell, text_width_twips)
+    set_cell_vertical_alignment(logo_cell, "top")
+    set_cell_vertical_alignment(text_cell, "top")
+    set_cell_margins(logo_cell, top=0, start=0, bottom=0, end=90)
+    set_cell_margins(text_cell, top=0, start=0, bottom=0, end=0)
+
+    logo_paragraph = logo_cell.paragraphs[0]
+    logo_paragraph.alignment = WD_ALIGN_PARAGRAPH.LEFT
+    logo_paragraph.paragraph_format.space_before = Pt(0)
+    logo_paragraph.paragraph_format.space_after = Pt(0)
+    logo_paragraph.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
+    if logo_path:
+        run = logo_paragraph.add_run()
+        try:
+            run.add_picture(str(logo_path), width=Cm(0.9))
+        except Exception:
+            pass
+
+    text_paragraph = text_cell.paragraphs[0]
+    text_paragraph.paragraph_format.space_before = Pt(0)
+    text_paragraph.paragraph_format.space_after = Pt(1)
+    text_paragraph.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
+    return text_cell, text_paragraph
+
+
 def add_accent_rule(doc: Document) -> None:
     """Add a horizontal accent-colored rule."""
     p = doc.add_paragraph()
@@ -506,25 +606,7 @@ def add_work_section(doc: Document, data: dict, styled: bool) -> None:
         container = doc
         if styled:
             logo_path = resolve_logo(job.get("logo", ""))
-            
-            table = doc.add_table(rows=1, cols=2)
-            remove_table_borders(table)
-            
-            logo_cell = table.cell(0, 0)
-            set_cell_width(logo_cell, 800)  # ~1.25 cm
-            
-            if logo_path:
-                lp = logo_cell.paragraphs[0]
-                lp.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
-                run = lp.add_run()
-                try:
-                    # make it slightly smaller to fit better in left margin context
-                    run.add_picture(str(logo_path), width=Cm(0.9))
-                except Exception:
-                    pass  # Skip if image format is unsupported
-            
-            container = table.cell(0, 1)
-            p = container.paragraphs[0]
+            container, p = create_logo_content_container(doc, logo_path)
         else:
             p = doc.add_paragraph()
 
@@ -595,24 +677,7 @@ def add_products_section(doc: Document, data: dict, styled: bool) -> None:
         container = doc
         if styled:
             logo_path = resolve_logo(prod.get("logo", ""))
-            
-            table = doc.add_table(rows=1, cols=2)
-            remove_table_borders(table)
-            
-            logo_cell = table.cell(0, 0)
-            set_cell_width(logo_cell, 800)  # ~1.25 cm
-            
-            if logo_path:
-                lp = logo_cell.paragraphs[0]
-                lp.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
-                run = lp.add_run()
-                try:
-                    run.add_picture(str(logo_path), width=Cm(0.9))
-                except Exception:
-                    pass
-            
-            container = table.cell(0, 1)
-            p = container.paragraphs[0]
+            container, p = create_logo_content_container(doc, logo_path)
         else:
             p = doc.add_paragraph()
 
