@@ -1,0 +1,462 @@
+\documentclass[a4paper,10pt]{article}
+
+%% ════════════════════════════════════════════════════════════════
+%% PACKAGES
+%% ════════════════════════════════════════════════════════════════
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper, left=1.5cm, right=1.5cm, top=1.2cm, bottom=1.4cm, footskip=0.8cm]{geometry}
+\usepackage{graphicx}
+\graphicspath{{../assets/}}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{fontawesome5}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage{parskip}
+
+\usetikzlibrary{calc}
+
+%% ════════════════════════════════════════════════════════════════
+%% COLORS — a refined palette with a warm accent
+%% ════════════════════════════════════════════════════════════════
+\definecolor{accent}{HTML}{1A5276}       % deep teal-blue — headers, rules
+\definecolor{accentlight}{HTML}{2980B9}  % brighter link blue
+\definecolor{sidebar}{HTML}{F0F4F8}      % very light blue-gray — skill/tag bg
+\definecolor{dark}{HTML}{1C2833}         % near-black for body text
+\definecolor{mid}{HTML}{5D6D7E}          % medium gray for secondary text
+\definecolor{light}{HTML}{95A5A6}        % light gray for dates/captions
+\definecolor{tagbg}{HTML}{E8EDF2}        % tech-tag pill background
+\definecolor{quotebg}{HTML}{F9F9F2}      % warm off-white for quote boxes
+\definecolor{rulecol}{HTML}{D5DBDB}      % soft horizontal rules
+\definecolor{timelinedot}{HTML}{2980B9}  % timeline dot color
+
+%% ════════════════════════════════════════════════════════════════
+%% HYPERLINKS
+%% ════════════════════════════════════════════════════════════════
+\hypersetup{
+  colorlinks=true,
+  urlcolor=accentlight,
+  linkcolor=accent,
+  pdfauthor={<<< basics.name >>>},
+  pdftitle={<<< meta.pdf_title | tex_escape >>>},
+}
+
+%% ════════════════════════════════════════════════════════════════
+%% TYPOGRAPHY
+%% ════════════════════════════════════════════════════════════════
+\color{dark}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt plus 1pt minus 1pt}
+\linespread{1.05}
+
+%% Lists
+\setlist[itemize]{
+  leftmargin=1.4em,
+  itemsep=1.5pt,
+  parsep=0.5pt,
+  topsep=2pt,
+  label={\color{accent}\textbullet}
+}
+
+%% ════════════════════════════════════════════════════════════════
+%% CUSTOM COMMANDS
+%% ════════════════════════════════════════════════════════════════
+
+%% --- Section heading with accent line ---
+\newcommand{\cvsection}[2][]{%
+  \vspace{10pt}%
+  \noindent%
+  {\Large\bfseries\color{accent}\raisebox{0.5pt}{#1}\ifthenelse{\equal{#1}{}}{}{\enspace}#2}%
+  \hfill\null%
+  \par\nopagebreak\vspace{-7pt}%
+  {\color{accent}\rule{\textwidth}{0.6pt}}%
+  \par\nopagebreak\vspace{3pt}%
+}
+
+%% --- Subsection heading (e.g. product names) ---
+\newcommand{\cvsubsection}[1]{%
+  \vspace{6pt}%
+  {\normalsize\bfseries\color{accent}#1}\par\nopagebreak%
+  \vspace{1pt}%
+}
+
+%% --- Technology tag pills ---
+\newcommand{\techtag}[1]{%
+  \tikz[baseline=(tag.base)]{%
+    \node[fill=tagbg, rounded corners=2.5pt, inner xsep=4pt, inner ysep=1.5pt,
+          font=\scriptsize\sffamily\color{dark}] (tag) {#1};%
+  }\,%
+}
+
+%% --- Skill level indicator (filled/empty circles) ---
+\newcommand{\skilllevel}[1]{%
+  \ifthenelse{\equal{#1}{expert}}{%
+    {\color{accent}\faCircle\;\faCircle\;\faCircle}%
+  }{%
+    \ifthenelse{\equal{#1}{proficient}}{%
+      {\color{accent}\faCircle\;\faCircle}\;{\color{rulecol}\faCircle}%
+    }{%
+      {\color{accent}\faCircle}\;{\color{rulecol}\faCircle\;\faCircle}%
+    }%
+  }%
+}
+
+%% --- Quote block for recommendations ---
+\newcommand{\quoteblock}[3]{%
+  % #1 = quote text, #2 = author, #3 = role
+  \vspace{3pt}%
+  \noindent%
+  \begin{tikzpicture}
+    \node[fill=quotebg, rounded corners=3pt, inner sep=8pt, text width=\textwidth-20pt,
+          draw=rulecol, line width=0.3pt] (q) {%
+      {\small\itshape\color{mid}``#1''}\\[4pt]
+      {\footnotesize\bfseries\color{dark}--- #2,} {\footnotesize\color{mid}#3}%
+    };
+  \end{tikzpicture}%
+  \vspace{2pt}%
+}
+
+%% --- Timeline dot for work entries ---
+\newcommand{\timelinedot}{%
+  \tikz[baseline=-0.6ex]{\fill[timelinedot] (0,0) circle (2.5pt);}%
+}
+
+%% ════════════════════════════════════════════════════════════════
+%% HEADER & FOOTER
+%% ════════════════════════════════════════════════════════════════
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{light}<<< basics.name >>> \enspace\textbar\enspace <<< basics.company >>>\textsuperscript{\textregistered}}
+\fancyfoot[C]{\footnotesize\color{light}\thepage}
+<<< block_open >>> if meta.footer_date_label is defined <<< block_close >>>
+\fancyfoot[R]{\footnotesize\color{light}<<< meta.footer_date_label >>>: <<< meta.last_updated >>>}
+<<< block_open >>> else <<< block_close >>>
+\fancyfoot[R]{\footnotesize\color{light}<<< meta.last_updated >>>}
+<<< block_open >>> endif <<< block_close >>>
+
+%% ════════════════════════════════════════════════════════════════
+\begin{document}
+
+%% ════════════════════════════════════════════════════════════════
+%% PAGE 1 — HEADER BANNER
+%% ════════════════════════════════════════════════════════════════
+
+\noindent
+\begin{tikzpicture}[remember picture, overlay]
+  %% Accent strip at top of page
+  \fill[accent] (current page.north west) rectangle
+    ([yshift=-2.8cm]current page.north east);
+  %% Subtle secondary strip
+  \fill[accent!85!black] ([yshift=-2.8cm]current page.north west) rectangle
+    ([yshift=-3.05cm]current page.north east);
+\end{tikzpicture}
+
+%% Photo circle overlapping the banner
+\noindent
+\begin{tikzpicture}[remember picture, overlay]
+  \node[circle, minimum size=2.8cm, path picture={
+    \node at (path picture bounding box.center) {
+      \includegraphics[width=2.8cm]{<<< basics.photo >>>}
+    };
+  }, draw=white, line width=2pt] at ([xshift=2.2cm, yshift=-1.4cm]current page.north west) {};
+\end{tikzpicture}
+
+%% Name + title over the banner
+\vspace*{-1.5cm}
+\hspace*{4.0cm}%
+\begin{minipage}[t]{0.70\textwidth}
+  {\huge\bfseries\color{white}<<< basics.name >>>}\\[3pt]
+  {\large\color{white!85}<<< basics.company >>>\textsuperscript{\textregistered}
+   \enspace\textbar\enspace <<< basics.title | tex_escape >>>}
+\end{minipage}
+
+\vspace{1.0cm}
+
+%% Contact info row
+\noindent
+\begin{center}
+{\small\color{mid}%
+  \faIcon{map-marker-alt}\enspace <<< basics.address.full >>>%
+  \enspace\textbar\enspace%
+  \faIcon{envelope}\enspace \href{mailto:<<< basics.email >>>}{<<< basics.email >>>}%
+  \enspace\textbar\enspace%
+  \faIcon{phone-alt}\enspace <<< basics.phone | tex_thinspace >>>%
+  \enspace\textbar\enspace%
+  \faIcon{globe}\enspace \href{<<< basics.website.url >>>}{<<< basics.website.text >>>}%
+}\\[2pt]
+{\small\color{mid}%
+<<< block_open >>> for profile in basics.profiles <<< block_close >>>
+<<< block_open >>> if not loop.first <<< block_close >>>  \enspace\textbar\enspace <<< block_open >>> endif <<< block_close >>>%
+<<< block_open >>> if profile.network == "LinkedIn" <<< block_close >>>\faIcon{linkedin}%
+<<< block_open >>> elif profile.network == "GitHub" <<< block_close >>>\faIcon{github}%
+<<< block_open >>> elif profile.network == "Xing" <<< block_close >>>\faIcon{xing}%
+<<< block_open >>> else <<< block_close >>>\faIcon{link}%
+<<< block_open >>> endif <<< block_close >>>%
+\enspace\href{<<< profile.url >>>}{<<< profile.text | tex_escape >>>}%
+<<< block_open >>> endfor <<< block_close >>>
+}
+\end{center}
+
+\vspace{4pt}
+
+%% ════════════════════════════════════════════════════════════════
+%% PROFESSIONAL SUMMARY
+%% ════════════════════════════════════════════════════════════════
+\cvsection[\faIcon{user}]{<<< block_open >>> if meta.language == "de" <<< block_close >>>Profil<<< block_open >>> else <<< block_close >>>Professional Summary<<< block_open >>> endif <<< block_close >>>}
+
+<<< basics.summary | trim >>>
+
+%% ════════════════════════════════════════════════════════════════
+%% CORE SERVICES
+%% ════════════════════════════════════════════════════════════════
+<<< block_open >>> if services is defined <<< block_close >>>
+\cvsection[\faIcon{concierge-bell}]{<<< services.title | tex_escape >>>}
+
+\noindent
+\begin{tabularx}{\textwidth}{@{}XX@{}}
+<<< block_open >>> for item in services.entries <<< block_close >>>
+\textbf{<<< item.title | tex_escape >>>} \newline
+{\small\color{mid}<<< item.description | tex_escape | trim >>>}%
+<<< block_open >>> if loop.index is odd and not loop.last <<< block_close >>> & <<< block_open >>> else <<< block_close >>> <<< block_open >>> if not loop.last <<< block_close >>> \\[6pt] <<< block_open >>> endif <<< block_close >>><<< block_open >>> endif <<< block_close >>>
+<<< block_open >>> endfor <<< block_close >>>
+\end{tabularx}
+<<< block_open >>> endif <<< block_close >>>
+
+%% ════════════════════════════════════════════════════════════════
+%% TECHNICAL SKILLS
+%% ════════════════════════════════════════════════════════════════
+\cvsection[\faIcon{cogs}]{<<< skills.title | tex_escape >>>}
+
+\noindent
+\begin{tabularx}{\textwidth}{@{}l@{\enspace}c@{\enspace}X@{}}
+<<< block_open >>> for cat in skills.categories <<< block_close >>>
+{\small\bfseries\color{dark}<<< cat.label | tex_escape >>>} &
+\skilllevel{<<< cat.level >>>} &
+{\small <<< cat.keywords | join(", ") | tex_escape >>>} \\[3pt]
+<<< block_open >>> endfor <<< block_close >>>
+\end{tabularx}
+
+%% --- Human languages ---
+\vspace{2pt}
+\noindent{\small\bfseries\color{dark}<<< languages.title >>>:}\enspace
+{\small%
+<<< block_open >>> for lang in languages.entries <<< block_close >>>
+<<< block_open >>> if not loop.first <<< block_close >>>\enspace\textbar\enspace <<< block_open >>> endif <<< block_close >>>%
+\textbf{<<< lang.language >>>} (<<< lang.fluency | tex_escape >>>)%
+<<< block_open >>> endfor <<< block_close >>>
+}
+
+%% ════════════════════════════════════════════════════════════════
+%% WORK EXPERIENCE
+%% ════════════════════════════════════════════════════════════════
+\cvsection[\faIcon{briefcase}]{<<< work.title | tex_escape >>>}
+
+<<< block_open >>> for job in work.entries <<< block_close >>>
+%% --- <<< job.company | tex_escape >>> ---
+\noindent
+\begin{minipage}[t]{0.03\textwidth}
+  \vspace{2pt}\timelinedot
+\end{minipage}%
+\begin{minipage}[t]{0.97\textwidth}
+  \noindent
+  {\bfseries\color{dark}<<< job.position | tex_escape >>>}%
+  \hfill%
+  {\small\color{light}<<< job.start_date | fmt_date_range(job.end_date|default(""), meta.language) >>>}\\[-1pt]
+  {\color{accent}%
+<<< block_open >>> if job.url is defined <<< block_close >>>%
+    \href{<<< job.url >>>}{<<< job.company | tex_escape >>>}%
+<<< block_open >>> else <<< block_close >>>%
+    <<< job.company | tex_escape >>>%
+<<< block_open >>> endif <<< block_close >>>%
+  }%
+  \hfill%
+  {\small\color{mid}<<< job.technologies | tech_join >>>}
+
+  \vspace{2pt}
+  {\small <<< job.summary | tex_escape | trim >>>}
+
+<<< block_open >>> if job.highlights is defined and job.highlights|length > 0 <<< block_close >>>
+  \begin{itemize}[leftmargin=1.2em]
+<<< block_open >>> for h in job.highlights <<< block_close >>>
+    \item {\small <<< h | tex_escape | trim >>>}
+<<< block_open >>> endfor <<< block_close >>>
+  \end{itemize}
+<<< block_open >>> endif <<< block_close >>>
+
+<<< block_open >>> if job.recommendations is defined <<< block_close >>>
+<<< block_open >>> for rec in job.recommendations <<< block_close >>>
+<<< block_open >>> if rec.quote is defined <<< block_close >>>
+  \quoteblock{<<< rec.quote | tex_escape | trim >>>}{<<< rec.author | tex_escape >>>}{<<< rec.role | tex_escape >>>}
+<<< block_open >>> endif <<< block_close >>>
+<<< block_open >>> endfor <<< block_close >>>
+<<< block_open >>> endif <<< block_close >>>
+\end{minipage}
+
+<<< block_open >>> if not loop.last <<< block_close >>>
+\vspace{1pt}
+\noindent{\color{rulecol}\rule{\textwidth}{0.3pt}}
+\vspace{1pt}
+<<< block_open >>> endif <<< block_close >>>
+
+<<< block_open >>> endfor <<< block_close >>>
+
+%% ════════════════════════════════════════════════════════════════
+%% OWN PRODUCTS & INNOVATIONS
+%% ════════════════════════════════════════════════════════════════
+\cvsection[\faIcon{rocket}]{<<< products.title | tex_escape >>>}
+
+<<< block_open >>> for prod in products.entries <<< block_close >>>
+\noindent
+\begin{minipage}[t]{0.03\textwidth}
+  \vspace{2pt}\timelinedot
+\end{minipage}%
+\begin{minipage}[t]{0.97\textwidth}
+  {\bfseries\color{dark}<<< prod.name | tex_escape >>>}%
+  \hfill%
+  {\small\color{light}<<< prod.start_date | fmt_year_range(prod.end_date|default(""), meta.language) >>>}\\[-1pt]
+  {\small\color{mid}<<< prod.technologies | tech_join >>>}%
+<<< block_open >>> if prod.url is defined <<< block_close >>>%
+  \hfill{\small\href{<<< prod.url >>>}{\faIcon{external-link-alt}\enspace <<< prod.url | replace("https://", "") | tex_escape >>>}}%
+<<< block_open >>> endif <<< block_close >>>
+
+  \vspace{2pt}
+  {\small <<< prod.summary | tex_escape | trim >>>}
+
+<<< block_open >>> if prod.highlights is defined and prod.highlights|length > 0 <<< block_close >>>
+  \begin{itemize}[leftmargin=1.2em]
+<<< block_open >>> for h in prod.highlights <<< block_close >>>
+    \item {\small <<< h | tex_escape | trim >>>}
+<<< block_open >>> endfor <<< block_close >>>
+  \end{itemize}
+<<< block_open >>> endif <<< block_close >>>
+\end{minipage}
+
+<<< block_open >>> if not loop.last <<< block_close >>>
+\vspace{1pt}
+\noindent{\color{rulecol}\rule{\textwidth}{0.3pt}}
+\vspace{1pt}
+<<< block_open >>> endif <<< block_close >>>
+
+<<< block_open >>> endfor <<< block_close >>>
+
+%% ════════════════════════════════════════════════════════════════
+%% EDUCATION & PUBLICATIONS
+%% ════════════════════════════════════════════════════════════════
+\cvsection[\faIcon{graduation-cap}]{<<< education.title | tex_escape >>>}
+
+<<< block_open >>> for edu in education.entries <<< block_close >>>
+\noindent
+{\bfseries\color{dark}<<< edu.degree | tex_escape >>>}%
+\hfill%
+{\small\color{light}<<< edu.start_date | fmt_year_range(edu.end_date|default(""), meta.language) >>>}\\[-1pt]
+<<< block_open >>> if edu.url is defined <<< block_close >>>%
+{\color{accent}\href{<<< edu.url >>>}{<<< edu.institution | tex_escape >>>}}%
+<<< block_open >>> else <<< block_close >>>%
+{\color{accent}<<< edu.institution | tex_escape >>>}%
+<<< block_open >>> endif <<< block_close >>>%
+\enspace\textbar\enspace {\small\color{mid}<<< edu.field | tex_escape >>>}\\[2pt]
+{\small <<< edu.description | tex_escape | trim >>>}
+<<< block_open >>> endfor <<< block_close >>>
+
+%% --- Publications ---
+<<< block_open >>> if publications is defined <<< block_close >>>
+\vspace{6pt}
+\cvsubsection{\faIcon{book}\enspace <<< publications.title | tex_escape >>>}
+
+<<< block_open >>> for pub in publications.entries <<< block_close >>>
+\noindent
+{\bfseries\color{dark}<<< pub.role | tex_escape >>>:} \textit{<<< pub.title | tex_escape >>>}
+\enspace\textbar\enspace {\small\color{mid}<<< pub.publisher | tex_escape >>>, <<< pub.date >>>}\\[1pt]
+{\small <<< pub.description | tex_escape | trim >>>}
+<<< block_open >>> endfor <<< block_close >>>
+<<< block_open >>> endif <<< block_close >>>
+
+%% ════════════════════════════════════════════════════════════════
+%% TRAINING & SPEAKING
+%% ════════════════════════════════════════════════════════════════
+<<< block_open >>> if training is defined <<< block_close >>>
+\cvsection[\faIcon{chalkboard-teacher}]{<<< training.title | tex_escape >>>}
+
+<<< block_open >>> for t in training.entries <<< block_close >>>
+\noindent
+{\bfseries\color{dark}<<< t.title | tex_escape >>>}%
+\hfill%
+{\small\color{light}%
+<<< block_open >>> if t.start_date is defined <<< block_close >>>%
+<<< t.start_date | fmt_date_range(t.end_date|default(""), meta.language) >>>%
+<<< block_open >>> elif t.date is defined <<< block_close >>>%
+<<< t.date | fmt_date(meta.language) >>>%
+<<< block_open >>> endif <<< block_close >>>%
+}\\[-1pt]
+<<< block_open >>> if t.url is defined <<< block_close >>>%
+{\color{accent}\href{<<< t.url >>>}{<<< t.organization | tex_escape >>>}}%
+<<< block_open >>> else <<< block_close >>>%
+{\color{accent}<<< t.organization | tex_escape >>>}%
+<<< block_open >>> endif <<< block_close >>>%
+\enspace\textbar\enspace {\small\color{mid}<<< t.location | tex_escape >>>}\\[2pt]
+{\small <<< t.description | tex_escape | trim >>>}
+<<< block_open >>> if not loop.last <<< block_close >>>\vspace{4pt}<<< block_open >>> endif <<< block_close >>>
+<<< block_open >>> endfor <<< block_close >>>
+<<< block_open >>> endif <<< block_close >>>
+
+%% ════════════════════════════════════════════════════════════════
+%% ABOUT ME / INTERESTS
+%% ════════════════════════════════════════════════════════════════
+<<< block_open >>> if about is defined <<< block_close >>>
+\cvsection[\faIcon{heart}]{<<< about.title | tex_escape >>>}
+
+{\small <<< about.text | tex_escape | trim >>>}
+
+<<< block_open >>> if about.interests is defined <<< block_close >>>
+\vspace{4pt}
+\noindent
+\begin{tabularx}{\textwidth}{@{}XXX@{}}
+<<< block_open >>> for interest in about.interests <<< block_close >>>
+\textbf{<<< interest.title | tex_escape >>>} \newline
+{\small\color{mid}<<< interest.description | tex_escape | trim >>>}%
+<<< block_open >>> if not loop.last <<< block_close >>> & <<< block_open >>> endif <<< block_close >>>
+<<< block_open >>> endfor <<< block_close >>>
+\end{tabularx}
+<<< block_open >>> endif <<< block_close >>>
+<<< block_open >>> endif <<< block_close >>>
+
+%% ════════════════════════════════════════════════════════════════
+%% OPEN SOURCE
+%% ════════════════════════════════════════════════════════════════
+<<< block_open >>> if open_source is defined <<< block_close >>>
+\cvsection[\faIcon{code-branch}]{<<< open_source.title | tex_escape >>>}
+
+\noindent
+<<< block_open >>> for proj in open_source.entries <<< block_close >>>
+\textbf{<<< proj.name | tex_escape >>>} ---
+{\small\color{mid}<<< proj.description | tex_escape | trim >>>}%
+<<< block_open >>> if not loop.last <<< block_close >>>\enspace\textbar\enspace <<< block_open >>> endif <<< block_close >>>
+<<< block_open >>> endfor <<< block_close >>>
+<<< block_open >>> endif <<< block_close >>>
+
+%% ════════════════════════════════════════════════════════════════
+%% CALL TO ACTION
+%% ════════════════════════════════════════════════════════════════
+<<< block_open >>> if cta is defined <<< block_close >>>
+\vspace{10pt}
+\begin{center}
+\begin{tikzpicture}
+  \node[fill=sidebar, rounded corners=4pt, inner sep=12pt, text width=0.85\textwidth, align=center] {%
+    {\color{dark}\textit{<<< cta.text | tex_escape >>>}}\\[6pt]
+    {\color{accent}\faIcon{envelope}\enspace\href{mailto:<<< cta.email >>>}{<<< cta.email >>>}%
+    \enspace\enspace <<< cta.or >>>%
+    \enspace\enspace\faIcon{phone-alt}\enspace <<< cta.phone | tex_thinspace >>>}%
+  };
+\end{tikzpicture}
+\end{center}
+<<< block_open >>> endif <<< block_close >>>
+
+\end{document}

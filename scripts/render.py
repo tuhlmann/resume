@@ -4,10 +4,21 @@
 import argparse
 import re
 import sys
+from datetime import datetime
 from pathlib import Path
 
 import jinja2
 import yaml
+
+
+MONTH_NAMES_DE = {
+    1: "Jan.", 2: "Feb.", 3: "März", 4: "Apr.", 5: "Mai", 6: "Juni",
+    7: "Juli", 8: "Aug.", 9: "Sep.", 10: "Okt.", 11: "Nov.", 12: "Dez.",
+}
+MONTH_NAMES_EN = {
+    1: "Jan", 2: "Feb", 3: "Mar", 4: "Apr", 5: "May", 6: "Jun",
+    7: "Jul", 8: "Aug", 9: "Sep", 10: "Oct", 11: "Nov", 12: "Dec",
+}
 
 
 def tex_escape(text: str) -> str:
@@ -74,16 +85,59 @@ def tex_href(text: str) -> str:
     return text
 
 
+def fmt_date(value: str, lang: str = "en") -> str:
+    """Format a YYYY-MM-DD or YYYY date string to 'Mon YYYY' or just 'YYYY'."""
+    if not value:
+        return ""
+    s = str(value).strip()
+    months = MONTH_NAMES_DE if lang == "de" else MONTH_NAMES_EN
+    for fmt in ("%Y-%m-%d", "%Y-%m"):
+        try:
+            dt = datetime.strptime(s, fmt)
+            return f"{months[dt.month]} {dt.year}"
+        except ValueError:
+            continue
+    if re.fullmatch(r"\d{4}", s):
+        return s
+    return s
+
+
+def fmt_date_range(start: str, end: str = "", lang: str = "en") -> str:
+    """Format a date range like 'May 2019 -- Jul 2024' or 'Oct 2025 -- present'."""
+    s = fmt_date(start, lang)
+    if not end:
+        present = "heute" if lang == "de" else "present"
+        return f"{s}\\,--\\,{present}"
+    e = fmt_date(end, lang)
+    return f"{s}\\,--\\,{e}"
+
+
+def fmt_year_range(start: str, end: str = "", lang: str = "en") -> str:
+    """Format a year-only range like '2019 -- 2024' or '2025 -- present'."""
+    sy = str(start)[:4] if start else ""
+    ey = str(end)[:4] if end else ""
+    if not ey:
+        present = "heute" if lang == "de" else "present"
+        return f"{sy}\\,--\\,{present}"
+    if sy == ey:
+        return sy
+    return f"{sy}\\,--\\,{ey}"
+
+
+def tech_join(techs: list) -> str:
+    """Join a list of technology strings with TeX-friendly interpuncts."""
+    escaped = [tex_escape(str(t)) for t in techs]
+    return " \\enspace\\textperiodcentered\\enspace ".join(escaped)
+
+
 def build_env(template_dir: Path) -> jinja2.Environment:
     """Create a Jinja2 environment with TeX-friendly delimiters."""
     env = jinja2.Environment(
         loader=jinja2.FileSystemLoader(str(template_dir)),
-        # Use <<< >>> for variables and <<% %>> for blocks to avoid TeX conflicts
         variable_start_string="<<<",
         variable_end_string=">>>",
         comment_start_string="<<#",
         comment_end_string="#>>",
-        # Blocks use a placeholder that we pre-process (see below)
         block_start_string="<<%",
         block_end_string="%>>",
         keep_trailing_newline=True,
@@ -93,6 +147,10 @@ def build_env(template_dir: Path) -> jinja2.Environment:
     env.filters["tex_escape"] = tex_escape
     env.filters["tex_thinspace"] = tex_thinspace
     env.filters["tex_href"] = tex_href
+    env.filters["fmt_date"] = fmt_date
+    env.filters["fmt_date_range"] = fmt_date_range
+    env.filters["fmt_year_range"] = fmt_year_range
+    env.filters["tech_join"] = tech_join
     return env
 
 

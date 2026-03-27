@@ -1,0 +1,816 @@
+# Full Resume – Torsten Uhlmann (English)
+
+meta:
+  language: en
+  last_updated: "March 2026"
+  pdf_title: "Torsten Uhlmann -- Full Resume"
+  footer_label: "Online resume"
+  footer_url: "https://agynamix.de/resume"
+  footer_url_text: "agynamix.de/resume"
+
+# ──────────────────────────────────────────────
+# BASICS
+# ──────────────────────────────────────────────
+basics:
+  name: "Torsten Uhlmann"
+  company: "AGYNAMIX"
+  title: "Senior Full Stack Software Engineer & Consultant"
+  born: 1972
+  citizenship: "German"
+  photo: "torsten_square.jpg"
+  portrait: "torsten_portrait.jpg"
+  address:
+    street: "Buchenweg 5"
+    city: "Thalheim"
+    postal_code: "09380"
+    country: "Germany"
+    full: "Buchenweg 5, 09380 Thalheim, Germany"
+  email: "tuhlmann@agynamix.de"
+  phone: "+49 151 12412427"
+  website:
+    url: "https://agynamix.de"
+    text: "agynamix.de"
+  profiles:
+    - network: "LinkedIn"
+      url: "https://www.linkedin.com/in/torstenuhlmann"
+      text: "linkedin.com/in/torstenuhlmann"
+    - network: "GitHub"
+      url: "https://github.com/tuhlmann"
+      text: "github.com/tuhlmann"
+    - network: "Xing"
+      url: "https://www.xing.com/profile/Torsten_Uhlmann2"
+      text: "xing.com/profile/Torsten_Uhlmann2"
+
+  summary: >
+    Senior Full Stack Software Engineer with nearly 30 years of experience delivering
+    robust, high-performance software solutions across diverse industries. Operating
+    through AGYNAMIX, I specialize in taking complex, system-critical applications from
+    prototype to production---whether leading development efforts or integrating into
+    distributed teams, bridging intricate backend architectures with modern, responsive
+    frontend frameworks.
+
+    I love learning new things and meeting new people. Over the years I have worked
+    with a plethora of different programming languages---from Cobol, C++, and Java through
+    Scala and Clojure to Rust and TypeScript. Technologies change, developer roles change,
+    but the desire to create something useful always stays strong.
+
+    I authored the book "Lift Web Applications How-To" (Packt Publishing, 2012) and
+    regularly contribute to open-source projects on GitHub. I am particularly good at
+    integrating into teams and getting myself deeply involved in the subject matter.
+
+  location: "Remote"
+
+# ──────────────────────────────────────────────
+# ABOUT (personal background & interests)
+# ──────────────────────────────────────────────
+about:
+  title: "About Me"
+  text: >
+    I grew up in the beautiful Ore Mountains of Germany, where I still live. I'm married
+    to my wife Silvia and we have two kids.
+
+    In eighth grade I was given a programmable BASIC calculator with a memory of 1024 bytes.
+    Though very limited, it allowed me to create useful solutions for school and helped
+    me reduce my homework. After secondary school I was admitted to study computer science
+    at Chemnitz Technical University---remarkable given that in the last year of school,
+    in 1988 in East Germany, I was told I would never be allowed to study as a Christian.
+    Just a year later the history of our nation completely changed.
+
+    I finished my studies in 1996 and started working for a large IT supplier in
+    different projects until 2004, when I started my freelancing career.
+
+  interests:
+    - title: "Volunteer Translator"
+      description: >
+        For many years I have been volunteering as a translator for international guests and events.
+    - title: "Coffee Enthusiast"
+      description: >
+        I'm a coffee aficionado and vastly enjoy a good cup of espresso.
+        I wonder if more than a decade of Java programming nurtured this habit.
+    - title: "Sourdough Bread Baker"
+      description: >
+        A few years ago I started my bread baking adventure. After many mishaps 
+        we now mill our own flour and bake our own sourdough bread. 
+        Apart from being healthier, this process puts my
+        feet back on reality---especially when most of the things I work with
+        are only virtual.
+
+# ──────────────────────────────────────────────
+# SERVICES
+# ──────────────────────────────────────────────
+services:
+  title: "Core Services & Consulting"
+  url: "https://agynamix.de/consulting"
+  entries:
+    - title: "End-to-End Application Development"
+      description: >
+        Complete solutions from requirement gathering through implementation and deployment.
+    - title: "High-Performance Backend Systems"
+      description: >
+        Scalable, concurrent backends using Rust, Scala, and Java.
+    - title: "Modern Frontend Architecture"
+      description: >
+        Responsive, client-centric UIs with ReactJS, TypeScript, and Angular.
+    - title: "Cloud & DevOps Integration"
+      description: >
+        Mission-critical deployments and containerization with AWS, Docker, and Ansible.
+
+# ──────────────────────────────────────────────
+# SKILLS
+# ──────────────────────────────────────────────
+skills:
+  title: "Technical Skills"
+  categories:
+    - label: "Languages"
+      level: "expert"
+      keywords:
+        - "Scala"
+        - "Java"
+        - "TypeScript"
+        - "JavaScript"
+        - "Rust"
+        - "C++"
+    - label: "Languages"
+      level: "proficient"
+      keywords:
+        - "Kotlin"
+        - "Go"
+        - "Clojure"
+        - "ClojureScript"
+    - label: "Languages"
+      level: "competent"
+      keywords:
+        - "Python"
+        - "Ruby"
+        - "Perl"
+        - "Groovy"
+        - "C#"
+    - label: "Frontend Frameworks"
+      level: "expert"
+      keywords:
+        - "ReactJS"
+        - "Angular"
+        - "AngularJS"
+        - "VueJS"
+        - "SolidJS"
+    - label: "Backend Frameworks"
+      level: "expert"
+      keywords:
+        - "Lift (Scala)"
+        - "Spring (Java)"
+    - label: "Desktop Frameworks"
+      level: "proficient"
+      keywords:
+        - "Jetpack Compose for Desktop"
+        - "Eclipse RCP"
+        - "SWT / JFace"
+    - label: "Databases"
+      level: "expert"
+      keywords:
+        - "PostgreSQL"
+        - "MongoDB"
+        - "Oracle"
+        - "MySQL"
+    - label: "Cloud & DevOps"
+      level: "proficient"
+      keywords:
+        - "AWS"
+        - "Docker"
+        - "Ansible"
+        - "Linux"
+    - label: "Methodologies"
+      level: "proficient"
+      keywords:
+        - "Agile / Scrum"
+        - "SAFe"
+        - "CI/CD"
+        - "Test-Driven Development"
+
+# ──────────────────────────────────────────────
+# HUMAN LANGUAGES
+# ──────────────────────────────────────────────
+languages:
+  title: "Languages"
+  entries:
+    - language: "German"
+      fluency: "Native"
+    - language: "English"
+      fluency: "Full professional proficiency"
+      note: "Fluent; regularly translate at conferences"
+    - language: "Russian"
+      fluency: "Elementary"
+
+# ──────────────────────────────────────────────
+# WORK EXPERIENCE (consolidated, reverse chronological)
+# ──────────────────────────────────────────────
+work:
+  title: "Work Experience"
+  entries:
+
+    - company: "TXODDS, Ltd."
+      position: "Senior Frontend Developer"
+      logo: "clients/TXODDS.svg"
+      url: "https://txodds.net/"
+      start_date: "2024-08-05"
+      end_date: "2025-05-05"
+      technologies:
+        - "VueJS 3"
+        - "TypeScript"
+        - "JavaScript"
+        - "Docker"
+      summary: >
+        Developed multiple frontend applications for the TX-Scores professional
+        scouting network---a platform connecting the sports betting ecosystem to
+        ultra-low latency sports odds delivery.
+      highlights:
+        - >
+          Built several frontend applications for the tx-scores project using
+          VueJS 3 with TypeScript.
+        - >
+          TX-Scores is a professional scouting network---not casual coverage. A
+          community of scouts and analysts with real-time dedicated analyst
+          oversight for every game.
+        - "Docker-containerized deployment pipeline."
+
+    - company: "iCombine UG"
+      position: "Senior Fullstack Developer"
+      logo: "clients/logo-icombine.png"
+      url: "https://icombine.net/"
+      start_date: "2022-02-01"
+      end_date: "2022-08-31"
+      technologies:
+        - "Scala"
+        - "Lift"
+        - "AngularJS"
+        - "React"
+        - "TypeScript"
+        - "PostgreSQL"
+      summary: >
+        Led the migration of an expert talent-pool and project-matching platform
+        from AngularJS to React, using a bottom-up approach that combined both
+        component types during the transition.
+      highlights:
+        - >
+          Architected and implemented bottom-up migration strategy from AngularJS to React,
+          enabling co-existence of both component types during the transition.
+        - >
+          Worked with Scala and the Lift web framework for backend services.
+        - >
+          Platform connects experts to the right project roles, trainings, and peers
+          via skills, interest, and availability matching.
+
+    - company: "Scaled Agile, Inc."
+      position: "Senior Fullstack Developer"
+      logo: "clients/ScaledAgile.svg"
+      url: "https://collaborate.scaledagile.com"
+      start_date: "2019-05-01"
+      end_date: "2024-07-07"
+      technologies:
+        - "Scala"
+        - "Lift"
+        - "Angular 12"
+        - "AngularJS"
+        - "TypeScript"
+        - "Docker"
+        - "PostgreSQL"
+        - "AWS"
+      summary: >
+        Key role in developing and modernizing an online planning platform for
+        remote learning, PI planning, and collaborative events. Five-year
+        engagement with significant product growth.
+      highlights:
+        - >
+          Expanded Collaborate's reach by integrating collaborative planning features
+          such as remote PI planning and online training classes.
+        - >
+          Backend built with PostgreSQL, Scala, and Lift; containerized and deployed on AWS.
+        - >
+          Frontend migrated from legacy AngularJS 1 to Angular 12 / TypeScript
+          within an NX workspace.
+        - "Designed a push-based data warehouse integration."
+      recommendations:
+        - author: "Dan O'Leary"
+          role: "VP, Software Engineering, Scaled Agile, Inc."
+          date: "2022-01-07"
+          document: "documents/scaledagile_dan_rec_tuhlmann.pdf"
+        - author: "Madison Fisher"
+          role: "Scrum Master, Scaled Agile, Inc."
+          date: "2022-01-07"
+          document: "documents/scaledagile_madi_rec_tuhlmann.pdf"
+        - author: "John Hiemstra"
+          role: "User Experience Lead, Scaled Agile, Inc."
+          date: "2022-01-07"
+          document: "documents/scaledagile_john_rec_tuhlmann.pdf"
+
+    - company: "Ascendant, Inc."
+      position: "Senior Software Developer"
+      logo: "clients/Ascendant.svg"
+      url: "https://www.ascendantcompliancemanager.com"
+      start_date: "2013-07-01"
+      end_date: "2019-02-28"
+      technologies:
+        - "Scala"
+        - "Lift"
+        - "Go"
+        - "AngularJS"
+        - "MarkoJS"
+        - "JavaScript"
+        - "Docker"
+        - "MongoDB"
+      summary: >
+        Senior engineer and mentor in a small team of high-profile developers
+        building a multi-tenant SaaS compliance and risk management suite.
+        Balanced industry-specific compliance requirements with engineering
+        problem-solving over a 5.5-year engagement.
+      highlights:
+        - >
+          Implemented state-of-the-art frontend with AngularJS and MarkoJS;
+          backend with Scala, Lift, and MongoDB.
+        - >
+          Mentored junior developers while furthering expertise in financial
+          services, asset classes, and trading patterns from a compliance
+          perspective.
+        - "Some services implemented in Go."
+      recommendations:
+        - author: "Neil Visnapuu"
+          role: "Managing Director, Ascendant Compliance Management"
+          date: "2019-03-18"
+          document: "documents/ascendant_rec_tuhlmann.pdf"
+          quote: >
+            Torsten worked with our team at Ascendant for roughly six years. He was
+            one of our earliest developers and served as a senior engineer and mentor
+            to junior developers. He thrived in our distributed, virtual environment
+            and handled the pressures related to a multi-tenant SaaS platform with
+            grace. Were it not for our acquisition by private equity and shifting
+            capital expenditures, he would remain with us indefinitely, as I would want.
+
+    - company: "Twisp, Inc."
+      position: "Scala & Lift Consultant"
+      logo: "clients/twisp.png"
+      start_date: "2013-03-01"
+      end_date: "2013-07-01"
+      technologies:
+        - "Scala"
+        - "Lift"
+        - "MySQL"
+        - "Squeryl"
+      summary: >
+        Developed a Lift-based personalized information engine application.
+      highlights:
+        - "Built a multi-user Scala/Lift web application using MySQL, Apache Shiro, and Amazon Cloudsearch."
+
+    - company: "Underscore Consulting"
+      position: "Scala & Lift Consultant"
+      logo: "clients/Underscore.png"
+      url: "https://underscore.io"
+      start_date: "2012-11-01"
+      end_date: "2013-04-01"
+      technologies:
+        - "Scala"
+        - "Lift"
+        - "MongoDB"
+        - "Cloudbees"
+      summary: >
+        Developed part of a Scala/Lift client application for an innovative real-time
+        interactive NFC platform (TagTrail) for a US corporation. Delivered a rich
+        reporting tool as an international (D, UK, AU) team.
+      highlights:
+        - >
+          Took responsibility for---and delivered---a rich reporting tool within a
+          cloud-based NFC/QR-code marketing campaign tracking platform.
+        - "Collaborated in a small international team (Germany, UK, Australia)."
+      recommendations:
+        - author: "Richard Dallaway"
+          role: "Partner, Underscore Consulting LLP"
+          quote: >
+            He brought technical knowledge, especially with Lift, Scala, and Angular.
+            He worked with the customer to understand their needs. As well as generally
+            contributing to the project, he took on responsibility for (and delivered)
+            a rich reporting tool.
+
+    - company: "Sgrouples, Inc. (now MeWe.com)"
+      position: "Senior Software Developer"
+      logo: "clients/MeWe.png"
+      url: "https://www.mewe.com"
+      start_date: "2011-09-01"
+      end_date: "2012-09-01"
+      technologies:
+        - "Scala"
+        - "Lift"
+        - "JavaScript"
+        - "MongoDB"
+        - "AWS"
+      summary: >
+        Implemented system-critical features and managed AWS deployment for a
+        secure, group-based privacy-conscious social communication platform.
+      highlights:
+        - >
+          Independently implemented many business-critical features of the application,
+          managed deployment on AWS servers, performed MongoDB migrations and maintenance.
+        - >
+          Built frontend JavaScript/CSS/HTML5 components using jQuery alongside
+          Scala/Lift backend development.
+        - >
+          Significantly contributed to evolving the application from prototype to
+          production readiness within a few months.
+        - >
+          Worked in an internationally distributed remote team; communication in English.
+      recommendations:
+        - author: "Jonathan Wolfe, Ph.D."
+          role: "Chief Scientist, Sgrouples.com"
+          date: "2012-09-01"
+          document: "documents/sgrouples_rec_tuhlmann.pdf"
+          quote: >
+            It has been my greatest pleasure working with Torsten. He has proven himself
+            capable of taking on any task or challenge given to him. He is an excellent
+            Scala developer, an expert in the Lift framework, and has demonstrated
+            mastery of several types of databases. He is a committed, hard-working,
+            resourceful programmer, a faithful team player, and a true pleasure to
+            work with. Whatever future teams or projects he joins will be lucky indeed.
+
+    - company: "T-Systems"
+      position: "Software Developer / Sub-Project Lead"
+      logo: "clients/T-Systems.png"
+      url: "https://www.t-systems.com/de/de"
+      start_date: "1996-03-01"
+      end_date: "2011-09-01"
+      technologies:
+        - "Java"
+        - "C++"
+        - "Perl"
+        - "Oracle"
+        - "Eclipse RCP"
+        - "JBoss"
+        - "Cobol"
+        - "CORBA"
+        - "PHP"
+      summary: >
+        15-year engagement spanning multiple major projects at T-Systems
+        (formerly T-Systems GEI GmbH and T-Systems SL SI), progressing from
+        COBOL conversion work to leading sub-projects and building high-performance
+        enterprise applications.
+      highlights:
+        - >
+          Maintained and extended a mid-sized Eclipse RCP application for the in-house
+          test department (EMF, Teneo/Hibernate, Oracle, JDBC).
+        - >
+          Extended a data transformation framework for mass-data migration
+          (HP-Tandem NonStop, Oracle 9i); classifiable as EAI/EII system.
+        - >
+          Created an Eclipse RCP DSL application using the XText framework,
+          enabling non-developers to write business rules.
+        - >
+          Built and extended a Perl-based distributed test framework for
+          cross-machine automated system testing.
+        - >
+          Designed and developed a high-performance data extraction application
+          processing millions of records from multiple Oracle schemas;
+          multi-threaded for throughput.
+        - >
+          Developed invoice generation system using LaTeX with email delivery
+          (optional encryption/signing); scalable multi-process C++ backend
+          communicating via CORBA with an Oracle database and Java/J2EE frontend.
+        - >
+          Developed an Online Payment Platform (Santorin) using J2EE on BEA
+          WebLogic and Portal with Oracle; and a CORBA bridge linking a legacy
+          server application to a Tomcat server farm.
+        - >
+          Created COBOL converters for customer invoice data targeting AFP printers;
+          developed Java GUI applications for invoice layout specification.
+        - "Sub-project lead from August 1999."
+      recommendations:
+        - author: "Project Center Team Leader"
+          role: "T-Systems GEI GmbH"
+          date: "2005-02-03"
+          quote: >
+            The freelancer has a very broad spectrum of technological knowledge. As
+            architect and developer he worked confidently with object-oriented
+            programming concepts. All work was completed to our fullest satisfaction
+            on time. Beyond the concrete programming tasks he showed very high
+            engagement. He identified errors and improvement potential in requirements
+            and implementation. He supported his colleagues beyond his own area of
+            responsibility. Working with him was very pleasant. He was a treasure for
+            the project team.
+        - author: "Project Leader"
+          role: "T-Systems"
+          date: "2005-01-03"
+          quote: >
+            The consultant is proficient in C++ and Java; he works confidently with
+            object-oriented programming concepts. All work was completed to our fullest
+            satisfaction on time. I would very much like to work with him again.
+
+    - company: "1822direkt Sparkasse Frankfurt"
+      position: "JSF Developer"
+      logo: "clients/Sparkasse_1822.png"
+      url: "https://www.1822direkt.de"
+      start_date: "2008-06-01"
+      end_date: "2008-10-31"
+      technologies:
+        - "Java"
+        - "JSF"
+        - "JBoss"
+        - "Tomcat"
+        - "LaTeX"
+      summary: >
+        Developed a JSF frontend for managing and creating customer correspondence
+        at a German bank. Letters were generated template-based via a LaTeX backend
+        and delivered as PDF or sent to a high-volume printer.
+      highlights:
+        - "JSF 1.2 with MyFaces on Tomcat 5 and JBoss."
+        - "LaTeX-based document generation pipeline for customer printables."
+
+    - company: "G & K Datensysteme GmbH"
+      position: "Software Developer"
+      logo: "clients/GKSoftware.svg"
+      url: "https://www.gk-software.com"
+      start_date: "1995-04-01"
+      end_date: "1996-04-30"
+      technologies:
+        - "C"
+        - "Pascal"
+        - "MS-DOS"
+      summary: >
+        Developed drivers and associated software for retail cash registers,
+        scanners, and printers used with the client's point-of-sale software.
+        Also contributed to development of the retail cash register software itself.
+      highlights:
+        - "Driver development for cash registers, scanners, and printers."
+        - "Contributed to the core POS application."
+
+    - company: "Leicher GmbH"
+      position: "Software Developer"
+      logo: "clients/Leicher.jpg"
+      url: "https://www.leicher.de/"
+      start_date: "1994-02-01"
+      end_date: "1994-04-30"
+      technologies:
+        - "C++"
+        - "MS-DOS"
+      summary: >
+        Developed converter software for converting data between the Datanorm
+        industry standard and the client's in-house software standard.
+
+    - company: "Jahn Büroorganisation"
+      position: "Software Developer"
+      logo: "clients/JahnBueroorganisation.png"
+      url: "https://www.jahn-gmbh.de/"
+      start_date: "1993-03-01"
+      end_date: "1993-06-30"
+      technologies:
+        - "Pascal"
+        - "MS-DOS"
+      summary: >
+        Developed management software for tracking printers and copiers leased
+        by the client to its customers.
+
+# ──────────────────────────────────────────────
+# OWN PRODUCTS
+# ──────────────────────────────────────────────
+products:
+  title: "Own Products & Innovations"
+  entries:
+
+    - name: "AGYNAMIX Invoicer"
+      logo: "products/invoicer_logo.png"
+      url: "https://invoicer.agynamix.de"
+      start_date: "2025-10-01"
+      technologies:
+        - "Kotlin"
+        - "Jetpack Compose for Desktop"
+        - "SQLite"
+        - "GoBD"
+      summary: >
+        Modern desktop invoicing application for freelancers and small businesses
+        in the DACH market. Fully GoBD-compliant with ZUGFeRD and XRechnung
+        e-invoice support.
+      highlights:
+        - >
+          Cross-platform (Windows, macOS, Linux) with a modern Jetpack Compose UI.
+        - >
+          Features: customizable invoice templates, automatic numbering, VAT
+          calculations, payment tracking, customer management, and reporting.
+        - >
+          Offline-capable with local data storage---no cloud dependency. Emphasizes
+          data sovereignty and financial management for professionals.
+
+    - name: "Symnix -- Cloud Provisioning Platform"
+      logo: "products/symnix_logo_dark.svg"
+      url: "https://symnix.com"
+      start_date: "2022-10-01"
+      technologies:
+        - "Rust"
+        - "TypeScript"
+        - "React"
+        - "PostgreSQL"
+        - "Docker"
+      summary: >
+        Co-founded web application with a high-performance Rust / PostgreSQL
+        backend for cloud server setup and provisioning.
+      highlights:
+        - >
+          Allows individuals and organizations to create, manage, and monitor
+          multiple hosts with multiple installed applications.
+        - >
+          Streamlines server management using latest industry standards and best
+          practices; Docker-containerized deployment.
+
+    - name: "AGYNAMIX Numerix"
+      logo: "products/numerix-invoice.png"
+      url: "https://github.com/tuhlmann/numerix"
+      start_date: "2015-03-01"
+      end_date: "2017-12-31"
+      technologies:
+        - "Clojure"
+        - "ClojureScript"
+        - "MongoDB"
+        - "Reagent"
+        - "re-frame"
+      summary: >
+        Multi-tenant tool for freelancers and small companies with modules for
+        time tracking, invoice generation, document management, knowledge base,
+        chat rooms, calendar, and user management.
+      highlights:
+        - >
+          Invoice generation from tracked time; PDF output via Flying Saucer.
+        - >
+          Role-based permissions system similar to Apache Shiro's wildcard permissions.
+        - "Multi-document upload and knowledge base with notifications."
+
+    - name: "Unser Gartenverein (Garden Community Manager)"
+      logo: "products/garden-overview.png"
+      url: "https://github.com/tuhlmann/gartenverein"
+      start_date: "2012-11-01"
+      end_date: "2016-12-31"
+      technologies:
+        - "Scala"
+        - "Lift"
+        - "JavaScript"
+        - "MongoDB"
+      summary: >
+        Hosted web application for managing German garden communities (allotment
+        associations): tenant management, meter readings, invoicing, document
+        management, and shared calendar.
+      highlights:
+        - "Manages water and power meter readings collection and invoicing."
+        - "Dashboard overview with quick navigation to all areas."
+
+    - name: "AGYNAMIX Simidude"
+      logo: "products/Simidude.jpg"
+      url: "https://github.com/tuhlmann/simidude"
+      start_date: "2008-10-01"
+      end_date: "2011-12-31"
+      technologies:
+        - "Java"
+        - "SWT"
+        - "JFace"
+        - "Install4j"
+      summary: >
+        Cross-platform network clipboard and file sharing tool. Automatically
+        discovers other instances on the local network and enables drag-and-drop
+        file transfer and clipboard synchronization across machines.
+      highlights:
+        - "Runs on Windows, Linux, macOS, and in virtual machines."
+        - >
+          Automatic LAN discovery; drag-and-drop file/directory transfer between
+          connected computers.
+        - "Available as 30-day trial with online payment."
+      images:
+        - "products/Simidude_Ubuntu_All.jpg"
+
+    - name: "AGYNAMIX Net-Herald"
+      logo: "products/Net-HeraldPackung2.png"
+      url: "https://www.agynamix.de"
+      start_date: "2005-07-01"
+      end_date: "2015-12-31"
+      technologies:
+        - "Java"
+        - "Eclipse RCP"
+        - "PostgreSQL"
+        - "Spring"
+        - "OPC"
+        - "GEF"
+      summary: >
+        First AGYNAMIX product---monitoring software for water supply companies.
+        Server-side Java application with Eclipse RCP GUI for real-time data
+        visualization.
+      highlights:
+        - >
+          Server: Java 5, JMX, Spring, PostgreSQL, ESB bus architecture for
+          component decoupling.
+        - >
+          GSM modem connectivity for SMS alerts; OPC (OLE for Process Control)
+          library for connecting to existing industrial software.
+        - >
+          Eclipse RCP client using GEF for charts and real-time data visualization.
+        - "Led a dedicated team to bring the product to market."
+      clients:
+        - name: "WKS Group"
+          logo: "clients/WKS-Group.png"
+          period: "2011--2015"
+        - name: "B+N Automation"
+          logo: "clients/BN-Automation.gif"
+          period: "2009"
+
+# ──────────────────────────────────────────────
+# TRAINING & SPEAKING
+# ──────────────────────────────────────────────
+training:
+  title: "Training & Speaking"
+  entries:
+    - title: "Java Trainer"
+      organization: "ML Consulting"
+      logo: "clients/ML-Consulting.svg"
+      url: "https://www.mlgruppe.de/startseite.html"
+      start_date: "2011-09-01"
+      end_date: "2011-12-31"
+      location: "Dresden and Berlin, Germany"
+      description: >
+        Taught several Java and programming basics courses. Received very good
+        ratings from students; the consulting facility manager requested return
+        engagements.
+
+    - title: "Speaker -- Lift 3 & Client-Side JavaScript Frameworks"
+      organization: "Scala Days 2013"
+      logo: "clients/ScalaDays2013.png"
+      url: "https://scaladays.org/assets/archive/ny2013/index.html"
+      date: "2013-06-10"
+      location: "New York, USA"
+      description: >
+        Conference talk about Lift 3 and integrating client-side JavaScript
+        frameworks with the Scala web framework.
+
+    - title: "Speaker -- Lift 3 & Client-Side JavaScript Frameworks"
+      organization: "Scala Exchange 2013"
+      logo: "clients/ScalaExchange.png"
+      url: "https://skillsmatter.com/conferences/1765-scala-exchange-2013#program"
+      date: "2013-12-02"
+      location: "London, UK"
+      description: >
+        Conference talk about Lift 3 and integrating client-side JavaScript
+        frameworks with the Scala web framework.
+
+# ──────────────────────────────────────────────
+# EDUCATION
+# ──────────────────────────────────────────────
+education:
+  title: "Education"
+  entries:
+    - institution: "Technical University Chemnitz-Zwickau"
+      logo: "clients/TU-Chemnitz-Zwickau.png"
+      url: "https://www.tu-chemnitz.de/"
+      degree: "Diploma in Computer Science (Dipl.-Inf.)"
+      field: "Computer Science"
+      start_date: "1991-09-01"
+      end_date: "1996-03-31"
+      description: >
+        Equivalent to a Master's degree. Focus areas included databases and
+        algorithms. Started working at a major telecommunications company
+        before finishing studies.
+
+# ──────────────────────────────────────────────
+# PUBLICATIONS
+# ──────────────────────────────────────────────
+publications:
+  title: "Publications"
+  entries:
+    - title: "Lift Web Applications How-To"
+      publisher: "Packt Publishing"
+      logo: "clients/LiftWebAppsHowTo.png"
+      role: "Author"
+      date: "2012"
+      description: >
+        Practical guide to building web applications with Lift, the Scala web
+        framework. Published by Packt Publishing.
+
+# ──────────────────────────────────────────────
+# OPEN SOURCE & COMMUNITY
+# ──────────────────────────────────────────────
+open_source:
+  title: "Open Source & Community"
+  entries:
+    - name: "BibleTime"
+      description: >
+        A Bible study software for Unix and KDE. Project consisted of multiple
+        developers, translators, and testers. Initiated and coordinated by me.
+    - name: "KPriMa"
+      description: >
+        A print manager for managing print jobs across various devices under
+        Unix and KDE.
+    - name: "KMsgModem"
+      description: >
+        A program for reading fax and voice messages from the USR Message Modem,
+        running under Unix and KDE.
+    - name: "Newtonlink Modules"
+      description: >
+        Perl modules for the Newtonlink program (a Unix communication tool for
+        the Apple Newton MessagePad). Converts Newton data into a meta format or
+        the format of selected Unix programs.
+
+# ──────────────────────────────────────────────
+# CALL TO ACTION
+# ──────────────────────────────────────────────
+cta:
+  text: "Interested in working together? I'd love to hear from you"
+  email: "tuhlmann@agynamix.de"
+  phone: "+49 151 12412427"
+  or: "or"

@@ -1,0 +1,828 @@
+# Vollständiger Lebenslauf – Torsten Uhlmann (Deutsch)
+
+meta:
+  language: de
+  last_updated: "März 2026"
+  pdf_title: "Torsten Uhlmann -- Vollständiger Lebenslauf"
+  footer_label: "Online-Lebenslauf"
+  footer_url: "https://agynamix.de/de/resume"
+  footer_url_text: "agynamix.de/de/resume"
+  footer_date_label: "Stand"
+
+# ──────────────────────────────────────────────
+# BASICS
+# ──────────────────────────────────────────────
+basics:
+  name: "Torsten Uhlmann"
+  company: "AGYNAMIX"
+  title: "Senior Full Stack Software Engineer & Berater"
+  born: 1972
+  citizenship: "deutsch"
+  photo: "torsten_square.jpg"
+  portrait: "torsten_portrait.jpg"
+  address:
+    street: "Buchenweg 5"
+    city: "Thalheim"
+    postal_code: "09380"
+    country: "Deutschland"
+    full: "Buchenweg 5, 09380 Thalheim, Deutschland"
+  email: "tuhlmann@agynamix.de"
+  phone: "+49 151 12412427"
+  website:
+    url: "https://agynamix.de"
+    text: "agynamix.de"
+  profiles:
+    - network: "LinkedIn"
+      url: "https://www.linkedin.com/in/torstenuhlmann"
+      text: "linkedin.com/in/torstenuhlmann"
+    - network: "GitHub"
+      url: "https://github.com/tuhlmann"
+      text: "github.com/tuhlmann"
+    - network: "Xing"
+      url: "https://www.xing.com/profile/Torsten_Uhlmann2"
+      text: "xing.com/profile/Torsten_Uhlmann2"
+
+  summary: >
+    Senior Full Stack Software Engineer mit knapp 30 Jahren Erfahrung in der Entwicklung
+    robuster, hochperformanter Softwarelösungen für unterschiedlichste Branchen.
+    Über AGYNAMIX begleite ich komplexe, systemkritische Anwendungen vom Prototyp bis
+    zur Produktion---ob als technische Leitung oder integriert in verteilte Teams,
+    stets als Brücke zwischen anspruchsvollen Backend-Architekturen und modernen,
+    responsiven Frontend-Frameworks.
+
+    Ich lerne gerne Neues und treffe gerne neue Menschen. Im Laufe der Jahre habe ich
+    mit einer Vielzahl verschiedener Programmiersprachen gearbeitet---von Cobol, C++ und
+    Java über Scala und Clojure bis hin zu Rust und TypeScript. Technologien ändern sich,
+    Entwicklerrollen ändern sich, aber der Wunsch, etwas Nützliches zu schaffen, bleibt
+    immer stark.
+
+    Ich bin Autor des Buches „Lift Web Applications How-To" (Packt Publishing, 2012) und
+    trage regelmäßig zu Open-Source-Projekten auf GitHub bei. Ich bin besonders gut darin,
+    mich in Teams zu integrieren und mich tief in die Materie einzuarbeiten.
+
+  location: "Remote"
+
+# ──────────────────────────────────────────────
+# ÜBER MICH (Persönliches)
+# ──────────────────────────────────────────────
+about:
+  title: "Über mich"
+  text: >
+    Ich bin im wunderschönen Erzgebirge aufgewachsen, wo ich noch heute lebe. Ich bin
+    mit meiner Frau Silvia verheiratet und wir haben zwei Kinder.
+
+    In der achten Klasse bekam ich einen programmierbaren BASIC-Taschenrechner mit einem
+    Speicher von 1024 Byte. Obwohl sehr eingeschränkt, konnte ich damit nützliche
+    Lösungen für die Schule erstellen und meine Hausaufgaben reduzieren. Nach der
+    erweiterten Oberschule wurde ich zum Informatikstudium an der TU Chemnitz zugelassen
+    ---was insofern bemerkenswert war, als man mir im letzten Schuljahr (das war 1988 in
+    der DDR) sagte, ich würde als Christ niemals studieren dürfen. Nur ein Jahr später
+    hatte sich die Geschichte unseres Landes komplett verändert.
+
+    Ich schloss mein Studium 1996 ab und begann bei einem großen IT-Dienstleister in
+    verschiedenen Projekten zu arbeiten, bis ich 2004 meine freiberufliche Karriere
+    startete.
+
+  interests:
+    - title: "Ehrenamtlicher Übersetzer"
+      description: >
+        Seit vielen Jahren übersetze ich ehrenamtlich für internationale Gäste
+        und Veranstaltungen.
+    - title: "Kaffee-Enthusiast"
+      description: >
+        Ich bin ein Kaffee-Liebhaber und genieße einen guten Espresso sehr.
+        Ob wohl mehr als ein Jahrzehnt Java-Programmierung diese Gewohnheit
+        gefördert hat?
+    - title: "Sauerteig-Brotbäcker"
+      description: >
+        Vor einigen Jahren habe ich mein Brotback-Abenteuer begonnen. 
+        Nach vielen Missgeschicken mahlen wir Mehl selbst und backen unser eigenes
+        Sauerteig-Brot. Abgesehen davon, dass es gesünder ist, holt mich dieser Prozess
+        auf den Boden der Tatsachen zurück---besonders wenn die meisten Dinge,
+        mit denen ich arbeite, nur virtuell sind.
+
+# ──────────────────────────────────────────────
+# KERNLEISTUNGEN
+# ──────────────────────────────────────────────
+services:
+  title: "Kernleistungen & Beratung"
+  url: "https://agynamix.de/de/consulting"
+  entries:
+    - title: "End-to-End Anwendungsentwicklung"
+      description: >
+        Komplettlösungen von der Anforderungsanalyse über Implementierung bis zum Deployment.
+    - title: "Hochperformante Backend-Systeme"
+      description: >
+        Skalierbare, nebenläufige Backends mit Rust, Scala und Java.
+    - title: "Moderne Frontend-Architektur"
+      description: >
+        Responsive, kundenzentrierte UIs mit ReactJS, TypeScript und Angular.
+    - title: "Cloud & DevOps Integration"
+      description: >
+        Missionskritische Deployments und Containerisierung mit AWS, Docker und Ansible.
+
+# ──────────────────────────────────────────────
+# FÄHIGKEITEN
+# ──────────────────────────────────────────────
+skills:
+  title: "Technische Fähigkeiten"
+  categories:
+    - label: "Sprachen"
+      level: "expert"
+      keywords:
+        - "Scala"
+        - "Java"
+        - "TypeScript"
+        - "JavaScript"
+        - "Rust"
+        - "C++"
+    - label: "Sprachen"
+      level: "fortgeschritten"
+      keywords:
+        - "Kotlin"
+        - "Go"
+        - "Clojure"
+        - "ClojureScript"
+    - label: "Sprachen"
+      level: "Kenntnisse"
+      keywords:
+        - "Python"
+        - "Ruby"
+        - "Perl"
+        - "Groovy"
+        - "C#"
+    - label: "Frontend-Frameworks"
+      level: "expert"
+      keywords:
+        - "ReactJS"
+        - "Angular"
+        - "AngularJS"
+        - "VueJS"
+        - "SolidJS"
+    - label: "Backend-Frameworks"
+      level: "expert"
+      keywords:
+        - "Lift (Scala)"
+        - "Spring (Java)"
+    - label: "Desktop-Frameworks"
+      level: "fortgeschritten"
+      keywords:
+        - "Jetpack Compose for Desktop"
+        - "Eclipse RCP"
+        - "SWT / JFace"
+    - label: "Datenbanken"
+      level: "expert"
+      keywords:
+        - "PostgreSQL"
+        - "MongoDB"
+        - "Oracle"
+        - "MySQL"
+    - label: "Cloud & DevOps"
+      level: "fortgeschritten"
+      keywords:
+        - "AWS"
+        - "Docker"
+        - "Ansible"
+        - "Linux"
+    - label: "Methodik"
+      level: "fortgeschritten"
+      keywords:
+        - "Agile / Scrum"
+        - "SAFe"
+        - "CI/CD"
+        - "Testgetriebene Entwicklung"
+
+# ──────────────────────────────────────────────
+# SPRACHEN
+# ──────────────────────────────────────────────
+languages:
+  title: "Fremdsprachen"
+  entries:
+    - language: "Deutsch"
+      fluency: "Muttersprache"
+    - language: "Englisch"
+      fluency: "Sehr gut, diskussionsfähig"
+      note: "Übersetze regelmäßig auf Konferenzen"
+    - language: "Russisch"
+      fluency: "Rudimentär"
+
+# ──────────────────────────────────────────────
+# BERUFSERFAHRUNG (konsolidiert, umgekehrt chronologisch)
+# ──────────────────────────────────────────────
+work:
+  title: "Berufserfahrung"
+  entries:
+
+    - company: "TXODDS, Ltd."
+      position: "Senior Frontend-Entwickler"
+      logo: "clients/TXODDS.svg"
+      url: "https://txodds.net/"
+      start_date: "2024-08-05"
+      end_date: "2025-05-05"
+      technologies:
+        - "VueJS 3"
+        - "TypeScript"
+        - "JavaScript"
+        - "Docker"
+      summary: >
+        Entwicklung mehrerer Frontend-Anwendungen für das TX-Scores Professional
+        Scouting Network---einer Plattform, die das Sport-Wetten-Ökosystem mit
+        einem ultra-niedriglatenz Sportergebnis-Liefersystem verbindet.
+      highlights:
+        - >
+          Erstellung mehrerer Frontend-Anwendungen für das tx-scores-Projekt
+          mit VueJS 3 und TypeScript.
+        - >
+          TX-Scores ist ein professionelles Scouting-Netzwerk---eine Gemeinschaft
+          von Scouts und Analysten mit Echtzeit-Analystenaufsicht für jedes Spiel.
+        - "Docker-containerisierte Deployment-Pipeline."
+
+    - company: "iCombine UG"
+      position: "Senior Fullstack-Entwickler"
+      logo: "clients/logo-icombine.png"
+      url: "https://icombine.net/"
+      start_date: "2022-02-01"
+      end_date: "2022-08-31"
+      technologies:
+        - "Scala"
+        - "Lift"
+        - "AngularJS"
+        - "React"
+        - "TypeScript"
+        - "PostgreSQL"
+      summary: >
+        Leitung der Migration einer Experten-Talentpool- und Projekt-Matching-Plattform
+        von AngularJS zu React mittels Bottom-Up-Ansatz, der beide Komponentenarten
+        während der Übergangsphase kombiniert.
+      highlights:
+        - >
+          Architektur und Implementierung der Bottom-Up-Migrationsstrategie von
+          AngularJS zu React mit Koexistenz beider Komponentenarten.
+        - >
+          Arbeit mit Scala und dem Lift Web-Framework für Backend-Services.
+        - >
+          Die Plattform verbindet Experten mit den richtigen Projektrollen,
+          Schulungen und Kollegen über Skills-, Interessen- und Verfügbarkeits-Matching.
+
+    - company: "Scaled Agile, Inc."
+      position: "Senior Fullstack-Entwickler"
+      logo: "clients/ScaledAgile.svg"
+      url: "https://collaborate.scaledagile.com"
+      start_date: "2019-05-01"
+      end_date: "2024-07-07"
+      technologies:
+        - "Scala"
+        - "Lift"
+        - "Angular 12"
+        - "AngularJS"
+        - "TypeScript"
+        - "Docker"
+        - "PostgreSQL"
+        - "AWS"
+      summary: >
+        Schlüsselrolle bei der Entwicklung und Modernisierung einer Online-Planungsplattform
+        für Remote-Learning, PI-Planung und kollaborative Events. Über fünf Jahre
+        Engagement mit erheblichem Produktwachstum.
+      highlights:
+        - >
+          Erweiterung der Collaborate-Reichweite durch Integration kollaborativer
+          Planungsfeatures wie Remote-PI-Planung und Online-Trainings.
+        - >
+          Backend mit PostgreSQL, Scala und Lift; containerisiert und auf AWS deployed.
+        - >
+          Frontend-Migration von Legacy-AngularJS 1 zu Angular 12 / TypeScript
+          innerhalb eines NX Workspace.
+        - "Konzeption einer Push-basierten Data-Warehouse-Integration."
+      recommendations:
+        - author: "Dan O'Leary"
+          role: "VP, Software Engineering, Scaled Agile, Inc."
+          date: "2022-01-07"
+          document: "documents/scaledagile_dan_rec_tuhlmann.pdf"
+        - author: "Madison Fisher"
+          role: "Scrum Master, Scaled Agile, Inc."
+          date: "2022-01-07"
+          document: "documents/scaledagile_madi_rec_tuhlmann.pdf"
+        - author: "John Hiemstra"
+          role: "User Experience Lead, Scaled Agile, Inc."
+          date: "2022-01-07"
+          document: "documents/scaledagile_john_rec_tuhlmann.pdf"
+
+    - company: "Ascendant, Inc."
+      position: "Senior Software-Entwickler"
+      logo: "clients/Ascendant.svg"
+      url: "https://www.ascendantcompliancemanager.com"
+      start_date: "2013-07-01"
+      end_date: "2019-02-28"
+      technologies:
+        - "Scala"
+        - "Lift"
+        - "Go"
+        - "AngularJS"
+        - "MarkoJS"
+        - "JavaScript"
+        - "Docker"
+        - "MongoDB"
+      summary: >
+        Senior-Entwickler und Mentor in einem kleinen Team hochkarätiger
+        Entwickler beim Aufbau einer mandantenfähigen SaaS-Suite für
+        Compliance- und Risikomanagement. Über 5,5 Jahre Zusammenarbeit
+        mit Balancierung branchenspezifischer Compliance-Anforderungen und
+        technischer Problemlösung.
+      highlights:
+        - >
+          Implementierung des Frontends mit AngularJS und MarkoJS; Backend mit
+          Scala, Lift und MongoDB.
+        - >
+          Mentoring von Junior-Entwicklern bei gleichzeitiger Vertiefung der
+          Expertise in Finanzdienstleistungen, Anlageklassen und Handelsmustern
+          aus Compliance-Perspektive.
+        - "Einige Dienste in Go implementiert."
+      recommendations:
+        - author: "Neil Visnapuu"
+          role: "Managing Director, Ascendant Compliance Management"
+          date: "2019-03-18"
+          document: "documents/ascendant_rec_tuhlmann.pdf"
+          quote: >
+            Torsten arbeitete rund sechs Jahre mit unserem Team bei Ascendant.
+            Er war einer unserer ersten Entwickler und diente als Senior Engineer
+            und Mentor für Junior-Entwickler. Er florierte in unserer verteilten,
+            virtuellen Umgebung und meisterte den Druck einer mandantenfähigen
+            SaaS-Plattform souverän. Wäre nicht die Übernahme durch Private Equity
+            gewesen, hätte er auf unbestimmte Zeit bei uns bleiben können---wie ich
+            es mir gewünscht hätte.
+
+    - company: "Twisp, Inc."
+      position: "Scala- & Lift-Berater"
+      logo: "clients/twisp.png"
+      start_date: "2013-03-01"
+      end_date: "2013-07-01"
+      technologies:
+        - "Scala"
+        - "Lift"
+        - "MySQL"
+        - "Squeryl"
+      summary: >
+        Entwicklung einer Lift-basierten Multi-User-Webanwendung unter Verwendung
+        von MySQL, Apache Shiro und Amazon Cloudsearch.
+      highlights:
+        - "Scala/Lift-Webanwendung mit MySQL, Apache Shiro und Amazon AWS."
+
+    - company: "Underscore Consulting"
+      position: "Scala- & Lift-Berater"
+      logo: "clients/Underscore.png"
+      url: "https://underscore.io"
+      start_date: "2012-11-01"
+      end_date: "2013-04-01"
+      technologies:
+        - "Scala"
+        - "Lift"
+        - "MongoDB"
+        - "Cloudbees"
+      summary: >
+        Entwicklung einer Scala/Lift-Anwendung für eine innovative Echtzeit-NFC-Plattform
+        (TagTrail) zur Verfolgung von Marketing-Kampagnen mittels NFC-Tags und QR-Codes
+        für ein US-Unternehmen. Zusammenarbeit in einem internationalen Team (D, UK, AU).
+      highlights:
+        - >
+          Übernahm Verantwortung für ein reichhaltiges Reporting-Tool innerhalb einer
+          cloudbasierten NFC/QR-Code Marketing-Kampagnen-Tracking-Plattform.
+        - "Zusammenarbeit in einem kleinen internationalen Team (Deutschland, UK, Australien)."
+      recommendations:
+        - author: "Richard Dallaway"
+          role: "Partner, Underscore Consulting LLP"
+          quote: >
+            Er brachte technisches Wissen ein, insbesondere mit Lift, Scala und Angular.
+            Er arbeitete mit dem Kunden zusammen, um deren Anforderungen zu verstehen.
+            Neben seinem allgemeinen Beitrag zum Projekt übernahm er die Verantwortung
+            für ein reichhaltiges Reporting-Tool---und lieferte es.
+
+    - company: "Sgrouples, Inc. (jetzt MeWe.com)"
+      position: "Senior Software-Entwickler"
+      logo: "clients/MeWe.png"
+      url: "https://www.mewe.com"
+      start_date: "2011-09-01"
+      end_date: "2012-09-01"
+      technologies:
+        - "Scala"
+        - "Lift"
+        - "JavaScript"
+        - "MongoDB"
+        - "AWS"
+      summary: >
+        Selbständige Umsetzung unternehmenskritischer Features und AWS-Deployment-
+        Management für eine sichere, gruppenbasierte Kommunikationsplattform zum
+        Schutz der Privatsphäre (ähnlich Facebook, aber mit geschlossenen, sicheren
+        Gruppen).
+      highlights:
+        - >
+          Selbständige Umsetzung vieler unternehmenskritischer Features, Deployment auf
+          AWS-Servern, MongoDB-Migrationen und -Wartung.
+        - >
+          Frontend-Entwicklung mit JavaScript/CSS/HTML5 und jQuery neben
+          Scala/Lift-Backend-Entwicklung.
+        - >
+          Entscheidender Beitrag zur Weiterentwicklung der Anwendung vom Prototypen
+          zur Produktreife innerhalb weniger Monate.
+        - >
+          Arbeit in einem international verteilten Remote-Team; Kommunikationssprache
+          Englisch.
+      recommendations:
+        - author: "Jonathan Wolfe, Ph.D."
+          role: "Chief Scientist, Sgrouples.com"
+          date: "2012-09-01"
+          document: "documents/sgrouples_rec_tuhlmann.pdf"
+          quote: >
+            Es war mir eine große Freude, mit Torsten zu arbeiten. Er hat sich als fähig
+            erwiesen, jede Aufgabe oder Herausforderung anzunehmen. Er ist ein exzellenter
+            Scala-Entwickler, ein Experte im Lift-Framework und hat mehrere Datenbanktypen
+            gemeistert. Er ist ein engagierter, fleißiger, einfallsreicher Programmierer,
+            ein treuer Teamplayer und eine wahre Freude in der Zusammenarbeit. Welche
+            zukünftigen Teams oder Projekte er auch immer betritt, werden Glück haben.
+
+    - company: "T-Systems"
+      position: "Softwareentwickler / Teilprojektleiter"
+      logo: "clients/T-Systems.png"
+      url: "https://www.t-systems.com/de/de"
+      start_date: "1996-03-01"
+      end_date: "2011-09-01"
+      technologies:
+        - "Java"
+        - "C++"
+        - "Perl"
+        - "Oracle"
+        - "Eclipse RCP"
+        - "JBoss"
+        - "Cobol"
+        - "CORBA"
+        - "PHP"
+      summary: >
+        15-jähriges Engagement über mehrere Großprojekte bei T-Systems (vormals
+        T-Systems GEI GmbH und T-Systems SL SI), von COBOL-Konvertierungsarbeit
+        bis zur Leitung von Teilprojekten und dem Aufbau hochperformanter
+        Unternehmensanwendungen.
+      highlights:
+        - >
+          Wartung und Erweiterung einer mittelgroßen Eclipse-RCP-Anwendung für die
+          hauseigene Testabteilung (EMF, Teneo/Hibernate, Oracle, JDBC).
+        - >
+          Erweiterung eines Datentransformations-Frameworks für Massendatenmigration
+          (HP-Tandem NonStop, Oracle 9i); als EAI/EII-System klassifizierbar.
+        - >
+          Erstellung einer Eclipse-RCP-DSL-Anwendung mit dem XText-Framework,
+          die Nicht-Entwicklern das Schreiben von Geschäftsregeln ermöglicht.
+        - >
+          Aufbau und Erweiterung eines Perl-basierten verteilten Test-Frameworks
+          für rechnerübergreifende automatisierte Systemtests.
+        - >
+          Konzeption und Entwicklung einer Hochleistungs-Datenextraktionsanwendung
+          zur Verarbeitung von Millionen von Datensätzen aus mehreren Oracle-Schemas;
+          Multithreading für Durchsatz.
+        - >
+          Entwicklung eines Rechnungserzeugungssystems mit LaTeX und E-Mail-Versand
+          (optionale Verschlüsselung/Signierung); skalierbares, mehrprozessfähiges
+          C++-Backend mit CORBA-Kommunikation, Oracle-Datenbank und Java-J2EE-Frontend.
+        - >
+          Entwicklung einer Online-Payment-Plattform (Santorin) mit J2EE auf BEA
+          WebLogic und Portal mit Oracle; sowie einer CORBA-Brücke zur Anbindung
+          einer Legacy-Serveranwendung an eine Tomcat-Serverfarm.
+        - >
+          Erstellung von COBOL-Konvertern für Kundenrechnungsdaten für AFP-Drucker;
+          Entwicklung von Java-GUI-Anwendungen für Rechnungslayout-Spezifikation.
+        - "Teilprojektleiter seit August 1999."
+      recommendations:
+        - author: "Project Center Teamleiter"
+          role: "T-Systems GEI GmbH"
+          date: "2005-02-03"
+          quote: >
+            Der Freiberufler verfügt über ein sehr breites Spektrum technologischen
+            Wissens. Als Architekt und Entwickler arbeitete er souverän mit den
+            Konzepten objektorientierter Programmierung. Alle Arbeiten wurden zu unserer
+            vollsten Zufriedenheit termingerecht fertiggestellt. Über die konkrete
+            Programmieraufgabe hinaus bewies er ein sehr hohes Engagement. Durch ihn
+            wurden Fehler und Verbesserungspotentiale aufgezeigt. Er unterstützte seine
+            Kollegen auch über seinen Aufgabenbereich hinaus. Die Zusammenarbeit war
+            sehr angenehm. Er war eine Bereicherung für das Projektteam.
+        - author: "Projektleiter"
+          role: "T-Systems"
+          date: "2005-01-03"
+          quote: >
+            Der Consultant kennt sich gut mit C++ und Java aus, er arbeitet souverän
+            mit den Konzepten objektorientierter Programmierung. Alle Arbeiten wurden
+            zu unserer vollsten Zufriedenheit termingerecht fertiggestellt. Ich würde
+            sehr gern wieder mit dem Consultant zusammenarbeiten.
+
+    - company: "1822direkt Sparkasse Frankfurt"
+      position: "JSF-Entwickler"
+      logo: "clients/Sparkasse_1822.png"
+      url: "https://www.1822direkt.de"
+      start_date: "2008-06-01"
+      end_date: "2008-10-31"
+      technologies:
+        - "Java"
+        - "JSF"
+        - "JBoss"
+        - "Tomcat"
+        - "LaTeX"
+      summary: >
+        Entwicklung eines JSF-Frontends zur Verwaltung und Erstellung von
+        Kundenanschreiben bei einer deutschen Bank. Anschreiben wurden
+        vorlagenbasiert durch ein LaTeX-Backend erstellt und als PDF
+        ausgeliefert oder an einen Großdrucker gesendet.
+      highlights:
+        - "JSF 1.2 mit MyFaces auf Tomcat 5 und JBoss."
+        - "LaTeX-basierte Dokumentenerstellungspipeline für Kundenanschreiben."
+
+    - company: "G & K Datensysteme GmbH"
+      position: "Softwareentwickler"
+      logo: "clients/GKSoftware.svg"
+      url: "https://www.gk-software.com"
+      start_date: "1995-04-01"
+      end_date: "1996-04-30"
+      technologies:
+        - "C"
+        - "Pascal"
+        - "MS-DOS"
+      summary: >
+        Entwicklung von Treibern und zugehöriger Software für Kassen, Scanner
+        und Drucker, die im Zusammenhang mit der Software des Hauses verwendet
+        werden. Mitarbeit an der Kassensoftware.
+      highlights:
+        - "Treiberentwicklung für Kassen, Scanner und Drucker."
+        - "Mitarbeit an der Kassensoftware."
+
+    - company: "Leicher GmbH"
+      position: "Softwareentwickler"
+      logo: "clients/Leicher.jpg"
+      url: "https://www.leicher.de/"
+      start_date: "1994-02-01"
+      end_date: "1994-04-30"
+      technologies:
+        - "C++"
+        - "MS-DOS"
+      summary: >
+        Entwicklung einer Konvertersoftware, die Daten zwischen dem
+        Datanorm-Standard und dem Standard der verwendeten Software konvertiert.
+
+    - company: "Jahn Büroorganisation"
+      position: "Softwareentwickler"
+      logo: "clients/JahnBueroorganisation.png"
+      url: "https://www.jahn-gmbh.de/"
+      start_date: "1993-03-01"
+      end_date: "1993-06-30"
+      technologies:
+        - "Pascal"
+        - "MS-DOS"
+      summary: >
+        Entwicklung einer Anwendung zur Verwaltung der von dieser Firma
+        gewarteten Bürogeräte (Drucker/Kopierer).
+
+# ──────────────────────────────────────────────
+# EIGENE PRODUKTE
+# ──────────────────────────────────────────────
+products:
+  title: "Eigene Produkte & Innovationen"
+  entries:
+
+    - name: "AGYNAMIX Invoicer"
+      logo: "products/invoicer_logo.png"
+      url: "https://invoicer.agynamix.de"
+      start_date: "2025-10-01"
+      technologies:
+        - "Kotlin"
+        - "Jetpack Compose for Desktop"
+        - "SQLite"
+        - "GoBD"
+      summary: >
+        Moderne Desktop-Rechnungsanwendung für Freiberufler und kleine Unternehmen
+        im DACH-Markt. Vollständig GoBD-konform mit ZUGFeRD- und
+        XRechnung-E-Rechnungsunterstützung.
+      highlights:
+        - >
+          Plattformübergreifend (Windows, macOS, Linux) mit moderner Jetpack-Compose-UI.
+        - >
+          Features: anpassbare Rechnungsvorlagen, automatische Nummerierung,
+          MwSt.-Berechnungen, Zahlungsverfolgung, Kundenverwaltung und Berichte.
+        - >
+          Offline-fähig mit lokaler Datenspeicherung---keine Cloud-Abhängigkeit.
+          Fokus auf Datensouveränität und Finanzverwaltung.
+
+    - name: "Symnix -- Cloud-Provisionierungsplattform"
+      logo: "products/symnix_logo_dark.svg"
+      url: "https://symnix.com"
+      start_date: "2022-10-01"
+      technologies:
+        - "Rust"
+        - "TypeScript"
+        - "React"
+        - "PostgreSQL"
+        - "Docker"
+      summary: >
+        Mitbegründete Webanwendung mit hochperformantem Rust-/PostgreSQL-Backend
+        für Cloud-Server-Einrichtung und -Provisionierung.
+      highlights:
+        - >
+          Ermöglicht Einzelpersonen und Organisationen, mehrere Hosts mit
+          mehreren installierten Anwendungen zu erstellen, zu verwalten und zu überwachen.
+        - >
+          Optimierung des Servermanagements mit neuesten Industriestandards
+          und Best Practices; Docker-containerisiertes Deployment.
+
+    - name: "AGYNAMIX Numerix"
+      logo: "products/numerix-invoice.png"
+      url: "https://github.com/tuhlmann/numerix"
+      start_date: "2015-03-01"
+      end_date: "2017-12-31"
+      technologies:
+        - "Clojure"
+        - "ClojureScript"
+        - "MongoDB"
+        - "Reagent"
+        - "re-frame"
+      summary: >
+        Mandantenfähiges Tool für Freiberufler und kleine Unternehmen mit Modulen
+        für Zeiterfassung, Rechnungserstellung, Dokumentenmanagement, Wissensbasis,
+        Chaträume, Kalender und Benutzerverwaltung.
+      highlights:
+        - >
+          Rechnungserstellung aus erfasster Zeit; PDF-Ausgabe über Flying Saucer.
+        - >
+          Rollenbasiertes Berechtigungssystem ähnlich Apache Shiros Wildcard-Berechtigungen.
+        - "Multi-Dokumenten-Upload und Wissensbasis mit Benachrichtigungen."
+
+    - name: "Unser Gartenverein"
+      logo: "products/garden-overview.png"
+      url: "https://github.com/tuhlmann/gartenverein"
+      start_date: "2012-11-01"
+      end_date: "2016-12-31"
+      technologies:
+        - "Scala"
+        - "Lift"
+        - "JavaScript"
+        - "MongoDB"
+      summary: >
+        Gehostete Webanwendung zur Verwaltung von Kleingartenvereinen in Deutschland:
+        Pächterverwaltung, Zählerstandserfassung, Rechnungslegung,
+        Dokumentenmanagement und gemeinsamer Kalender.
+      highlights:
+        - "Verwaltung von Wasser- und Strom-Zählerstandserfassung und Abrechnung."
+        - "Dashboard-Übersicht mit schneller Navigation zu allen Bereichen."
+
+    - name: "AGYNAMIX Simidude"
+      logo: "products/Simidude.jpg"
+      url: "https://github.com/tuhlmann/simidude"
+      start_date: "2008-10-01"
+      end_date: "2011-12-31"
+      technologies:
+        - "Java"
+        - "SWT"
+        - "JFace"
+        - "Install4j"
+      summary: >
+        Plattformübergreifendes Netzwerk-Clipboard und Dateitausch-Tool.
+        Findet automatisch andere Instanzen im lokalen Netzwerk und ermöglicht
+        Drag-and-Drop-Dateitransfer und Clipboard-Synchronisation zwischen Rechnern.
+      highlights:
+        - "Läuft auf Windows, Linux, macOS und in virtuellen Maschinen."
+        - >
+          Automatische LAN-Erkennung; Drag-and-Drop-Datei-/Verzeichnistransfer
+          zwischen verbundenen Rechnern.
+        - "Verfügbar als 30-Tage-Testversion mit Online-Payment."
+      images:
+        - "products/Simidude_Ubuntu_All.jpg"
+
+    - name: "AGYNAMIX Net-Herald"
+      logo: "products/Net-HeraldPackung2.png"
+      url: "https://www.agynamix.de"
+      start_date: "2005-07-01"
+      end_date: "2015-12-31"
+      technologies:
+        - "Java"
+        - "Eclipse RCP"
+        - "PostgreSQL"
+        - "Spring"
+        - "OPC"
+        - "GEF"
+      summary: >
+        Erstes AGYNAMIX-Produkt---Überwachungssoftware für Wasserversorgungsunternehmen.
+        Serverseitige Java-Anwendung mit Eclipse-RCP-GUI für Echtzeit-Datenvisualisierung.
+      highlights:
+        - >
+          Server: Java 5, JMX, Spring, PostgreSQL, ESB-Busarchitektur zur Entkopplung
+          der Serverkomponenten.
+        - >
+          GSM-Modem-Konnektivität für SMS-Warnungen; OPC-Bibliothek (OLE for Process
+          Control) zur Anbindung an vorhandene Industriesoftware.
+        - >
+          Eclipse-RCP-Client mit GEF für Diagramme und Echtzeit-Datenvisualisierung.
+        - "Leitung eines eigenen Teams zur Marktreife des Produkts."
+      clients:
+        - name: "WKS Group"
+          logo: "clients/WKS-Group.png"
+          period: "2011--2015"
+        - name: "B+N Automation"
+          logo: "clients/BN-Automation.gif"
+          period: "2009"
+
+# ──────────────────────────────────────────────
+# SCHULUNGEN & VORTRÄGE
+# ──────────────────────────────────────────────
+training:
+  title: "Schulungen & Vorträge"
+  entries:
+    - title: "Java-Trainer"
+      organization: "ML Consulting"
+      logo: "clients/ML-Consulting.svg"
+      url: "https://www.mlgruppe.de/startseite.html"
+      start_date: "2011-09-01"
+      end_date: "2011-12-31"
+      location: "Dresden und Berlin"
+      description: >
+        Durchführung mehrerer Java- und Programmiergrundlagen-Kurse. Sehr gute
+        Bewertungen von den Teilnehmern; der Leiter der Einrichtung bat um
+        weitere Einsätze.
+
+    - title: "Vortrag -- Lift 3 & Clientseitige JavaScript-Frameworks"
+      organization: "Scala Days 2013"
+      logo: "clients/ScalaDays2013.png"
+      url: "https://scaladays.org/assets/archive/ny2013/index.html"
+      date: "2013-06-10"
+      location: "New York, USA"
+      description: >
+        Konferenzvortrag über Lift 3 und die Integration clientseitiger
+        JavaScript-Frameworks mit dem Scala-Web-Framework.
+
+    - title: "Vortrag -- Lift 3 & Clientseitige JavaScript-Frameworks"
+      organization: "Scala Exchange 2013"
+      logo: "clients/ScalaExchange.png"
+      url: "https://skillsmatter.com/conferences/1765-scala-exchange-2013#program"
+      date: "2013-12-02"
+      location: "London, UK"
+      description: >
+        Konferenzvortrag über Lift 3 und die Integration clientseitiger
+        JavaScript-Frameworks mit dem Scala-Web-Framework.
+
+# ──────────────────────────────────────────────
+# AUSBILDUNG
+# ──────────────────────────────────────────────
+education:
+  title: "Ausbildung"
+  entries:
+    - institution: "Technische Universität Chemnitz-Zwickau"
+      logo: "clients/TU-Chemnitz-Zwickau.png"
+      url: "https://www.tu-chemnitz.de/"
+      degree: "Diplom-Informatiker (Dipl.-Inf.)"
+      field: "Praktische Informatik"
+      start_date: "1991-09-01"
+      end_date: "1996-03-31"
+      description: >
+        Schwerpunkte: Datenbanken und Algorithmen. Beginn der Arbeit bei einem
+        großen Telekommunikationsunternehmen noch vor Studienabschluss.
+
+# ──────────────────────────────────────────────
+# VERÖFFENTLICHUNGEN
+# ──────────────────────────────────────────────
+publications:
+  title: "Veröffentlichungen"
+  entries:
+    - title: "Lift Web Applications How-To"
+      publisher: "Packt Publishing"
+      logo: "clients/LiftWebAppsHowTo.png"
+      role: "Autor"
+      date: "2012"
+      description: >
+        Praktischer Leitfaden zum Erstellen von Webanwendungen mit Lift,
+        dem Scala-Web-Framework. Veröffentlicht bei Packt Publishing.
+
+# ──────────────────────────────────────────────
+# OPEN SOURCE & COMMUNITY
+# ──────────────────────────────────────────────
+open_source:
+  title: "Open Source & Community"
+  entries:
+    - name: "BibleTime"
+      description: >
+        Bibelstudiensoftware für Unix und KDE. Das Projekt besteht aus mehreren
+        Entwicklern, Übersetzern und Testern. Von mir initiiert und als
+        Koordinator geleitet.
+    - name: "KPriMa"
+      description: >
+        Druckmanager zur Verwaltung von Druckaufträgen für verschiedenste
+        Geräte unter Unix und KDE.
+    - name: "KMsgModem"
+      description: >
+        Programm zum Auslesen von Fax- und Sprachnachrichten aus dem
+        USR Message Modem, lauffähig unter Unix und KDE.
+    - name: "Newtonlink-Module"
+      description: >
+        Perl-Module für das Programm Newtonlink (ein Unix-Kommunikationstool
+        für das Apple Newton MessagePad). Die Module konvertieren Newton-Daten
+        in ein Metaformat oder das Format eines ausgewählten Unix-Programms.
+
+# ──────────────────────────────────────────────
+# KONTAKT
+# ──────────────────────────────────────────────
+cta:
+  text: "Interesse an einer Zusammenarbeit? Ich freue mich auf Ihre Nachricht"
+  email: "tuhlmann@agynamix.de"
+  phone: "+49 151 12412427"
+  or: "oder"
