@@ -18,7 +18,6 @@ basics:
   born: 1972
   citizenship: "German"
   photo: "torsten_square.jpg"
-  portrait: "torsten_portrait.jpg"
   address:
     street: "Buchenweg 5"
     city: "Thalheim"
