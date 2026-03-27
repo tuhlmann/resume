@@ -12,6 +12,8 @@ or a *summary* (has clients/tech_stack) and renders accordingly.
 import argparse
 import os
 import re
+import shutil
+import subprocess
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -21,6 +23,7 @@ from docx import Document
 from docx.enum.style import WD_STYLE_TYPE
 from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_LINE_SPACING
+from docx.image.image import Image as DocxImage
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Cm, Emu, Inches, Pt, RGBColor
@@ -35,6 +38,7 @@ LIGHT_GRAY = RGBColor(0x95, 0xA5, 0xA6)
 DARK = RGBColor(0x1C, 0x28, 0x33)
 
 ASSETS_DIR = Path(__file__).resolve().parent.parent / "assets"
+DOCX_ASSETS_DIR = Path(__file__).resolve().parent.parent / "target" / "docx-assets"
 
 MONTH_NAMES_DE = {
     1: "Jan.", 2: "Feb.", 3: "März", 4: "Apr.", 5: "Mai", 6: "Juni",
@@ -121,25 +125,82 @@ def resolve_asset(filename: str) -> Path | None:
     return None
 
 
+def rasterize_logo_for_docx(source: Path) -> Path | None:
+    """Convert SVG/GIF logos to PNG for DOCX embedding when needed."""
+    relative_source = source.relative_to(ASSETS_DIR)
+    target = (DOCX_ASSETS_DIR / relative_source).with_suffix(".png")
+    target.parent.mkdir(parents=True, exist_ok=True)
+
+    needs_update = not target.exists() or source.stat().st_mtime > target.stat().st_mtime
+    if not needs_update:
+        return target
+
+    try:
+        suffix = source.suffix.lower()
+        if suffix == ".svg":
+            rsvg_convert = shutil.which("rsvg-convert")
+            if not rsvg_convert:
+                return None
+            subprocess.run(
+                [rsvg_convert, "--format=png", "-o", str(target), str(source)],
+                check=True,
+                capture_output=True,
+            )
+            return target if target.exists() else None
+
+        if suffix == ".gif":
+            sips = shutil.which("sips")
+            if not sips:
+                return None
+            subprocess.run(
+                [sips, "-s", "format", "png", str(source), "--out", str(target)],
+                check=True,
+                capture_output=True,
+            )
+            return target if target.exists() else None
+    except Exception:
+        return None
+
+    return None
+
+
 def resolve_logo(filename: str) -> Path | None:
-    """Resolve a logo filename, converting SVG/GIF to PDF if available."""
+    """Resolve a logo filename to a DOCX-compatible image path."""
     if not filename:
         return None
     p = ASSETS_DIR / filename
-    # python-docx can't embed SVG/GIF; try PNG/JPG fallback or PDF
+    # python-docx can't embed SVG/GIF directly; prefer raster siblings or convert.
     if p.suffix.lower() in (".svg", ".gif"):
         for alt_ext in (".png", ".jpg", ".jpeg"):
             alt = p.with_suffix(alt_ext)
             if alt.exists():
                 return alt
-        # Check if render_svg.py created a PDF version
-        pdf = p.with_suffix(".pdf")
-        if pdf.exists():
-            return None  # python-docx can't use PDF images either
-        return None
+        return rasterize_logo_for_docx(p)
     if p.exists():
         return p
     return None
+
+
+def get_logo_display_width_cm(logo_path: Path | None) -> float:
+    """Determine a visible logo width in cm based on aspect ratio."""
+    base_width_cm = 0.9
+    min_height_cm = 0.22
+    max_width_cm = 1.6
+
+    if not logo_path:
+        return base_width_cm
+
+    try:
+        image = DocxImage.from_file(str(logo_path))
+        if not image.px_height:
+            return base_width_cm
+        aspect_ratio = image.px_width / image.px_height
+        display_height_cm = base_width_cm / aspect_ratio
+        if display_height_cm >= min_height_cm:
+            return base_width_cm
+        return min(max_width_cm, aspect_ratio * min_height_cm)
+    except Exception:
+        return base_width_cm
 
 
 def set_cell_shading(cell, hex_color: str) -> None:
@@ -264,7 +325,8 @@ def create_logo_content_container(doc: Document, logo_path: Path | None):
 
     section = doc.sections[-1]
     content_width_twips = Emu(section.page_width - section.left_margin - section.right_margin).twips
-    logo_width = Cm(1.2)
+    logo_display_width_cm = get_logo_display_width_cm(logo_path)
+    logo_width = Cm(max(1.2, logo_display_width_cm + 0.25))
     logo_width_twips = logo_width.twips
     text_width_twips = max(content_width_twips - logo_width_twips, 0)
     set_table_width_and_grid(table, [logo_width_twips, text_width_twips])
@@ -286,7 +348,7 @@ def create_logo_content_container(doc: Document, logo_path: Path | None):
     if logo_path:
         run = logo_paragraph.add_run()
         try:
-            run.add_picture(str(logo_path), width=Cm(0.9))
+            run.add_picture(str(logo_path), width=Cm(logo_display_width_cm))
         except Exception:
             pass
 
