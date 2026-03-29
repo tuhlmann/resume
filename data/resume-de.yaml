@@ -140,8 +140,6 @@ skills:
       keywords:
         - "Kotlin"
         - "Go"
-        - "Clojure"
-        - "ClojureScript"
     - label: "Sprachen"
       level: "Kenntnisse"
       keywords:
@@ -150,6 +148,8 @@ skills:
         - "Perl"
         - "Groovy"
         - "C#"
+        - "Clojure"
+        - "ClojureScript"
     - label: "Frontend-Frameworks"
       level: "expert"
       keywords:

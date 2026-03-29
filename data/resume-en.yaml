@@ -88,8 +88,8 @@ about:
         I wonder if more than a decade of Java programming nurtured this habit.
     - title: "Sourdough Bread Baker"
       description: >
-        A few years ago I started my bread baking adventure. After many mishaps 
-        we now mill our own flour and bake our own sourdough bread. 
+        A few years ago I started my bread baking adventure. After many mishaps
+        we now mill our own flour and bake our own sourdough bread.
         Apart from being healthier, this process puts my
         feet back on reality---especially when most of the things I work with
         are only virtual.
@@ -134,8 +134,6 @@ skills:
       keywords:
         - "Kotlin"
         - "Go"
-        - "Clojure"
-        - "ClojureScript"
     - label: "Languages"
       level: "competent"
       keywords:
@@ -144,6 +142,8 @@ skills:
         - "Perl"
         - "Groovy"
         - "C#"
+        - "Clojure"
+        - "ClojureScript"
     - label: "Frontend Frameworks"
       level: "expert"
       keywords:
@@ -205,7 +205,6 @@ languages:
 work:
   title: "Work Experience"
   entries:
-
     - company: "TXODDS, Ltd."
       position: "Senior Frontend Developer"
       logo: "clients/TXODDS.svg"
@@ -568,7 +567,6 @@ work:
 products:
   title: "Own Products & Innovations"
   entries:
-
     - name: "AGYNAMIX Invoicer"
       logo: "products/invoicer_logo.png"
       url: "https://invoicer.agynamix.de"
