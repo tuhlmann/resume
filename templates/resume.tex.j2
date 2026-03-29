@@ -5,6 +5,7 @@
 %% ════════════════════════════════════════════════════════════════
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage[english,ngerman]{babel}
 \usepackage{lmodern}
 \usepackage[a4paper, left=1.5cm, right=1.5cm, top=1.2cm, bottom=1.4cm, footskip=0.8cm]{geometry}
 \usepackage{graphicx}
@@ -22,6 +23,11 @@
 \usepackage{parskip}
 
 \usetikzlibrary{calc}
+
+%% Portable quote helper without csquotes dependency
+\newcommand{\cvquote}[1]{%
+  \iflanguage{ngerman}{„#1“}{``#1''}%
+}
 
 %% ════════════════════════════════════════════════════════════════
 %% COLORS — a refined palette with a warm accent
@@ -116,7 +122,7 @@
   \begin{tikzpicture}
     \node[fill=quotebg, rounded corners=3pt, inner sep=8pt, text width=\textwidth-20pt,
           draw=rulecol, line width=0.3pt] (q) {%
-      {\small\itshape\color{mid}``#1''}\\[4pt]
+      {\small\itshape\color{mid}\cvquote{#1}}\\[4pt]
       {\footnotesize\bfseries\color{dark}--- #2,} {\footnotesize\color{mid}#3}%
     };
   \end{tikzpicture}%
@@ -144,6 +150,12 @@
 
 %% ════════════════════════════════════════════════════════════════
 \begin{document}
+
+<<< block_open >>> if meta.language == "de" <<< block_close >>>
+\selectlanguage{ngerman}
+<<< block_open >>> else <<< block_close >>>
+\selectlanguage{english}
+<<< block_open >>> endif <<< block_close >>>
 
 %% ════════════════════════════════════════════════════════════════
 %% PAGE 1 — HEADER BANNER

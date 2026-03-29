@@ -4,6 +4,7 @@
 import argparse
 import re
 import sys
+from copy import deepcopy
 from datetime import datetime
 from pathlib import Path
 
@@ -36,6 +37,76 @@ def tex_escape(text: str) -> str:
     for char, replacement in replacements.items():
         text = text.replace(char, replacement)
     return text
+
+
+PROSE_TEXT_KEYS = {
+    "summary",
+    "text",
+    "description",
+    "quote",
+}
+
+PROSE_LIST_KEYS = {
+    "highlights",
+}
+
+NON_PROSE_KEYS = {
+    "years",
+    "start_date",
+    "end_date",
+    "date",
+    "phone",
+    "email",
+    "url",
+    "document",
+    "photo",
+    "logo",
+    "pdf_title",
+    "footer_url",
+    "footer_url_text",
+}
+
+
+def prose_dashify(text: str, lang: str = "en") -> str:
+    """Normalize semantic prose dashes by language.
+
+    The content uses `---` as a semantic prose dash marker.
+    English keeps the classic TeX/American em dash style (`---`).
+    German renders it as a spaced en dash using nonbreaking thin spaces.
+    """
+    if not isinstance(text, str) or "---" not in text:
+        return text
+    if lang == "de":
+        return text.replace("---", "~--~")
+    return text
+
+
+def normalize_prose_typography(value, lang: str = "en", key: str | None = None):
+    """Recursively normalize language-aware prose typography in content data."""
+    if isinstance(value, dict):
+        normalized = {}
+        for child_key, child_value in value.items():
+            if child_key in NON_PROSE_KEYS:
+                normalized[child_key] = child_value
+            else:
+                normalized[child_key] = normalize_prose_typography(
+                    child_value, lang, child_key
+                )
+        return normalized
+
+    if isinstance(value, list):
+        if key in PROSE_LIST_KEYS:
+            return [
+                prose_dashify(item, lang) if isinstance(item, str)
+                else normalize_prose_typography(item, lang)
+                for item in value
+            ]
+        return [normalize_prose_typography(item, lang) for item in value]
+
+    if isinstance(value, str) and key in PROSE_TEXT_KEYS:
+        return prose_dashify(value, lang)
+
+    return value
 
 
 def tex_thinspace(text: str) -> str:
@@ -186,6 +257,9 @@ def render(data_path: Path, template_path: Path, output_path: Path) -> None:
     """Load data and template, render, and write output."""
     with open(data_path, encoding="utf-8") as f:
         data = yaml.safe_load(f)
+
+    lang = str(data.get("meta", {}).get("language", "en")).strip().lower() or "en"
+    data = normalize_prose_typography(deepcopy(data), lang)
 
     # Read raw template, preprocess block markers, then parse
     raw = template_path.read_text(encoding="utf-8")
