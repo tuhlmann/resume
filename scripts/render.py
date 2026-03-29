@@ -77,7 +77,7 @@ def prose_dashify(text: str, lang: str = "en") -> str:
     if not isinstance(text, str) or "---" not in text:
         return text
     if lang == "de":
-        return text.replace("---", "~--~")
+        return text.replace("---", r"\nobreakspace{}--\nobreakspace{}")
     return text
 
 

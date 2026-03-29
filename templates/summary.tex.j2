@@ -141,9 +141,9 @@
 
 \begin{itemize}
 <<< block_open >>> for item in clients.entries <<< block_close >>>
-  \item \textbf{<<< item.title | tex_escape | tex_thinspace >>>}
+  \item \textbf{<<< item.title | tex_escape >>>}
     \hfill {\small\color{medgray}<<< item.years | tex_thinspace >>>}\\
-    <<< item.description | tex_escape | tex_thinspace | trim >>>
+    <<< item.description | tex_escape | trim >>>
 <<< block_open >>> endfor <<< block_close >>>
 \end{itemize}
 
@@ -156,8 +156,8 @@
 
 \begin{itemize}
 <<< block_open >>> for item in products.entries <<< block_close >>>
-  \item \textbf{<<< item.title | tex_escape | tex_thinspace >>>} \hfill {\small\color{medgray}<<< item.years | tex_thinspace >>>}\\
-    <<< item.description | tex_escape | tex_thinspace | trim >>>
+  \item \textbf{<<< item.title | tex_escape >>>} \hfill {\small\color{medgray}<<< item.years | tex_thinspace >>>}\\
+    <<< item.description | tex_escape | trim >>>
 <<< block_open >>> endfor <<< block_close >>>
 \end{itemize}
 

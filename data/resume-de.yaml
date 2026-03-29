@@ -49,7 +49,7 @@ basics:
     stets als Brücke zwischen anspruchsvollen Backend-Architekturen und modernen,
     responsiven Frontend-Frameworks.
 
-    Ich lerne gerne Neues und treffe gerne neue Menschen. Im Laufe der Jahre habe ich
+    Ich liebe es, Neues zu lernen und treffe gerne neue Menschen. Im Laufe der Jahre habe ich
     mit einer Vielzahl verschiedener Programmiersprachen gearbeitet---von Cobol, C++ und
     Java über Scala und Clojure bis hin zu Rust und TypeScript. Technologien ändern sich,
     Entwicklerrollen ändern sich, aber der Wunsch, etwas Nützliches zu schaffen, bleibt
@@ -94,7 +94,7 @@ about:
         gefördert hat?
     - title: "Sauerteig-Brotbäcker"
       description: >
-        Vor einigen Jahren habe ich mein Brotback-Abenteuer begonnen. 
+        Vor einigen Jahren habe ich mein Brotback-Abenteuer begonnen.
         Nach vielen Missgeschicken mahlen wir Mehl selbst und backen unser eigenes
         Sauerteig-Brot. Abgesehen davon, dass es gesünder ist, holt mich dieser Prozess
         auf den Boden der Tatsachen zurück---besonders wenn die meisten Dinge,
@@ -211,7 +211,6 @@ languages:
 work:
   title: "Berufserfahrung"
   entries:
-
     - company: "TXODDS, Ltd."
       position: "Senior Frontend-Entwickler"
       logo: "clients/TXODDS.svg"
@@ -226,7 +225,7 @@ work:
       summary: >
         Entwicklung mehrerer Frontend-Anwendungen für das TX-Scores Professional
         Scouting Network---einer Plattform, die das Sport-Wetten-Ökosystem mit
-        einem ultra-niedriglatenz Sportergebnis-Liefersystem verbindet.
+        einer hochperformanten Sportergebnis-Verwaltung verbindet.
       highlights:
         - >
           Erstellung mehrerer Frontend-Anwendungen für das tx-scores-Projekt
@@ -344,7 +343,7 @@ work:
           quote: >
             Torsten arbeitete rund sechs Jahre mit unserem Team bei Ascendant.
             Er war einer unserer ersten Entwickler und diente als Senior Engineer
-            und Mentor für Junior-Entwickler. Er florierte in unserer verteilten,
+            und Mentor für Junior-Entwickler. Er ging auf in unserer verteilten,
             virtuellen Umgebung und meisterte den Druck einer mandantenfähigen
             SaaS-Plattform souverän. Wäre nicht die Übernahme durch Private Equity
             gewesen, hätte er auf unbestimmte Zeit bei uns bleiben können---wie ich
@@ -474,7 +473,7 @@ work:
           für rechnerübergreifende automatisierte Systemtests.
         - >
           Konzeption und Entwicklung einer Hochleistungs-Datenextraktionsanwendung
-          zur Verarbeitung von Millionen von Datensätzen aus mehreren Oracle-Schemas;
+          zur Verarbeitung von Millionen von Datensätzen aus mehreren Oracle-Schematas;
           Multithreading für Durchsatz.
         - >
           Entwicklung eines Rechnungserzeugungssystems mit LaTeX und E-Mail-Versand
@@ -581,7 +580,6 @@ work:
 products:
   title: "Eigene Produkte & Innovationen"
   entries:
-
     - name: "AGYNAMIX Invoicer"
       logo: "products/invoicer_logo.png"
       url: "https://invoicer.agynamix.de"
