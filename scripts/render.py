@@ -20,6 +20,14 @@ MONTH_NAMES_EN = {
     1: "Jan", 2: "Feb", 3: "Mar", 4: "Apr", 5: "May", 6: "Jun",
     7: "Jul", 8: "Aug", 9: "Sep", 10: "Oct", 11: "Nov", 12: "Dec",
 }
+FULL_MONTH_NAMES_DE = {
+    1: "Januar", 2: "Februar", 3: "März", 4: "April", 5: "Mai", 6: "Juni",
+    7: "Juli", 8: "August", 9: "September", 10: "Oktober", 11: "November", 12: "Dezember",
+}
+FULL_MONTH_NAMES_EN = {
+    1: "January", 2: "February", 3: "March", 4: "April", 5: "May", 6: "June",
+    7: "July", 8: "August", 9: "September", 10: "October", 11: "November", 12: "December",
+}
 
 
 def tex_escape(text: str) -> str:
@@ -259,6 +267,12 @@ def render(data_path: Path, template_path: Path, output_path: Path) -> None:
         data = yaml.safe_load(f)
 
     lang = str(data.get("meta", {}).get("language", "en")).strip().lower() or "en"
+
+    # Auto-compute last_updated from current date
+    now = datetime.now()
+    months = FULL_MONTH_NAMES_DE if lang == "de" else FULL_MONTH_NAMES_EN
+    data.setdefault("meta", {})["last_updated"] = f"{months[now.month]} {now.year}"
+
     data = normalize_prose_typography(deepcopy(data), lang)
 
     # Read raw template, preprocess block markers, then parse
