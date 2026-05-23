@@ -389,7 +389,7 @@
 {\color{accent}<<< edu.institution | tex_escape >>>}%
 <<< block_open >>> endif <<< block_close >>>%
 \enspace\textbar\enspace {\small\color{mid}<<< edu.field | tex_escape >>>}\\[2pt]
-{\small <<< edu.description | tex_escape | trim >>>}
+{\small <<< edu.description | tex_escape | trim >>>\par}
 <<< block_open >>> endfor <<< block_close >>>
 
 %% --- Publications ---
@@ -401,7 +401,7 @@
 \noindent
 {\bfseries\color{dark}<<< pub.role | tex_escape >>>:} \textit{<<< pub.title | tex_escape >>>}
 \enspace\textbar\enspace {\small\color{mid}<<< pub.publisher | tex_escape >>>, <<< pub.date >>>}\\[1pt]
-{\small <<< pub.description | tex_escape | trim >>>}
+{\small <<< pub.description | tex_escape | trim >>>\par}
 <<< block_open >>> endfor <<< block_close >>>
 <<< block_open >>> endif <<< block_close >>>
 
@@ -428,7 +428,7 @@
 {\color{accent}<<< t.organization | tex_escape >>>}%
 <<< block_open >>> endif <<< block_close >>>%
 \enspace\textbar\enspace {\small\color{mid}<<< t.location | tex_escape >>>}\\[2pt]
-{\small <<< t.description | tex_escape | trim >>>}
+{\small <<< t.description | tex_escape | trim >>>\par}
 <<< block_open >>> if not loop.last <<< block_close >>>\vspace{4pt}<<< block_open >>> endif <<< block_close >>>
 <<< block_open >>> endfor <<< block_close >>>
 <<< block_open >>> endif <<< block_close >>>

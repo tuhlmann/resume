@@ -798,8 +798,7 @@ open_source:
     - name: "BibleTime"
       description: >
         Bibelstudiensoftware für Unix und KDE. Das Projekt besteht aus mehreren
-        Entwicklern, Übersetzern und Testern. Von mir initiiert und als
-        Koordinator geleitet.
+        Entwicklern, Übersetzern und Testern. Von mir initiiert und anfänglich geleitet.
     - name: "KPriMa"
       description: >
         Druckmanager zur Verwaltung von Druckaufträgen für verschiedenste
