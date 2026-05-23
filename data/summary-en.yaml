@@ -10,7 +10,7 @@ meta:
 basics:
   name: "Torsten Uhlmann"
   company: "AGYNAMIX"
-  title: "Senior Full Stack Software Engineer & Consultant"
+  title: "Senior Full Stack Software Engineer & AI Integration Consultant"
   photo: "torsten_square.jpg"
   address: "Buchenweg 5, 09380 Thalheim, Germany"
   email: "tuhlmann@agynamix.de"
@@ -33,6 +33,10 @@ summary:
     I specialize in taking complex, system-critical applications from prototype to
     production---whether leading development efforts or integrating into distributed teams,
     bridging intricate backend architectures with modern, responsive frontend frameworks.
+    Recent work includes applied AI integration and Agentic Engineering, including
+    AI-assisted PDF invoice analysis in AGYNAMIX Invoicer with structured extraction,
+    vision models, JSON schema outputs, semantic checks, alternative candidates, and
+    user-in-the-loop review.
 
 services:
   title: "Core Services & Consulting"
@@ -41,6 +45,9 @@ services:
     - title: "End-to-End Application Development"
       description: >
         Complete solutions from requirement gathering through implementation and deployment.
+    - title: "Applied AI & Workflow Automation"
+      description: >
+        Practical AI integration using Agentic Engineering, LLMs, document AI, and structured extraction.
     - title: "High-Performance Backend Systems"
       description: >
         Scalable, concurrent backends using Rust, Scala, and Java.
@@ -54,6 +61,8 @@ services:
 tech_stack:
   title: "Technical Stack"
   categories:
+    - label: "Applied AI"
+      content: "Agentic Engineering, LLM integration, document AI, PDF extraction, vision models, JSON schema outputs, Ollama"
     - label: "Languages"
       content: "Scala, Java, Rust, Kotlin, TypeScript, JavaScript, Clojure"
     - label: "Frameworks & UI"
@@ -97,6 +106,9 @@ products:
       description: >
         Modern desktop invoicing application (Kotlin, Jetpack Compose for Desktop) for the
         DACH market. Fully GoBD compliant with ZUGFeRD and XRechnung e-invoice support.
+        AI-assisted PDF invoice analysis extracts supplier, invoice number, dates, VAT
+        amounts, totals, and metadata using local and remote OpenAI-compatible providers,
+        including privacy-friendly local Ollama models.
     - title: "Symnix---Cloud Provisioning Platform"
       years: "2022--present"
       description: >

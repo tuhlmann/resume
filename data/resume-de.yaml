@@ -14,7 +14,7 @@ meta:
 basics:
   name: "Torsten Uhlmann"
   company: "AGYNAMIX"
-  title: "Senior Full Stack Software Engineer & Berater"
+  title: "Senior Full Stack Software Engineer & AI Integration Consultant"
   born: 1972
   citizenship: "deutsch"
   photo: "torsten_square.jpg"
@@ -46,7 +46,11 @@ basics:
     Über AGYNAMIX begleite ich komplexe, systemkritische Anwendungen vom Prototyp bis
     zur Produktion---ob als technische Leitung oder integriert in verteilte Teams,
     stets als Brücke zwischen anspruchsvollen Backend-Architekturen und modernen,
-    responsiven Frontend-Frameworks.
+    responsiven Frontend-Frameworks. Aktuelle Schwerpunkte umfassen angewandte
+    KI-Integration und Agentic Engineering, unter anderem KI-gestützte
+    PDF-Rechnungsanalyse in AGYNAMIX Invoicer mit strukturierter PDF-Extraktion,
+    Vision-Modellen für gescannte Dokumente, JSON-Schema-Ausgaben, semantischen
+    Prüfungen, alternativen Kandidaten und User-in-the-Loop-Review.
 
     Ich liebe es, Neues zu lernen und treffe gerne neue Menschen. Im Laufe der Jahre habe ich
     mit einer Vielzahl verschiedener Programmiersprachen gearbeitet---von Cobol, C++ und
@@ -109,6 +113,10 @@ services:
     - title: "End-to-End Anwendungsentwicklung"
       description: >
         Komplettlösungen von der Anforderungsanalyse über Implementierung bis zum Deployment.
+    - title: "Angewandte KI & Workflow-Automatisierung"
+      description: >
+        Praxistaugliche KI-Integration für Geschäftsprozesse mit Agentic Engineering,
+        LLMs, Document AI und strukturierter Extraktion.
     - title: "Hochperformante Backend-Systeme"
       description: >
         Skalierbare, nebenläufige Backends mit Rust, Scala und Java.
@@ -125,6 +133,17 @@ services:
 skills:
   title: "Technische Fähigkeiten"
   categories:
+    - label: "Angewandte KI"
+      level: "proficient"
+      keywords:
+        - "Agentic Engineering"
+        - "LLM-Integration"
+        - "Document AI"
+        - "PDF-Datenextraktion"
+        - "Vision-Modelle"
+        - "JSON-Schema-Ausgaben"
+        - "Ollama"
+        - "OpenAI-kompatible Provider"
     - label: "Sprachen"
       level: "expert"
       keywords:
@@ -587,14 +606,26 @@ products:
         - "Kotlin"
         - "Jetpack Compose for Desktop"
         - "SQLite"
+        - "Agentic Engineering"
+        - "Ollama"
         - "GoBD"
       summary: >
         Moderne Desktop-Rechnungsanwendung für Freiberufler und kleine Unternehmen
         im DACH-Markt. Vollständig GoBD-konform mit ZUGFeRD- und
-        XRechnung-E-Rechnungsunterstützung.
+        XRechnung-E-Rechnungsunterstützung sowie KI-gestützter Analyse eingehender
+        Rechnungen über lokale und entfernte OpenAI-kompatible Provider.
       highlights:
         - >
           Plattformübergreifend (Windows, macOS, Linux) mit moderner Jetpack-Compose-UI.
+        - >
+          KI-gestützte PDF-Rechnungsanalyse extrahiert Lieferant, Rechnungsnummer,
+          Datum, MwSt.-Beträge, Summen und weitere Metadaten und reduziert manuelle
+          Erfassung von mehreren Minuten auf Prüfung und Bestätigung.
+        - >
+          Nutzt strukturierte PDF-Extraktion, Vision-Modelle für gescannte Dokumente,
+          JSON-Schema-Ausgaben, semantische Prüfungen, alternative Kandidaten und
+          User-in-the-Loop-Review; lokale Ollama-Modelle unterstützen
+          datenschutzsensible Geschäftsdokumente.
         - >
           Features: anpassbare Rechnungsvorlagen, automatische Nummerierung,
           MwSt.-Berechnungen, Zahlungsverfolgung, Kundenverwaltung und Berichte.

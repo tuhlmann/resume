@@ -11,7 +11,7 @@ meta:
 basics:
   name: "Torsten Uhlmann"
   company: "AGYNAMIX"
-  title: "Senior Full Stack Software Engineer & Berater"
+  title: "Senior Full Stack Software Engineer & AI Integration Consultant"
   photo: "torsten_square.jpg"
   address: "Buchenweg 5, 09380 Thalheim, Deutschland"
   email: "tuhlmann@agynamix.de"
@@ -34,7 +34,11 @@ summary:
     Über AGYNAMIX begleite ich komplexe, systemkritische Anwendungen vom Prototyp bis
     zur Produktion---ob als technische Leitung oder integriert in verteilte Teams,
     stets als Brücke zwischen anspruchsvollen Backend-Architekturen und modernen,
-    responsiven Frontend-Frameworks.
+    responsiven Frontend-Frameworks. Aktuelle Schwerpunkte umfassen angewandte
+    KI-Integration und Agentic Engineering, unter anderem KI-gestützte
+    PDF-Rechnungsanalyse in AGYNAMIX Invoicer mit strukturierter Extraktion,
+    Vision-Modellen, JSON-Schema-Ausgaben, semantischen Prüfungen, alternativen
+    Kandidaten und User-in-the-Loop-Review.
 
 services:
   title: "Kernleistungen & Beratung"
@@ -43,6 +47,9 @@ services:
     - title: "End-to-End Anwendungsentwicklung"
       description: >
         Komplettlösungen von der Anforderungsanalyse über Implementierung bis zum Deployment.
+    - title: "Angewandte KI & Workflow-Automatisierung"
+      description: >
+        Praxistaugliche KI-Integration mit Agentic Engineering, LLMs, Document AI und strukturierter Extraktion.
     - title: "Hochperformante Backend-Systeme"
       description: >
         Skalierbare, nebenläufige Backends mit Rust, Scala und Java.
@@ -56,6 +63,8 @@ services:
 tech_stack:
   title: "Technologie Stack"
   categories:
+    - label: "Angewandte KI"
+      content: "Agentic Engineering, LLM-Integration, Document AI, PDF-Extraktion, Vision-Modelle, JSON-Schema-Ausgaben, Ollama"
     - label: "Sprachen"
       content: "Scala, Java, Rust, Kotlin, TypeScript, JavaScript, Clojure"
     - label: "Frameworks & UI"
@@ -100,6 +109,10 @@ products:
       description: >
         Moderne Desktop-Rechnungsanwendung (Kotlin, Jetpack Compose for Desktop) für den
         DACH-Markt. Vollständig GoBD-konform mit ZUGFeRD- und XRechnung-Unterstützung.
+        KI-gestützte PDF-Rechnungsanalyse extrahiert Lieferant, Rechnungsnummer, Datum,
+        MwSt.-Beträge, Summen und Metadaten über lokale und entfernte
+        OpenAI-kompatible Provider, einschließlich datenschutzfreundlicher lokaler
+        Ollama-Modelle.
     - title: "Symnix---Cloud Provisioning Platform"
       years: "2022--heute"
       description: >

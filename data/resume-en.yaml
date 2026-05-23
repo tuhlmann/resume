@@ -13,7 +13,7 @@ meta:
 basics:
   name: "Torsten Uhlmann"
   company: "AGYNAMIX"
-  title: "Senior Full Stack Software Engineer & Consultant"
+  title: "Senior Full Stack Software Engineer & AI Integration Consultant"
   born: 1972
   citizenship: "German"
   photo: "torsten_square.jpg"
@@ -45,7 +45,10 @@ basics:
     through AGYNAMIX, I specialize in taking complex, system-critical applications from
     prototype to production---whether leading development efforts or integrating into
     distributed teams, bridging intricate backend architectures with modern, responsive
-    frontend frameworks.
+    frontend frameworks. Recent work includes applied AI integration and Agentic
+    Engineering, including AI-assisted PDF invoice analysis in AGYNAMIX Invoicer using
+    structured PDF extraction, vision models for scanned documents, JSON schema outputs,
+    semantic checks, alternative candidates, and user-in-the-loop review.
 
     I love learning new things and meeting new people. Over the years I have worked
     with a plethora of different programming languages---from Cobol, C++, and Java through
@@ -103,6 +106,10 @@ services:
     - title: "End-to-End Application Development"
       description: >
         Complete solutions from requirement gathering through implementation and deployment.
+    - title: "Applied AI & Workflow Automation"
+      description: >
+        Practical AI integration for business workflows using Agentic Engineering,
+        LLMs, document AI, and structured extraction.
     - title: "High-Performance Backend Systems"
       description: >
         Scalable, concurrent backends using Rust, Scala, and Java.
@@ -119,6 +126,17 @@ services:
 skills:
   title: "Technical Skills"
   categories:
+    - label: "Applied AI"
+      level: "proficient"
+      keywords:
+        - "Agentic Engineering"
+        - "LLM Integration"
+        - "Document AI"
+        - "PDF Data Extraction"
+        - "Vision Models"
+        - "JSON Schema Outputs"
+        - "Ollama"
+        - "OpenAI-compatible Providers"
     - label: "Languages"
       level: "expert"
       keywords:
@@ -574,14 +592,25 @@ products:
         - "Kotlin"
         - "Jetpack Compose for Desktop"
         - "SQLite"
+        - "Agentic Engineering"
+        - "Ollama"
         - "GoBD"
       summary: >
         Modern desktop invoicing application for freelancers and small businesses
         in the DACH market. Fully GoBD-compliant with ZUGFeRD and XRechnung
-        e-invoice support.
+        e-invoice support, plus AI-assisted incoming invoice analysis using local
+        and remote OpenAI-compatible providers.
       highlights:
         - >
           Cross-platform (Windows, macOS, Linux) with a modern Jetpack Compose UI.
+        - >
+          AI-assisted PDF invoice analysis extracts supplier, invoice number, dates,
+          VAT amounts, totals, and other metadata, reducing manual entry from minutes
+          to review and confirmation.
+        - >
+          Uses structured PDF extraction, vision models for scanned documents, JSON
+          schema outputs, semantic checks, alternative candidates, and user-in-the-loop
+          review; local Ollama models support privacy-sensitive business documents.
         - >
           Features: customizable invoice templates, automatic numbering, VAT
           calculations, payment tracking, customer management, and reporting.

@@ -11,6 +11,8 @@
 \usepackage{microtype}
 \usepackage{fancyhdr}
 \usepackage{hyperref}
+\usepackage{tabularx}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 
 %% ---- Colors ----
 \definecolor{accent}{HTML}{2B4C7E}
@@ -30,6 +32,7 @@
 %% ---- Layout ----
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{2pt plus 1pt minus 1pt}
+\setlength{\emergencystretch}{2em}
 
 %% Section formatting (without titlesec)
 \renewcommand{\section}[1]{%
@@ -115,11 +118,11 @@
 \section{<<< tech_stack.title >>>}
 
 \noindent
-\begin{tabular}{@{}l@{\enspace}l@{}}
+\begin{tabularx}{\textwidth}{@{}l@{\enspace}Y@{}}
 <<< block_open >>> for cat in tech_stack.categories <<< block_close >>>
 \textbf{<<< cat.label | tex_escape >>>:} & <<< cat.content >>>\\
 <<< block_open >>> endfor <<< block_close >>>
-\end{tabular}
+\end{tabularx}
 
 %% ==== CLIENTS ====
 <<< block_open >>> if clients.url is defined <<< block_close >>>
@@ -137,6 +140,7 @@
 \end{itemize}
 
 %% ==== PRODUCTS ====
+\clearpage
 <<< block_open >>> if products.url is defined <<< block_close >>>
 \section{\href{<<< products.url >>>}{<<< products.title | tex_escape >>>}}
 <<< block_open >>> else <<< block_close >>>
