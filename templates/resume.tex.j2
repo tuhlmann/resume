@@ -460,12 +460,11 @@
 <<< block_open >>> if open_source is defined <<< block_close >>>
 \cvsection[\faIcon{code-branch}]{<<< open_source.title | tex_escape >>>}
 
-\noindent
+\begin{itemize}
 <<< block_open >>> for proj in open_source.entries <<< block_close >>>
-\textbf{<<< proj.name | tex_escape >>>} ---
-{\small\color{mid}<<< proj.description | tex_escape | trim >>>}%
-<<< block_open >>> if not loop.last <<< block_close >>>\enspace\textbar\enspace <<< block_open >>> endif <<< block_close >>>
+  \item \textbf{<<< proj.name | tex_escape >>>} --- {\small\color{mid}<<< proj.description | tex_escape | trim >>>}
 <<< block_open >>> endfor <<< block_close >>>
+\end{itemize}
 <<< block_open >>> endif <<< block_close >>>
 
 %% ════════════════════════════════════════════════════════════════

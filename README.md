@@ -10,8 +10,8 @@ This repository currently exposes the following `make` targets.
 | `make all` | Builds every PDF, DOCX, and JSON artifact in `target/`, then copies final artifacts to `dist/`. | All committed deliverables in `dist/` |
 | `make build` | Builds every artifact in the temporary output directory. | Complete artifact set in `target/` |
 | `make publish` | Copies generated final artifacts from `target/` to `dist/`. | Complete artifact set in `dist/` |
-| `make render` | Renders the YAML data into TeX files without compiling PDFs. | Summary and resume `.tex` files in `target/` |
-| `make pdf` | Ensures TeX files are rendered and then runs `pdflatex` twice for each generated TeX file. | Summary and resume PDFs in `target/` |
+| `make render-tex` | Renders the YAML data into TeX files without compiling PDFs. | Summary and resume `.tex` files in `target/` |
+| `make tex2pdf` | Ensures TeX files are rendered and then runs `pdflatex` twice for each generated TeX file. | Summary and resume PDFs in `target/` |
 | `make json` | Exports both full resumes to JSON Resume format. | `target/lebenslauf.json`, `target/resume.json` |
 | `make summaries` | Builds and publishes the summary PDFs and DOCX files. | Summary PDFs and DOCX files in `dist/` |
 | `make resumes` | Builds and publishes the full resume PDFs, DOCX files, and JSON files. | Full resume artifacts in `dist/` |
@@ -64,13 +64,13 @@ make publish
 Render only the intermediate TeX files:
 
 ```sh
-make render
+make render-tex
 ```
 
 Rebuild PDFs from the rendered TeX files:
 
 ```sh
-make pdf
+make tex2pdf
 ```
 
 Build the German full resume PDF:

@@ -1,4 +1,4 @@
-.PHONY: all build publish render pdf json clean clean-dist assets-pdf summaries resumes summary-docx lebenslauf resume lebenslauf-docx resume-docx lebenslauf-docx-styled resume-docx-styled docx docx-styled
+.PHONY: all build publish render-tex tex2pdf json clean clean-dist assets-pdf summaries resumes summary-docx lebenslauf resume lebenslauf-docx resume-docx lebenslauf-docx-styled resume-docx-styled docx docx-styled
 
 PYTHON   := .venv/bin/python
 RENDER   := scripts/render.py
@@ -66,7 +66,7 @@ build: $(TARGET_ARTIFACTS)
 publish: $(DIST_ARTIFACTS)
 
 # ---- Render YAML → TeX ----
-render: $(SUMMARY_TEX) $(RESUME_DE_TEX) $(RESUME_EN_TEX)
+render-tex: $(SUMMARY_TEX) $(RESUME_DE_TEX) $(RESUME_EN_TEX)
 
 $(OUT_DIR)/Torsten\ Uhlmann\ CV\ Summary.tex: $(DATA_DIR)/summary-en.yaml $(SUMMARY_TEMPLATE) $(RENDER) | $(OUT_DIR)
 	$(PYTHON) $(RENDER) "$(DATA_DIR)/summary-en.yaml" "$(SUMMARY_TEMPLATE)" "$@"
@@ -81,7 +81,7 @@ $(RESUME_EN_TEX): $(DATA_DIR)/resume-en.yaml $(RESUME_TEMPLATE) $(RENDER) | $(BU
 	$(PYTHON) $(RENDER) "$(DATA_DIR)/resume-en.yaml" "$(RESUME_TEMPLATE)" "$@"
 
 # ---- TeX → PDF ----
-pdf: $(SUMMARY_PDF) $(RESUME_DE_PDF) $(RESUME_EN_PDF)
+tex2pdf: $(SUMMARY_PDF) $(RESUME_DE_PDF) $(RESUME_EN_PDF)
 
 assets-pdf:
 	$(PYTHON) $(SVG)
