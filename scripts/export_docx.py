@@ -38,7 +38,7 @@ LIGHT_GRAY = RGBColor(0x95, 0xA5, 0xA6)
 DARK = RGBColor(0x1C, 0x28, 0x33)
 
 ASSETS_DIR = Path(__file__).resolve().parent.parent / "assets"
-DOCX_ASSETS_DIR = Path(__file__).resolve().parent.parent / "build" / "docx-assets"
+DOCX_ASSETS_DIR = Path(__file__).resolve().parent.parent / "target" / "docx-assets"
 
 MONTH_NAMES_DE = {
     1: "Jan.", 2: "Feb.", 3: "März", 4: "Apr.", 5: "Mai", 6: "Juni",

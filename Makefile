@@ -1,37 +1,72 @@
-.PHONY: all render pdf clean assets-pdf lebenslauf resume lebenslauf-docx resume-docx lebenslauf-docx-styled resume-docx-styled docx docx-styled
+.PHONY: all build publish render pdf json clean clean-dist assets-pdf summaries resumes summary-docx lebenslauf resume lebenslauf-docx resume-docx lebenslauf-docx-styled resume-docx-styled docx docx-styled
 
 PYTHON   := .venv/bin/python
 RENDER   := scripts/render.py
 SVG      := scripts/render_svg.py
 DOCX     := scripts/export_docx.py
+JSON     := scripts/export_json_resume.py
 SUMMARY_TEMPLATE := templates/summary.tex.j2
 RESUME_TEMPLATE  := templates/resume.tex.j2
 
 DATA_DIR := data
 OUT_DIR  := target
-BUILD_DIR := build
 DIST_DIR  := dist
 
-# Map data files to output TeX names
-TARGETS := \
+# Summary outputs
+SUMMARY_TEX := \
 	$(OUT_DIR)/Torsten\ Uhlmann\ CV\ Summary.tex \
 	$(OUT_DIR)/Torsten\ Uhlmann\ CV\ Übersicht.tex
 
-RESUME_DE_TEX := $(BUILD_DIR)/Torsten\ Uhlmann\ Lebenslauf.tex
-RESUME_EN_TEX := $(BUILD_DIR)/Torsten\ Uhlmann\ Resume.tex
+SUMMARY_PDF := \
+	$(OUT_DIR)/Torsten\ Uhlmann\ CV\ Summary.pdf \
+	$(OUT_DIR)/Torsten\ Uhlmann\ CV\ Übersicht.pdf
 
-RESUME_DE_PDF := $(DIST_DIR)/Torsten\ Uhlmann\ Lebenslauf.pdf
-RESUME_EN_PDF := $(DIST_DIR)/Torsten\ Uhlmann\ Resume.pdf
+SUMMARY_DOCX := \
+	$(OUT_DIR)/Torsten\ Uhlmann\ CV\ Summary.docx \
+	$(OUT_DIR)/Torsten\ Uhlmann\ CV\ Übersicht.docx
 
-RESUME_DE_DOCX := $(DIST_DIR)/Torsten\ Uhlmann\ Lebenslauf.docx
-RESUME_EN_DOCX := $(DIST_DIR)/Torsten\ Uhlmann\ Resume.docx
-RESUME_DE_DOCX_STYLED := $(DIST_DIR)/Torsten\ Uhlmann\ Lebenslauf\ Styled.docx
-RESUME_EN_DOCX_STYLED := $(DIST_DIR)/Torsten\ Uhlmann\ Resume\ Styled.docx
+SUMMARY_DIST := \
+	$(DIST_DIR)/Torsten\ Uhlmann\ CV\ Summary.pdf \
+	$(DIST_DIR)/Torsten\ Uhlmann\ CV\ Übersicht.pdf \
+	$(DIST_DIR)/Torsten\ Uhlmann\ CV\ Summary.docx \
+	$(DIST_DIR)/Torsten\ Uhlmann\ CV\ Übersicht.docx
 
-all: render pdf
+# Full resume outputs
+RESUME_DE_TEX := $(OUT_DIR)/Torsten\ Uhlmann\ Lebenslauf.tex
+RESUME_EN_TEX := $(OUT_DIR)/Torsten\ Uhlmann\ Resume.tex
+
+RESUME_DE_PDF := $(OUT_DIR)/Torsten\ Uhlmann\ Lebenslauf.pdf
+RESUME_EN_PDF := $(OUT_DIR)/Torsten\ Uhlmann\ Resume.pdf
+
+RESUME_DE_DOCX := $(OUT_DIR)/Torsten\ Uhlmann\ Lebenslauf.docx
+RESUME_EN_DOCX := $(OUT_DIR)/Torsten\ Uhlmann\ Resume.docx
+RESUME_DE_DOCX_STYLED := $(OUT_DIR)/Torsten\ Uhlmann\ Lebenslauf\ Styled.docx
+RESUME_EN_DOCX_STYLED := $(OUT_DIR)/Torsten\ Uhlmann\ Resume\ Styled.docx
+
+RESUME_DE_JSON := $(OUT_DIR)/lebenslauf.json
+RESUME_EN_JSON := $(OUT_DIR)/resume.json
+
+RESUME_DIST := \
+	$(DIST_DIR)/Torsten\ Uhlmann\ Lebenslauf.pdf \
+	$(DIST_DIR)/Torsten\ Uhlmann\ Resume.pdf \
+	$(DIST_DIR)/Torsten\ Uhlmann\ Lebenslauf.docx \
+	$(DIST_DIR)/Torsten\ Uhlmann\ Resume.docx \
+	$(DIST_DIR)/Torsten\ Uhlmann\ Lebenslauf\ Styled.docx \
+	$(DIST_DIR)/Torsten\ Uhlmann\ Resume\ Styled.docx \
+	$(DIST_DIR)/lebenslauf.json \
+	$(DIST_DIR)/resume.json
+
+TARGET_ARTIFACTS := $(SUMMARY_PDF) $(SUMMARY_DOCX) $(RESUME_DE_PDF) $(RESUME_EN_PDF) $(RESUME_DE_DOCX) $(RESUME_EN_DOCX) $(RESUME_DE_DOCX_STYLED) $(RESUME_EN_DOCX_STYLED) $(RESUME_DE_JSON) $(RESUME_EN_JSON)
+DIST_ARTIFACTS := $(SUMMARY_DIST) $(RESUME_DIST)
+
+all: publish
+
+build: $(TARGET_ARTIFACTS)
+
+publish: $(DIST_ARTIFACTS)
 
 # ---- Render YAML → TeX ----
-render: $(TARGETS)
+render: $(SUMMARY_TEX) $(RESUME_DE_TEX) $(RESUME_EN_TEX)
 
 $(OUT_DIR)/Torsten\ Uhlmann\ CV\ Summary.tex: $(DATA_DIR)/summary-en.yaml $(SUMMARY_TEMPLATE) $(RENDER) | $(OUT_DIR)
 	$(PYTHON) $(RENDER) "$(DATA_DIR)/summary-en.yaml" "$(SUMMARY_TEMPLATE)" "$@"
@@ -46,58 +81,119 @@ $(RESUME_EN_TEX): $(DATA_DIR)/resume-en.yaml $(RESUME_TEMPLATE) $(RENDER) | $(BU
 	$(PYTHON) $(RENDER) "$(DATA_DIR)/resume-en.yaml" "$(RESUME_TEMPLATE)" "$@"
 
 # ---- TeX → PDF ----
-pdf: render
-	@find "$(OUT_DIR)" -maxdepth 1 -name '*.tex' -print | while IFS= read -r f; do \
-		base="$$(basename "$$f")"; \
-		echo "Building: $$base"; \
-		(cd "$(OUT_DIR)" && pdflatex "$$base" && pdflatex "$$base"); \
-	done
+pdf: $(SUMMARY_PDF) $(RESUME_DE_PDF) $(RESUME_EN_PDF)
 
 assets-pdf:
 	$(PYTHON) $(SVG)
 
-$(RESUME_DE_PDF): $(RESUME_DE_TEX) assets-pdf | $(DIST_DIR)
-	(cd "$(BUILD_DIR)" && pdflatex "Torsten Uhlmann Lebenslauf.tex" && pdflatex "Torsten Uhlmann Lebenslauf.tex"); \
-	cp "$(BUILD_DIR)/Torsten Uhlmann Lebenslauf.pdf" "$@"
+$(OUT_DIR)/Torsten\ Uhlmann\ CV\ Summary.pdf: $(OUT_DIR)/Torsten\ Uhlmann\ CV\ Summary.tex assets-pdf
+	(cd "$(OUT_DIR)" && pdflatex "Torsten Uhlmann CV Summary.tex" && pdflatex "Torsten Uhlmann CV Summary.tex")
 
-$(RESUME_EN_PDF): $(RESUME_EN_TEX) assets-pdf | $(DIST_DIR)
-	(cd "$(BUILD_DIR)" && pdflatex "Torsten Uhlmann Resume.tex" && pdflatex "Torsten Uhlmann Resume.tex"); \
-	cp "$(BUILD_DIR)/Torsten Uhlmann Resume.pdf" "$@"
+$(OUT_DIR)/Torsten\ Uhlmann\ CV\ Übersicht.pdf: $(OUT_DIR)/Torsten\ Uhlmann\ CV\ Übersicht.tex assets-pdf
+	(cd "$(OUT_DIR)" && pdflatex "Torsten Uhlmann CV Übersicht.tex" && pdflatex "Torsten Uhlmann CV Übersicht.tex")
 
-lebenslauf: $(RESUME_DE_PDF)
+$(RESUME_DE_PDF): $(RESUME_DE_TEX) assets-pdf
+	(cd "$(OUT_DIR)" && pdflatex "Torsten Uhlmann Lebenslauf.tex" && pdflatex "Torsten Uhlmann Lebenslauf.tex")
 
-resume: $(RESUME_EN_PDF)
+$(RESUME_EN_PDF): $(RESUME_EN_TEX) assets-pdf
+	(cd "$(OUT_DIR)" && pdflatex "Torsten Uhlmann Resume.tex" && pdflatex "Torsten Uhlmann Resume.tex")
 
-$(RESUME_DE_DOCX): $(DATA_DIR)/resume-de.yaml $(DOCX) | $(DIST_DIR)
+# ---- YAML → DOCX ----
+$(OUT_DIR)/Torsten\ Uhlmann\ CV\ Summary.docx: $(DATA_DIR)/summary-en.yaml $(DOCX) | $(OUT_DIR)
+	$(PYTHON) $(DOCX) "$(DATA_DIR)/summary-en.yaml" "$@" --style styled
+
+$(OUT_DIR)/Torsten\ Uhlmann\ CV\ Übersicht.docx: $(DATA_DIR)/summary-de.yaml $(DOCX) | $(OUT_DIR)
+	$(PYTHON) $(DOCX) "$(DATA_DIR)/summary-de.yaml" "$@" --style styled
+
+$(RESUME_DE_DOCX): $(DATA_DIR)/resume-de.yaml $(DOCX) | $(OUT_DIR)
 	$(PYTHON) $(DOCX) "$(DATA_DIR)/resume-de.yaml" "$@" --style ats
 
-$(RESUME_EN_DOCX): $(DATA_DIR)/resume-en.yaml $(DOCX) | $(DIST_DIR)
+$(RESUME_EN_DOCX): $(DATA_DIR)/resume-en.yaml $(DOCX) | $(OUT_DIR)
 	$(PYTHON) $(DOCX) "$(DATA_DIR)/resume-en.yaml" "$@" --style ats
 
-$(RESUME_DE_DOCX_STYLED): $(DATA_DIR)/resume-de.yaml $(DOCX) | $(DIST_DIR)
+$(RESUME_DE_DOCX_STYLED): $(DATA_DIR)/resume-de.yaml $(DOCX) | $(OUT_DIR)
 	$(PYTHON) $(DOCX) "$(DATA_DIR)/resume-de.yaml" "$@" --style styled
 
-$(RESUME_EN_DOCX_STYLED): $(DATA_DIR)/resume-en.yaml $(DOCX) | $(DIST_DIR)
+$(RESUME_EN_DOCX_STYLED): $(DATA_DIR)/resume-en.yaml $(DOCX) | $(OUT_DIR)
 	$(PYTHON) $(DOCX) "$(DATA_DIR)/resume-en.yaml" "$@" --style styled
 
-lebenslauf-docx: $(RESUME_DE_DOCX)
+# ---- YAML → JSON Resume ----
+json: $(RESUME_DE_JSON) $(RESUME_EN_JSON)
 
-resume-docx: $(RESUME_EN_DOCX)
+$(RESUME_DE_JSON): $(DATA_DIR)/resume-de.yaml $(JSON) | $(OUT_DIR)
+	$(PYTHON) $(JSON) "$(DATA_DIR)/resume-de.yaml" "$@"
 
-docx: $(RESUME_DE_DOCX) $(RESUME_EN_DOCX)
+$(RESUME_EN_JSON): $(DATA_DIR)/resume-en.yaml $(JSON) | $(OUT_DIR)
+	$(PYTHON) $(JSON) "$(DATA_DIR)/resume-en.yaml" "$@"
+
+# ---- Publish target artifacts ----
+$(DIST_DIR)/Torsten\ Uhlmann\ CV\ Summary.pdf: $(OUT_DIR)/Torsten\ Uhlmann\ CV\ Summary.pdf | $(DIST_DIR)
+	cp "$<" "$@"
+
+$(DIST_DIR)/Torsten\ Uhlmann\ CV\ Übersicht.pdf: $(OUT_DIR)/Torsten\ Uhlmann\ CV\ Übersicht.pdf | $(DIST_DIR)
+	cp "$<" "$@"
+
+$(DIST_DIR)/Torsten\ Uhlmann\ CV\ Summary.docx: $(OUT_DIR)/Torsten\ Uhlmann\ CV\ Summary.docx | $(DIST_DIR)
+	cp "$<" "$@"
+
+$(DIST_DIR)/Torsten\ Uhlmann\ CV\ Übersicht.docx: $(OUT_DIR)/Torsten\ Uhlmann\ CV\ Übersicht.docx | $(DIST_DIR)
+	cp "$<" "$@"
+
+$(DIST_DIR)/Torsten\ Uhlmann\ Lebenslauf.pdf: $(RESUME_DE_PDF) | $(DIST_DIR)
+	cp "$<" "$@"
+
+$(DIST_DIR)/Torsten\ Uhlmann\ Resume.pdf: $(RESUME_EN_PDF) | $(DIST_DIR)
+	cp "$<" "$@"
+
+$(DIST_DIR)/Torsten\ Uhlmann\ Lebenslauf.docx: $(RESUME_DE_DOCX) | $(DIST_DIR)
+	cp "$<" "$@"
+
+$(DIST_DIR)/Torsten\ Uhlmann\ Resume.docx: $(RESUME_EN_DOCX) | $(DIST_DIR)
+	cp "$<" "$@"
+
+$(DIST_DIR)/Torsten\ Uhlmann\ Lebenslauf\ Styled.docx: $(RESUME_DE_DOCX_STYLED) | $(DIST_DIR)
+	cp "$<" "$@"
+
+$(DIST_DIR)/Torsten\ Uhlmann\ Resume\ Styled.docx: $(RESUME_EN_DOCX_STYLED) | $(DIST_DIR)
+	cp "$<" "$@"
+
+$(DIST_DIR)/lebenslauf.json: $(RESUME_DE_JSON) | $(DIST_DIR)
+	cp "$<" "$@"
+
+$(DIST_DIR)/resume.json: $(RESUME_EN_JSON) | $(DIST_DIR)
+	cp "$<" "$@"
+
+summaries: $(SUMMARY_DIST)
+
+resumes: $(RESUME_DIST)
+
+summary-docx: $(OUT_DIR)/Torsten\ Uhlmann\ CV\ Summary.docx $(OUT_DIR)/Torsten\ Uhlmann\ CV\ Übersicht.docx
+
+lebenslauf: $(DIST_DIR)/Torsten\ Uhlmann\ Lebenslauf.pdf
+
+resume: $(DIST_DIR)/Torsten\ Uhlmann\ Resume.pdf
+
+lebenslauf-docx: $(DIST_DIR)/Torsten\ Uhlmann\ Lebenslauf.docx
+
+resume-docx: $(DIST_DIR)/Torsten\ Uhlmann\ Resume.docx
+
+lebenslauf-docx-styled: $(DIST_DIR)/Torsten\ Uhlmann\ Lebenslauf\ Styled.docx
+
+resume-docx-styled: $(DIST_DIR)/Torsten\ Uhlmann\ Resume\ Styled.docx
+
+docx: $(SUMMARY_DOCX) $(RESUME_DE_DOCX) $(RESUME_EN_DOCX)
 
 docx-styled: $(RESUME_DE_DOCX_STYLED) $(RESUME_EN_DOCX_STYLED)
 
 $(OUT_DIR):
 	mkdir -p "$(OUT_DIR)"
 
-$(BUILD_DIR):
-	mkdir -p "$(BUILD_DIR)"
-
 $(DIST_DIR):
 	mkdir -p "$(DIST_DIR)"
 
 clean:
 	rm -rf "$(OUT_DIR)"
-	rm -f "$(BUILD_DIR)"/*.tex "$(BUILD_DIR)"/*.pdf
-	rm -f "$(BUILD_DIR)"/*.aux "$(BUILD_DIR)"/*.log "$(BUILD_DIR)"/*.out "$(BUILD_DIR)"/*.toc "$(BUILD_DIR)"/*.bkm
+	rm -rf "build"
+
+clean-dist:
+	rm -rf "$(DIST_DIR)"
