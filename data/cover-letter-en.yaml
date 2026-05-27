@@ -1,0 +1,73 @@
+# English Cover Letter – Torsten Uhlmann
+
+meta:
+  language: en
+  document_type: cover_letter
+  pdf_title: "Torsten Uhlmann -- Cover Letter"
+  footer_label: "Online resume"
+  footer_url: "https://agynamix.de/resume"
+  footer_url_text: "agynamix.de/resume"
+
+basics:
+  name: "Torsten Uhlmann"
+  company: "AGYNAMIX"
+  title: "Senior Full Stack Software Engineer & AI Integration Consultant"
+  photo: "torsten_square.jpg"
+  address:
+    street: "Buchenweg 5"
+    city: "Thalheim"
+    postal_code: "09380"
+    country: "Germany"
+    full: "Buchenweg 5, 09380 Thalheim, Germany"
+  email: "tuhlmann@agynamix.de"
+  phone: "+49 151 12412427"
+  website:
+    url: "https://agynamix.de"
+    text: "agynamix.de"
+  profiles:
+    - network: "LinkedIn"
+      url: "https://www.linkedin.com/in/torstenuhlmann"
+      text: "linkedin.com/in/torstenuhlmann"
+    - network: "GitHub"
+      url: "https://github.com/tuhlmann"
+      text: "github.com/tuhlmann"
+
+application:
+  document_label: "Cover Letter"
+  role: "Senior Full Stack Software Engineer / AI Integration Consultant"
+  company: "Your company"
+  company_website: ""
+  engagement_type: "freelance/consulting"
+  location: "Remote or hybrid"
+  recipient_name: ""
+  recipient_title: ""
+  recipient_company: ""
+  recipient_address: ""
+  date: ""
+
+letter:
+  subject: "Application as Senior Full Stack Software Engineer / AI Integration Consultant"
+  greeting: "Dear Hiring Team,"
+  paragraphs:
+    - >
+      I would like to introduce myself as a senior full stack software engineer and
+      consultant with nearly 30 years of experience building robust, business-critical
+      software systems. Through AGYNAMIX I support companies where reliable engineering,
+      pragmatic architecture, and the ability to understand domain-specific workflows
+      matter more than fashionable technology for its own sake.
+    - >
+      My work spans backend systems, modern frontend applications, cloud and DevOps
+      integration, and increasingly applied AI for practical business workflows. Recent
+      projects include AI-assisted PDF invoice analysis in AGYNAMIX Invoicer, using
+      structured extraction, vision models for scanned documents, JSON schema outputs,
+      semantic checks, alternative candidates, and user-in-the-loop review.
+    - >
+      I am especially effective in situations where existing systems, business processes,
+      and new technical opportunities need to be brought together carefully. I can join
+      distributed teams hands-on, take technical ownership of focused areas, or support
+      architecture and implementation as an external consultant.
+    - >
+      I would be pleased to discuss how my experience in full stack development,
+      integration, automation, and applied AI can contribute to your current goals.
+  closing: "Kind regards,"
+  signature: "Torsten Uhlmann"

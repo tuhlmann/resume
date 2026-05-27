@@ -223,6 +223,16 @@ def logo_path(path: str) -> str:
     return path
 
 
+def deep_merge(base, override):
+    """Recursively merge an override YAML document into a base document."""
+    if isinstance(base, dict) and isinstance(override, dict):
+        merged = deepcopy(base)
+        for key, value in override.items():
+            merged[key] = deep_merge(merged.get(key), value)
+        return merged
+    return deepcopy(override)
+
+
 def build_env(template_dir: Path) -> jinja2.Environment:
     """Create a Jinja2 environment with TeX-friendly delimiters."""
     env = jinja2.Environment(
@@ -261,10 +271,19 @@ def preprocess_template(text: str) -> str:
     return text
 
 
-def render(data_path: Path, template_path: Path, output_path: Path) -> None:
+def render(
+    data_path: Path,
+    template_path: Path,
+    output_path: Path,
+    override_paths: list[Path] | None = None,
+) -> None:
     """Load data and template, render, and write output."""
     with open(data_path, encoding="utf-8") as f:
         data = yaml.safe_load(f)
+
+    for override_path in override_paths or []:
+        with open(override_path, encoding="utf-8") as f:
+            data = deep_merge(data, yaml.safe_load(f))
 
     lang = str(data.get("meta", {}).get("language", "en")).strip().lower() or "en"
 
@@ -299,12 +318,19 @@ def main() -> None:
     parser.add_argument("data", help="Path to YAML data file")
     parser.add_argument("template", help="Path to Jinja2 template")
     parser.add_argument("output", help="Path for rendered output file")
+    parser.add_argument(
+        "--override",
+        action="append",
+        default=[],
+        help="Optional YAML override file; can be passed multiple times",
+    )
     args = parser.parse_args()
 
     render(
         data_path=Path(args.data),
         template_path=Path(args.template),
         output_path=Path(args.output),
+        override_paths=[Path(path) for path in args.override],
     )
 
 

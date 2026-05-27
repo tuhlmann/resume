@@ -15,6 +15,7 @@ This repository currently exposes the following `make` targets.
 | `make json` | Exports both full resumes to JSON Resume format. | `target/lebenslauf.json`, `target/resume.json` |
 | `make summaries` | Builds and publishes the summary PDFs and DOCX files. | Summary PDFs and DOCX files in `dist/` |
 | `make resumes` | Builds and publishes the full resume PDFs, DOCX files, and JSON files. | Full resume artifacts in `dist/` |
+| `make cover-letters` | Builds and publishes generic German/English cover letters plus the Ines Scholz tailored German letter. | Cover-letter PDFs and styled DOCX files in `dist/` |
 | `make lebenslauf` | Renders and compiles the full German resume PDF. | `dist/Torsten Uhlmann Lebenslauf.pdf` |
 | `make resume` | Renders and compiles the full English resume PDF. | `dist/Torsten Uhlmann Resume.pdf` |
 | `make lebenslauf-docx` | Exports the German full resume as ATS-style DOCX. | `dist/Torsten Uhlmann Lebenslauf.docx` |
@@ -33,9 +34,13 @@ The current `Makefile` is wired to generate these summary assets:
 - German summary from `data/summary-de.yaml`
 - German full resume from `data/resume-de.yaml`
 - English full resume from `data/resume-en.yaml`
+- German cover letter from `data/cover-letter-de.yaml`
+- English cover letter from `data/cover-letter-en.yaml`
+- Ines Scholz tailored German cover letter from `data/cover-letter-de.yaml` plus `data/applications/ines-scholz-de.yaml`
 
 Summary PDFs use `templates/summary.tex.j2` and `scripts/render.py`.
 Full resume PDFs use `templates/resume.tex.j2`, `scripts/render.py`, and `scripts/render_svg.py`.
+Cover-letter PDFs use `templates/cover-letter.tex.j2` and `scripts/render.py`; application-specific letters can pass one or more YAML overrides.
 DOCX exports use `scripts/export_docx.py`.
 JSON exports use `scripts/export_json_resume.py`.
 
@@ -89,6 +94,12 @@ Build the styled DOCX variants:
 
 ```sh
 make docx-styled
+```
+
+Build the cover-letter set:
+
+```sh
+make cover-letters
 ```
 
 Remove generated summary output and LaTeX intermediates:

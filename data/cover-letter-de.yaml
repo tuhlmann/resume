@@ -1,0 +1,77 @@
+# Deutsches Anschreiben – Torsten Uhlmann
+
+meta:
+  language: de
+  document_type: cover_letter
+  pdf_title: "Torsten Uhlmann -- Anschreiben"
+  footer_label: "Online-Lebenslauf"
+  footer_url: "https://agynamix.de/de/resume"
+  footer_url_text: "agynamix.de/de/resume"
+  footer_date_label: "Stand"
+
+basics:
+  name: "Torsten Uhlmann"
+  company: "AGYNAMIX"
+  title: "Senior Full Stack Software Engineer & AI Integration Consultant"
+  photo: "torsten_square.jpg"
+  address:
+    street: "Buchenweg 5"
+    city: "Thalheim"
+    postal_code: "09380"
+    country: "Deutschland"
+    full: "Buchenweg 5, 09380 Thalheim, Deutschland"
+  email: "tuhlmann@agynamix.de"
+  phone: "+49 151 12412427"
+  website:
+    url: "https://agynamix.de"
+    text: "agynamix.de"
+  profiles:
+    - network: "LinkedIn"
+      url: "https://www.linkedin.com/in/torstenuhlmann"
+      text: "linkedin.com/in/torstenuhlmann"
+    - network: "GitHub"
+      url: "https://github.com/tuhlmann"
+      text: "github.com/tuhlmann"
+
+application:
+  document_label: "Anschreiben"
+  role: "Senior Full Stack Software Engineer / AI Integration Consultant"
+  company: "Ihr Unternehmen"
+  company_website: ""
+  engagement_type: "Freelance/Beratung"
+  location: "Remote oder hybrid"
+  recipient_name: ""
+  recipient_title: ""
+  recipient_company: ""
+  recipient_address: ""
+  date: ""
+
+letter:
+  subject: "Bewerbung als Senior Full Stack Software Engineer / AI Integration Consultant"
+  greeting: "Sehr geehrte Damen und Herren,"
+  paragraphs:
+    - >
+      ich möchte mich Ihnen als Senior Full Stack Software Engineer und Berater mit knapp
+      30 Jahren Erfahrung in der Entwicklung robuster, geschäftskritischer Softwarelösungen
+      vorstellen. Über AGYNAMIX unterstütze ich Unternehmen dort, wo verlässliche
+      Umsetzung, pragmatische Architektur und ein gutes Verständnis für fachliche Abläufe
+      wichtiger sind als Technologie um ihrer selbst willen.
+    - >
+      Meine Arbeit umfasst Backend-Systeme, moderne Frontend-Anwendungen, Cloud- und
+      DevOps-Integration sowie zunehmend angewandte KI für konkrete Geschäftsprozesse.
+      Aktuelle Projekte umfassen unter anderem KI-gestützte PDF-Rechnungsanalyse in
+      AGYNAMIX Invoicer mit strukturierter Extraktion, Vision-Modellen für gescannte
+      Dokumente, JSON-Schema-Ausgaben, semantischen Prüfungen, alternativen Kandidaten
+      und User-in-the-Loop-Review.
+    - >
+      Besonders wirksam bin ich in Situationen, in denen bestehende Systeme, fachliche
+      Prozesse und neue technische Möglichkeiten sauber zusammengeführt werden müssen.
+      Ich kann mich hands-on in verteilte Teams integrieren, technische Verantwortung für
+      klar umrissene Bereiche übernehmen oder Architektur und Umsetzung als externer
+      Berater begleiten.
+    - >
+      Gern erläutere ich Ihnen in einem persönlichen Gespräch, wie meine Erfahrung in
+      Full-Stack-Entwicklung, Integration, Automatisierung und angewandter KI zu Ihren
+      aktuellen Vorhaben beitragen kann.
+  closing: "Mit freundlichen Grüßen"
+  signature: "Torsten Uhlmann"

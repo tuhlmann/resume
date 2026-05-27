@@ -333,3 +333,4 @@ target/
 .venv/
 /build/
 /assets/.DS_Store
+/data/.DS_Store

@@ -1,4 +1,4 @@
-.PHONY: all build publish render-tex tex2pdf json clean clean-dist assets-pdf summaries resumes summary-docx lebenslauf resume lebenslauf-docx resume-docx lebenslauf-docx-styled resume-docx-styled docx docx-styled
+.PHONY: all build publish render-tex tex2pdf json clean clean-dist assets-pdf summaries resumes cover-letters summary-docx lebenslauf resume lebenslauf-docx resume-docx lebenslauf-docx-styled resume-docx-styled docx docx-styled
 
 PYTHON   := .venv/bin/python
 RENDER   := scripts/render.py
@@ -7,6 +7,7 @@ DOCX     := scripts/export_docx.py
 JSON     := scripts/export_json_resume.py
 SUMMARY_TEMPLATE := templates/summary.tex.j2
 RESUME_TEMPLATE  := templates/resume.tex.j2
+COVER_LETTER_TEMPLATE := templates/cover-letter.tex.j2
 
 DATA_DIR := data
 OUT_DIR  := target
@@ -56,8 +57,29 @@ RESUME_DIST := \
 	$(DIST_DIR)/lebenslauf.json \
 	$(DIST_DIR)/resume.json
 
-TARGET_ARTIFACTS := $(SUMMARY_PDF) $(SUMMARY_DOCX) $(RESUME_DE_PDF) $(RESUME_EN_PDF) $(RESUME_DE_DOCX) $(RESUME_EN_DOCX) $(RESUME_DE_DOCX_STYLED) $(RESUME_EN_DOCX_STYLED) $(RESUME_DE_JSON) $(RESUME_EN_JSON)
-DIST_ARTIFACTS := $(SUMMARY_DIST) $(RESUME_DIST)
+# Cover letter outputs
+COVER_LETTER_DE_TEX := $(OUT_DIR)/Torsten\ Uhlmann\ Anschreiben.tex
+COVER_LETTER_EN_TEX := $(OUT_DIR)/Torsten\ Uhlmann\ Cover\ Letter.tex
+COVER_LETTER_INES_SCHOLZ_DE_TEX := $(OUT_DIR)/Torsten\ Uhlmann\ Anschreiben\ Ines\ Scholz.tex
+
+COVER_LETTER_DE_PDF := $(OUT_DIR)/Torsten\ Uhlmann\ Anschreiben.pdf
+COVER_LETTER_EN_PDF := $(OUT_DIR)/Torsten\ Uhlmann\ Cover\ Letter.pdf
+COVER_LETTER_INES_SCHOLZ_DE_PDF := $(OUT_DIR)/Torsten\ Uhlmann\ Anschreiben\ Ines\ Scholz.pdf
+
+COVER_LETTER_DE_DOCX := $(OUT_DIR)/Torsten\ Uhlmann\ Anschreiben.docx
+COVER_LETTER_EN_DOCX := $(OUT_DIR)/Torsten\ Uhlmann\ Cover\ Letter.docx
+COVER_LETTER_INES_SCHOLZ_DE_DOCX := $(OUT_DIR)/Torsten\ Uhlmann\ Anschreiben\ Ines\ Scholz.docx
+
+COVER_LETTER_DIST := \
+	$(DIST_DIR)/Torsten\ Uhlmann\ Anschreiben.pdf \
+	$(DIST_DIR)/Torsten\ Uhlmann\ Cover\ Letter.pdf \
+	$(DIST_DIR)/Torsten\ Uhlmann\ Anschreiben\ Ines\ Scholz.pdf \
+	$(DIST_DIR)/Torsten\ Uhlmann\ Anschreiben.docx \
+	$(DIST_DIR)/Torsten\ Uhlmann\ Cover\ Letter.docx \
+	$(DIST_DIR)/Torsten\ Uhlmann\ Anschreiben\ Ines\ Scholz.docx
+
+TARGET_ARTIFACTS := $(SUMMARY_PDF) $(SUMMARY_DOCX) $(RESUME_DE_PDF) $(RESUME_EN_PDF) $(RESUME_DE_DOCX) $(RESUME_EN_DOCX) $(RESUME_DE_DOCX_STYLED) $(RESUME_EN_DOCX_STYLED) $(RESUME_DE_JSON) $(RESUME_EN_JSON) $(COVER_LETTER_DE_PDF) $(COVER_LETTER_EN_PDF) $(COVER_LETTER_INES_SCHOLZ_DE_PDF) $(COVER_LETTER_DE_DOCX) $(COVER_LETTER_EN_DOCX) $(COVER_LETTER_INES_SCHOLZ_DE_DOCX)
+DIST_ARTIFACTS := $(SUMMARY_DIST) $(RESUME_DIST) $(COVER_LETTER_DIST)
 
 all: publish
 
@@ -66,7 +88,7 @@ build: $(TARGET_ARTIFACTS)
 publish: $(DIST_ARTIFACTS)
 
 # ---- Render YAML → TeX ----
-render-tex: $(SUMMARY_TEX) $(RESUME_DE_TEX) $(RESUME_EN_TEX)
+render-tex: $(SUMMARY_TEX) $(RESUME_DE_TEX) $(RESUME_EN_TEX) $(COVER_LETTER_DE_TEX) $(COVER_LETTER_EN_TEX) $(COVER_LETTER_INES_SCHOLZ_DE_TEX)
 
 $(OUT_DIR)/Torsten\ Uhlmann\ CV\ Summary.tex: $(DATA_DIR)/summary-en.yaml $(SUMMARY_TEMPLATE) $(RENDER) | $(OUT_DIR)
 	$(PYTHON) $(RENDER) "$(DATA_DIR)/summary-en.yaml" "$(SUMMARY_TEMPLATE)" "$@"
@@ -80,8 +102,17 @@ $(RESUME_DE_TEX): $(DATA_DIR)/resume-de.yaml $(RESUME_TEMPLATE) $(RENDER) | $(BU
 $(RESUME_EN_TEX): $(DATA_DIR)/resume-en.yaml $(RESUME_TEMPLATE) $(RENDER) | $(BUILD_DIR)
 	$(PYTHON) $(RENDER) "$(DATA_DIR)/resume-en.yaml" "$(RESUME_TEMPLATE)" "$@"
 
+$(COVER_LETTER_DE_TEX): $(DATA_DIR)/cover-letter-de.yaml $(COVER_LETTER_TEMPLATE) $(RENDER) | $(OUT_DIR)
+	$(PYTHON) $(RENDER) "$(DATA_DIR)/cover-letter-de.yaml" "$(COVER_LETTER_TEMPLATE)" "$@"
+
+$(COVER_LETTER_EN_TEX): $(DATA_DIR)/cover-letter-en.yaml $(COVER_LETTER_TEMPLATE) $(RENDER) | $(OUT_DIR)
+	$(PYTHON) $(RENDER) "$(DATA_DIR)/cover-letter-en.yaml" "$(COVER_LETTER_TEMPLATE)" "$@"
+
+$(COVER_LETTER_INES_SCHOLZ_DE_TEX): $(DATA_DIR)/cover-letter-de.yaml $(DATA_DIR)/applications/ines-scholz-de.yaml $(COVER_LETTER_TEMPLATE) $(RENDER) | $(OUT_DIR)
+	$(PYTHON) $(RENDER) "$(DATA_DIR)/cover-letter-de.yaml" "$(COVER_LETTER_TEMPLATE)" "$@" --override "$(DATA_DIR)/applications/ines-scholz-de.yaml"
+
 # ---- TeX → PDF ----
-tex2pdf: $(SUMMARY_PDF) $(RESUME_DE_PDF) $(RESUME_EN_PDF)
+tex2pdf: $(SUMMARY_PDF) $(RESUME_DE_PDF) $(RESUME_EN_PDF) $(COVER_LETTER_DE_PDF) $(COVER_LETTER_EN_PDF) $(COVER_LETTER_INES_SCHOLZ_DE_PDF)
 
 assets-pdf:
 	$(PYTHON) $(SVG)
@@ -97,6 +128,15 @@ $(RESUME_DE_PDF): $(RESUME_DE_TEX) assets-pdf
 
 $(RESUME_EN_PDF): $(RESUME_EN_TEX) assets-pdf
 	(cd "$(OUT_DIR)" && pdflatex "Torsten Uhlmann Resume.tex" && pdflatex "Torsten Uhlmann Resume.tex")
+
+$(COVER_LETTER_DE_PDF): $(COVER_LETTER_DE_TEX)
+	(cd "$(OUT_DIR)" && pdflatex "Torsten Uhlmann Anschreiben.tex" && pdflatex "Torsten Uhlmann Anschreiben.tex")
+
+$(COVER_LETTER_EN_PDF): $(COVER_LETTER_EN_TEX)
+	(cd "$(OUT_DIR)" && pdflatex "Torsten Uhlmann Cover Letter.tex" && pdflatex "Torsten Uhlmann Cover Letter.tex")
+
+$(COVER_LETTER_INES_SCHOLZ_DE_PDF): $(COVER_LETTER_INES_SCHOLZ_DE_TEX)
+	(cd "$(OUT_DIR)" && pdflatex "Torsten Uhlmann Anschreiben Ines Scholz.tex" && pdflatex "Torsten Uhlmann Anschreiben Ines Scholz.tex")
 
 # ---- YAML → DOCX ----
 $(OUT_DIR)/Torsten\ Uhlmann\ CV\ Summary.docx: $(DATA_DIR)/summary-en.yaml $(DOCX) | $(OUT_DIR)
@@ -116,6 +156,15 @@ $(RESUME_DE_DOCX_STYLED): $(DATA_DIR)/resume-de.yaml $(DOCX) | $(OUT_DIR)
 
 $(RESUME_EN_DOCX_STYLED): $(DATA_DIR)/resume-en.yaml $(DOCX) | $(OUT_DIR)
 	$(PYTHON) $(DOCX) "$(DATA_DIR)/resume-en.yaml" "$@" --style styled
+
+$(COVER_LETTER_DE_DOCX): $(DATA_DIR)/cover-letter-de.yaml $(DOCX) | $(OUT_DIR)
+	$(PYTHON) $(DOCX) "$(DATA_DIR)/cover-letter-de.yaml" "$@" --style styled
+
+$(COVER_LETTER_EN_DOCX): $(DATA_DIR)/cover-letter-en.yaml $(DOCX) | $(OUT_DIR)
+	$(PYTHON) $(DOCX) "$(DATA_DIR)/cover-letter-en.yaml" "$@" --style styled
+
+$(COVER_LETTER_INES_SCHOLZ_DE_DOCX): $(DATA_DIR)/cover-letter-de.yaml $(DATA_DIR)/applications/ines-scholz-de.yaml $(DOCX) | $(OUT_DIR)
+	$(PYTHON) $(DOCX) "$(DATA_DIR)/cover-letter-de.yaml" "$@" --style styled --override "$(DATA_DIR)/applications/ines-scholz-de.yaml"
 
 # ---- YAML → JSON Resume ----
 json: $(RESUME_DE_JSON) $(RESUME_EN_JSON)
@@ -163,9 +212,29 @@ $(DIST_DIR)/lebenslauf.json: $(RESUME_DE_JSON) | $(DIST_DIR)
 $(DIST_DIR)/resume.json: $(RESUME_EN_JSON) | $(DIST_DIR)
 	cp "$<" "$@"
 
+$(DIST_DIR)/Torsten\ Uhlmann\ Anschreiben.pdf: $(COVER_LETTER_DE_PDF) | $(DIST_DIR)
+	cp "$<" "$@"
+
+$(DIST_DIR)/Torsten\ Uhlmann\ Cover\ Letter.pdf: $(COVER_LETTER_EN_PDF) | $(DIST_DIR)
+	cp "$<" "$@"
+
+$(DIST_DIR)/Torsten\ Uhlmann\ Anschreiben\ Ines\ Scholz.pdf: $(COVER_LETTER_INES_SCHOLZ_DE_PDF) | $(DIST_DIR)
+	cp "$<" "$@"
+
+$(DIST_DIR)/Torsten\ Uhlmann\ Anschreiben.docx: $(COVER_LETTER_DE_DOCX) | $(DIST_DIR)
+	cp "$<" "$@"
+
+$(DIST_DIR)/Torsten\ Uhlmann\ Cover\ Letter.docx: $(COVER_LETTER_EN_DOCX) | $(DIST_DIR)
+	cp "$<" "$@"
+
+$(DIST_DIR)/Torsten\ Uhlmann\ Anschreiben\ Ines\ Scholz.docx: $(COVER_LETTER_INES_SCHOLZ_DE_DOCX) | $(DIST_DIR)
+	cp "$<" "$@"
+
 summaries: $(SUMMARY_DIST)
 
 resumes: $(RESUME_DIST)
+
+cover-letters: $(COVER_LETTER_DIST)
 
 summary-docx: $(OUT_DIR)/Torsten\ Uhlmann\ CV\ Summary.docx $(OUT_DIR)/Torsten\ Uhlmann\ CV\ Übersicht.docx
 
@@ -181,9 +250,9 @@ lebenslauf-docx-styled: $(DIST_DIR)/Torsten\ Uhlmann\ Lebenslauf\ Styled.docx
 
 resume-docx-styled: $(DIST_DIR)/Torsten\ Uhlmann\ Resume\ Styled.docx
 
-docx: $(SUMMARY_DOCX) $(RESUME_DE_DOCX) $(RESUME_EN_DOCX)
+docx: $(SUMMARY_DOCX) $(RESUME_DE_DOCX) $(RESUME_EN_DOCX) $(COVER_LETTER_DE_DOCX) $(COVER_LETTER_EN_DOCX) $(COVER_LETTER_INES_SCHOLZ_DE_DOCX)
 
-docx-styled: $(RESUME_DE_DOCX_STYLED) $(RESUME_EN_DOCX_STYLED)
+docx-styled: $(RESUME_DE_DOCX_STYLED) $(RESUME_EN_DOCX_STYLED) $(COVER_LETTER_DE_DOCX) $(COVER_LETTER_EN_DOCX) $(COVER_LETTER_INES_SCHOLZ_DE_DOCX)
 
 $(OUT_DIR):
 	mkdir -p "$(OUT_DIR)"

@@ -1,0 +1,46 @@
+# Application override – Ines Scholz Steuerberatungsgesellschaft mbH
+
+meta:
+  pdf_title: "Torsten Uhlmann -- Anschreiben Ines Scholz"
+
+application:
+  role: "(Senior) Softwareentwickler (m/w/d)"
+  company: "Ines Scholz Steuerberatungsgesellschaft mbH"
+  company_website: "https://www.ines-scholz.de/"
+  engagement_type: "Festanstellung oder beratungsnaher Einstieg"
+  salary_range: "75.000 € - 95.000 € Jahresgehalt"
+
+letter:
+  subject: "Bewerbung als (Senior) Softwareentwickler (m/w/d)"
+  greeting: "Sehr geehrte Damen und Herren,"
+  paragraphs:
+    - >
+      die Position als (Senior) Softwareentwickler bei Ines Scholz spricht mich an, weil
+      Ihre Kanzlei Digitalisierung nicht als Schlagwort behandelt, sondern seit Jahren
+      konsequent in moderne Arbeitsweisen, digitale Mandantenlösungen und nachhaltige
+      Unternehmensprozesse investiert. Genau an dieser Schnittstelle aus fachlichem
+      Verständnis, belastbarer Software und sinnvoller Automatisierung arbeite ich seit
+      vielen Jahren besonders gern.
+    - >
+      Ich bringe knapp 30 Jahre Erfahrung in der Entwicklung robuster, geschäftskritischer
+      Softwarelösungen mit: von Backend-Systemen über moderne Frontends bis zu
+      Integrationen, Datenflüssen und produktionsnaher Automatisierung. Über AGYNAMIX
+      habe ich Unternehmen in unterschiedlichen Branchen begleitet, oft dort, wo
+      bestehende Prozesse technisch modernisiert werden mussten, ohne die fachliche
+      Verlässlichkeit aus dem Blick zu verlieren.
+    - >
+      Besonders relevant für Ihre Kanzlei ist mein aktueller Schwerpunkt auf angewandter
+      KI und dokumentenzentrierten Workflows. In AGYNAMIX Invoicer entwickle ich unter
+      anderem KI-gestützte PDF-Rechnungsanalyse mit strukturierter Extraktion,
+      Vision-Modellen für gescannte Dokumente, JSON-Schema-Ausgaben, semantischen
+      Prüfungen und User-in-the-Loop-Review. Das passt sehr gut zu einer Umgebung, in der
+      digitale Daten, DATEV-nahe Prozesse, Mandantenkommunikation und zuverlässige
+      Büroabläufe eine zentrale Rolle spielen.
+    - >
+      Ich sehe mich als Entwickler, der nicht nur Code liefert, sondern sich tief in das
+      Fachgebiet einarbeitet, mit Teams und Anwendern klar kommuniziert und technische
+      Entscheidungen an konkretem Nutzen ausrichtet. Gern würde ich mit Ihnen besprechen,
+      wie ich Ihre digitale Weiterentwicklung als Senior Softwareentwickler unterstützen
+      kann.
+  closing: "Mit freundlichen Grüßen"
+  signature: "Torsten Uhlmann"

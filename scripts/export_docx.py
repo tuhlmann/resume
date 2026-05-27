@@ -115,6 +115,39 @@ def is_resume_data(data: dict) -> bool:
     return False
 
 
+def is_cover_letter_data(data: dict) -> bool:
+    """Detect cover-letter YAML data."""
+    return data.get("meta", {}).get("document_type") == "cover_letter"
+
+
+def deep_merge(base, override):
+    """Recursively merge an override YAML document into a base document."""
+    if isinstance(base, dict) and isinstance(override, dict):
+        merged = dict(base)
+        for key, value in override.items():
+            merged[key] = deep_merge(merged.get(key), value)
+        return merged
+    return override
+
+
+def load_data(data_path: Path, override_paths: list[Path]) -> dict:
+    """Load a base YAML document and optional override documents."""
+    with data_path.open("r", encoding="utf-8") as fh:
+        data = yaml.safe_load(fh)
+
+    for override_path in override_paths:
+        with override_path.open("r", encoding="utf-8") as fh:
+            data = deep_merge(data, yaml.safe_load(fh))
+
+    if is_cover_letter_data(data):
+        lang = data.get("meta", {}).get("language", "en")
+        months = MONTH_NAMES_DE if lang == "de" else MONTH_NAMES_EN
+        now = datetime.now()
+        data.setdefault("meta", {}).setdefault("last_updated", f"{months[now.month]} {now.year}")
+
+    return data
+
+
 def resolve_asset(filename: str) -> Path | None:
     """Resolve an asset filename to a full path, return None if missing."""
     if not filename:
@@ -1002,6 +1035,145 @@ def add_footer(doc: Document, data: dict) -> None:
         run.font.color.rgb = LIGHT_GRAY
 
 
+def add_cover_letter_header(doc: Document, data: dict, styled: bool) -> None:
+    """Render a light summary-style letterhead for cover letters."""
+    basics = data["basics"]
+    address = basics.get("address", {})
+    address_text = address.get("full", "") if isinstance(address, dict) else str(address)
+    company = basics.get("company", "")
+    title = basics.get("title", "")
+    label = f"{company}\u00ae | {title}" if company else title
+    photo_path = resolve_asset(basics.get("photo", ""))
+
+    table = doc.add_table(rows=1, cols=2 if photo_path else 1)
+    table.alignment = WD_TABLE_ALIGNMENT.CENTER
+    remove_table_borders(table)
+    set_table_width_and_grid(table, [1600, 8264] if photo_path else [9864])
+
+    if photo_path:
+        photo_cell = table.cell(0, 0)
+        set_cell_vertical_alignment(photo_cell, "center")
+        set_cell_width(photo_cell, 1600)
+        photo_p = photo_cell.paragraphs[0]
+        photo_p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        photo_p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
+        photo_p.add_run().add_picture(str(photo_path), width=Cm(2.5))
+
+        text_cell = table.cell(0, 1)
+    else:
+        text_cell = table.cell(0, 0)
+
+    set_cell_vertical_alignment(text_cell, "center")
+
+    name_p = text_cell.paragraphs[0]
+    name_p.paragraph_format.space_after = Pt(1)
+    run = name_p.add_run(basics.get("name", ""))
+    run.bold = True
+    run.font.size = Pt(18)
+    run.font.color.rgb = DARK
+
+    title_p = text_cell.add_paragraph()
+    title_p.paragraph_format.space_before = Pt(0)
+    title_p.paragraph_format.space_after = Pt(2)
+    run = title_p.add_run(label)
+    run.font.size = Pt(11)
+    run.font.color.rgb = ACCENT if styled else DARK
+
+    contact_parts = [
+        address_text,
+        basics.get("email", ""),
+        basics.get("phone", ""),
+        basics.get("website", {}).get("text", ""),
+    ]
+    contact_p = text_cell.add_paragraph()
+    contact_p.paragraph_format.space_before = Pt(0)
+    contact_p.paragraph_format.space_after = Pt(1)
+    run = contact_p.add_run(" | ".join(part for part in contact_parts if part))
+    run.font.size = Pt(9)
+    run.font.color.rgb = MID_GRAY
+
+    profiles = basics.get("profiles", [])
+    if profiles:
+        profile_texts = [profile.get("text", profile.get("url", "")) for profile in profiles]
+        profile_p = text_cell.add_paragraph()
+        profile_p.paragraph_format.space_before = Pt(0)
+        profile_p.paragraph_format.space_after = Pt(0)
+        run = profile_p.add_run(" | ".join(text for text in profile_texts if text))
+        run.font.size = Pt(9)
+        run.font.color.rgb = MID_GRAY
+
+    add_accent_rule(doc)
+
+
+def add_cover_letter_body(doc: Document, data: dict, styled: bool) -> None:
+    """Render cover-letter recipient, subject, body, and signature."""
+    application = data.get("application", {})
+    letter = data.get("letter", {})
+    meta = data.get("meta", {})
+
+    recipient_lines = [
+        application.get("recipient_name", ""),
+        application.get("recipient_title", ""),
+        application.get("recipient_company", ""),
+        application.get("recipient_address", ""),
+    ]
+    recipient_text = "\n".join(line for line in recipient_lines if line).strip()
+    if recipient_text:
+        p = doc.add_paragraph()
+        p.paragraph_format.space_before = Pt(4)
+        p.paragraph_format.space_after = Pt(8)
+        for index, line in enumerate(recipient_text.splitlines()):
+            if index:
+                p.add_run().add_break()
+            p.add_run(clean_text(line))
+
+    date_text = application.get("date") or meta.get("last_updated", "")
+    if date_text:
+        p = doc.add_paragraph()
+        p.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+        p.paragraph_format.space_after = Pt(10)
+        run = p.add_run(clean_text(date_text))
+        run.font.size = Pt(9)
+        run.font.color.rgb = MID_GRAY
+
+    subject = letter.get("subject", "")
+    if subject:
+        p = doc.add_paragraph()
+        p.paragraph_format.space_after = Pt(8)
+        run = p.add_run(clean_text(subject))
+        run.bold = True
+        run.font.size = Pt(13)
+        run.font.color.rgb = ACCENT if styled else DARK
+
+    greeting = letter.get("greeting", "")
+    if greeting:
+        doc.add_paragraph(clean_text(greeting))
+
+    for paragraph in letter.get("paragraphs", []):
+        p = doc.add_paragraph(clean_text(paragraph))
+        p.paragraph_format.space_after = Pt(7)
+
+    closing = letter.get("closing", "")
+    signature = letter.get("signature", "")
+    if closing or signature:
+        p = doc.add_paragraph()
+        p.paragraph_format.space_before = Pt(8)
+        if closing:
+            p.add_run(clean_text(closing))
+        if signature:
+            p.add_run().add_break()
+            p.add_run().add_break()
+            p.add_run(clean_text(signature))
+
+    footer_url = meta.get("footer_url_text", "")
+    if footer_url:
+        p = doc.add_paragraph()
+        p.paragraph_format.space_before = Pt(12)
+        run = p.add_run(f"{meta.get('footer_label', 'Resume')}: {footer_url}")
+        run.font.size = Pt(8)
+        run.font.color.rgb = LIGHT_GRAY
+
+
 # ──────────────────────────────────────────────
 # SECTION RENDERERS — SUMMARY
 # ──────────────────────────────────────────────
@@ -1036,6 +1208,7 @@ def add_header_summary(doc: Document, data: dict, styled: bool) -> None:
         table = doc.add_table(rows=1, cols=2 if photo_path else 1)
         table.alignment = WD_TABLE_ALIGNMENT.CENTER
         remove_table_borders(table)
+        set_table_width_and_grid(table, [1600, 8264] if photo_path else [9864])
 
         if photo_path:
             # Left cell: photo
@@ -1277,6 +1450,22 @@ def build_summary_docx(data: dict, styled: bool) -> Document:
     return doc
 
 
+def build_cover_letter_docx(data: dict, styled: bool) -> Document:
+    """Build a DOCX document from cover-letter YAML data."""
+    doc = Document()
+
+    for section in doc.sections:
+        section.top_margin = Cm(1.2)
+        section.bottom_margin = Cm(1.2)
+        section.left_margin = Cm(1.8)
+        section.right_margin = Cm(1.8)
+
+    setup_styles(doc, styled)
+    add_cover_letter_header(doc, data, styled)
+    add_cover_letter_body(doc, data, styled)
+    return doc
+
+
 # ──────────────────────────────────────────────
 # MAIN
 # ──────────────────────────────────────────────
@@ -1284,6 +1473,12 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("data_file", help="Path to resume YAML data file")
     parser.add_argument("output_file", help="Path for DOCX output")
+    parser.add_argument(
+        "--override",
+        action="append",
+        default=[],
+        help="Optional YAML override file; can be passed multiple times",
+    )
     parser.add_argument(
         "--style",
         choices=["ats", "styled"],
@@ -1299,12 +1494,14 @@ def main() -> None:
         print(f"Error: {data_path} not found", file=sys.stderr)
         sys.exit(1)
 
-    with data_path.open("r", encoding="utf-8") as fh:
-        data = yaml.safe_load(fh)
+    override_paths = [Path(path) for path in args.override]
+    data = load_data(data_path, override_paths)
 
     styled = args.style == "styled"
 
-    if is_resume_data(data):
+    if is_cover_letter_data(data):
+        doc = build_cover_letter_docx(data, styled)
+    elif is_resume_data(data):
         doc = build_resume_docx(data, styled)
     else:
         doc = build_summary_docx(data, styled)
