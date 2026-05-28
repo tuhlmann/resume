@@ -1,0 +1,63 @@
+# Bewerbungs-Override - Haufe Group / Lexware
+
+meta:
+  pdf_title: "Torsten Uhlmann -- Anschreiben Haufe Group"
+
+application:
+  role: "Senior Full Stack Entwickler:in Java, React, Spring Boot (d/m/w) - Remote"
+  company: "Haufe Group / Lexware"
+  company_website: "https://jobs.haufegroup.com/stelle/senior-full-stack-entwicklerin-java/c2b78bbe-d9a5-45f4-98bd-265675a4f9e6"
+  engagement_type: "Festanstellung"
+
+letter:
+  subject: "Bewerbung als Senior Full Stack Entwickler Java, React, Spring Boot (d/m/w)"
+  greeting: "Sehr geehrte Damen und Herren,"
+  paragraphs:
+    - >
+      die ausgeschriebene Position als Senior Full Stack Entwickler bei Lexware spricht
+      mich an, weil sie genau die Verbindung aus belastbarer Backend-Entwicklung,
+      moderner Frontend-Arbeit, Datenbankdesign und produktnaher Verantwortung fordert,
+      in der ich seit vielen Jahren arbeite. Besonders interessant finde ich, dass Ihr
+      Team Software baut, die kleinen Unternehmen und Arbeitgebern im Alltag konkret den
+      Rücken freihält: Buchhaltung, Steuern, Finanzen, Lohn und Gehalt sind fachlich
+      anspruchsvoll, aber gerade deshalb ein sehr sinnvoller Ort für gute Software.
+    - >
+      Ich bringe knapp 30 Jahre praktische Erfahrung in der Entwicklung
+      geschäftskritischer Anwendungen mit, darunter langjährige Arbeit mit JVM-basierten
+      Sprachen und Frameworks. In meinem Lebenslauf finden Sie dazu unter anderem Scala-
+      und Lift-Projekte für Scaled Agile, Ascendant, iCombine und Sgrouples sowie frühere
+      Java- und J2EE-Systeme bei T-Systems. Auch Spring, PostgreSQL, MongoDB, Oracle und
+      MySQL gehören zu meinem technischen Hintergrund; als eigenes Produkt AGYNAMIX
+      Net-Herald habe ich bereits eine Java-/Spring-/PostgreSQL-basierte Serveranwendung
+      bis zur Marktreife geführt.
+    - >
+      Die Frontend-Seite ist für mich ebenso vertraut. Bei iCombine habe ich als Senior
+      Fullstack-Entwickler eine Plattform von AngularJS zu React migriert und dabei eine
+      schrittweise Koexistenz beider Komponentenwelten ermöglicht. In weiteren Projekten
+      habe ich mit TypeScript, Angular, VueJS und klassischen Web-Stacks gearbeitet. Das
+      passt gut zu einer Rolle, in der Java, Spring Boot, React, RESTful APIs,
+      Datenbankdesign und cloudbasierte Anwendungen nicht getrennte Disziplinen sind,
+      sondern gemeinsam zu einem tragfähigen Produkt führen müssen.
+    - >
+      Ein weiterer Grund, warum ich mich bei Ihnen als guter Fit sehe, ist meine
+      freiberufliche Laufbahn seit 2004. In dieser Zeit musste ich nicht nur Aufgaben
+      umsetzen, sondern Arbeit planen, Erwartungen klären, fachliche Unsicherheit
+      reduzieren und Verantwortung für Ergebnisse übernehmen. Ich bin es gewohnt,
+      Probleme früh anzusprechen und pragmatisch zu lösen, statt sie aufzuschieben. Diese
+      Haltung passt sehr gut zu Ihrer Beschreibung einer selbstständigen, konstruktiven
+      und direkten Arbeitsweise im agilen, crossfunktionalen Team.
+    - >
+      Besonders nah an Ihrer Domäne ist mein eigenes Produkt AGYNAMIX Invoicer
+      (https://invoicer.agynamix.de): eine plattformübergreifende Rechnungsanwendung für
+      Freiberufler und kleine Unternehmen im DACH-Markt mit GoBD-Fokus,
+      E-Rechnungsunterstützung, lokaler Datenspeicherung und KI-gestützter Analyse
+      eingehender Rechnungen. Dieses Projekt zeigt nicht nur technisches Handwerk über
+      Plattform-, Daten- und UI-Grenzen hinweg, sondern auch mein Interesse an
+      Finanzprozessen, rechtlichen Rahmenbedingungen und nutzerfreundlichen Werkzeugen
+      für kleine Unternehmen.
+    - >
+      Gern würde ich mit Ihnen besprechen, wie ich meine Erfahrung in JVM-Backends,
+      React, Datenbanken, cloudnaher Produktentwicklung und verantwortlicher Umsetzung in
+      Ihr Lexware-Office-Team einbringen kann.
+  closing: "Mit freundlichen Grüßen"
+  signature: "Torsten Uhlmann"

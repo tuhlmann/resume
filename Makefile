@@ -61,24 +61,29 @@ RESUME_DIST := \
 COVER_LETTER_DE_TEX := $(OUT_DIR)/Torsten\ Uhlmann\ Anschreiben.tex
 COVER_LETTER_EN_TEX := $(OUT_DIR)/Torsten\ Uhlmann\ Cover\ Letter.tex
 COVER_LETTER_INES_SCHOLZ_DE_TEX := $(OUT_DIR)/Torsten\ Uhlmann\ Anschreiben\ Ines\ Scholz.tex
+COVER_LETTER_HAUFE_GROUP_DE_TEX := $(OUT_DIR)/Torsten\ Uhlmann\ Anschreiben\ Haufe\ Group.tex
 
 COVER_LETTER_DE_PDF := $(OUT_DIR)/Torsten\ Uhlmann\ Anschreiben.pdf
 COVER_LETTER_EN_PDF := $(OUT_DIR)/Torsten\ Uhlmann\ Cover\ Letter.pdf
 COVER_LETTER_INES_SCHOLZ_DE_PDF := $(OUT_DIR)/Torsten\ Uhlmann\ Anschreiben\ Ines\ Scholz.pdf
+COVER_LETTER_HAUFE_GROUP_DE_PDF := $(OUT_DIR)/Torsten\ Uhlmann\ Anschreiben\ Haufe\ Group.pdf
 
 COVER_LETTER_DE_DOCX := $(OUT_DIR)/Torsten\ Uhlmann\ Anschreiben.docx
 COVER_LETTER_EN_DOCX := $(OUT_DIR)/Torsten\ Uhlmann\ Cover\ Letter.docx
 COVER_LETTER_INES_SCHOLZ_DE_DOCX := $(OUT_DIR)/Torsten\ Uhlmann\ Anschreiben\ Ines\ Scholz.docx
+COVER_LETTER_HAUFE_GROUP_DE_DOCX := $(OUT_DIR)/Torsten\ Uhlmann\ Anschreiben\ Haufe\ Group.docx
 
 COVER_LETTER_DIST := \
 	$(DIST_DIR)/Torsten\ Uhlmann\ Anschreiben.pdf \
 	$(DIST_DIR)/Torsten\ Uhlmann\ Cover\ Letter.pdf \
 	$(DIST_DIR)/Torsten\ Uhlmann\ Anschreiben\ Ines\ Scholz.pdf \
+	$(DIST_DIR)/Torsten\ Uhlmann\ Anschreiben\ Haufe\ Group.pdf \
 	$(DIST_DIR)/Torsten\ Uhlmann\ Anschreiben.docx \
 	$(DIST_DIR)/Torsten\ Uhlmann\ Cover\ Letter.docx \
-	$(DIST_DIR)/Torsten\ Uhlmann\ Anschreiben\ Ines\ Scholz.docx
+	$(DIST_DIR)/Torsten\ Uhlmann\ Anschreiben\ Ines\ Scholz.docx \
+	$(DIST_DIR)/Torsten\ Uhlmann\ Anschreiben\ Haufe\ Group.docx
 
-TARGET_ARTIFACTS := $(SUMMARY_PDF) $(SUMMARY_DOCX) $(RESUME_DE_PDF) $(RESUME_EN_PDF) $(RESUME_DE_DOCX) $(RESUME_EN_DOCX) $(RESUME_DE_DOCX_STYLED) $(RESUME_EN_DOCX_STYLED) $(RESUME_DE_JSON) $(RESUME_EN_JSON) $(COVER_LETTER_DE_PDF) $(COVER_LETTER_EN_PDF) $(COVER_LETTER_INES_SCHOLZ_DE_PDF) $(COVER_LETTER_DE_DOCX) $(COVER_LETTER_EN_DOCX) $(COVER_LETTER_INES_SCHOLZ_DE_DOCX)
+TARGET_ARTIFACTS := $(SUMMARY_PDF) $(SUMMARY_DOCX) $(RESUME_DE_PDF) $(RESUME_EN_PDF) $(RESUME_DE_DOCX) $(RESUME_EN_DOCX) $(RESUME_DE_DOCX_STYLED) $(RESUME_EN_DOCX_STYLED) $(RESUME_DE_JSON) $(RESUME_EN_JSON) $(COVER_LETTER_DE_PDF) $(COVER_LETTER_EN_PDF) $(COVER_LETTER_INES_SCHOLZ_DE_PDF) $(COVER_LETTER_HAUFE_GROUP_DE_PDF) $(COVER_LETTER_DE_DOCX) $(COVER_LETTER_EN_DOCX) $(COVER_LETTER_INES_SCHOLZ_DE_DOCX) $(COVER_LETTER_HAUFE_GROUP_DE_DOCX)
 DIST_ARTIFACTS := $(SUMMARY_DIST) $(RESUME_DIST) $(COVER_LETTER_DIST)
 
 all: publish
@@ -88,7 +93,7 @@ build: $(TARGET_ARTIFACTS)
 publish: $(DIST_ARTIFACTS)
 
 # ---- Render YAML → TeX ----
-render-tex: $(SUMMARY_TEX) $(RESUME_DE_TEX) $(RESUME_EN_TEX) $(COVER_LETTER_DE_TEX) $(COVER_LETTER_EN_TEX) $(COVER_LETTER_INES_SCHOLZ_DE_TEX)
+render-tex: $(SUMMARY_TEX) $(RESUME_DE_TEX) $(RESUME_EN_TEX) $(COVER_LETTER_DE_TEX) $(COVER_LETTER_EN_TEX) $(COVER_LETTER_INES_SCHOLZ_DE_TEX) $(COVER_LETTER_HAUFE_GROUP_DE_TEX)
 
 $(OUT_DIR)/Torsten\ Uhlmann\ CV\ Summary.tex: $(DATA_DIR)/summary-en.yaml $(SUMMARY_TEMPLATE) $(RENDER) | $(OUT_DIR)
 	$(PYTHON) $(RENDER) "$(DATA_DIR)/summary-en.yaml" "$(SUMMARY_TEMPLATE)" "$@"
@@ -111,8 +116,11 @@ $(COVER_LETTER_EN_TEX): $(DATA_DIR)/cover-letter-en.yaml $(COVER_LETTER_TEMPLATE
 $(COVER_LETTER_INES_SCHOLZ_DE_TEX): $(DATA_DIR)/cover-letter-de.yaml $(DATA_DIR)/applications/ines-scholz-de.yaml $(COVER_LETTER_TEMPLATE) $(RENDER) | $(OUT_DIR)
 	$(PYTHON) $(RENDER) "$(DATA_DIR)/cover-letter-de.yaml" "$(COVER_LETTER_TEMPLATE)" "$@" --override "$(DATA_DIR)/applications/ines-scholz-de.yaml"
 
+$(COVER_LETTER_HAUFE_GROUP_DE_TEX): $(DATA_DIR)/cover-letter-de.yaml $(DATA_DIR)/applications/haufe-group-de.yaml $(COVER_LETTER_TEMPLATE) $(RENDER) | $(OUT_DIR)
+	$(PYTHON) $(RENDER) "$(DATA_DIR)/cover-letter-de.yaml" "$(COVER_LETTER_TEMPLATE)" "$@" --override "$(DATA_DIR)/applications/haufe-group-de.yaml"
+
 # ---- TeX → PDF ----
-tex2pdf: $(SUMMARY_PDF) $(RESUME_DE_PDF) $(RESUME_EN_PDF) $(COVER_LETTER_DE_PDF) $(COVER_LETTER_EN_PDF) $(COVER_LETTER_INES_SCHOLZ_DE_PDF)
+tex2pdf: $(SUMMARY_PDF) $(RESUME_DE_PDF) $(RESUME_EN_PDF) $(COVER_LETTER_DE_PDF) $(COVER_LETTER_EN_PDF) $(COVER_LETTER_INES_SCHOLZ_DE_PDF) $(COVER_LETTER_HAUFE_GROUP_DE_PDF)
 
 assets-pdf:
 	$(PYTHON) $(SVG)
@@ -137,6 +145,9 @@ $(COVER_LETTER_EN_PDF): $(COVER_LETTER_EN_TEX)
 
 $(COVER_LETTER_INES_SCHOLZ_DE_PDF): $(COVER_LETTER_INES_SCHOLZ_DE_TEX)
 	(cd "$(OUT_DIR)" && pdflatex "Torsten Uhlmann Anschreiben Ines Scholz.tex" && pdflatex "Torsten Uhlmann Anschreiben Ines Scholz.tex")
+
+$(COVER_LETTER_HAUFE_GROUP_DE_PDF): $(COVER_LETTER_HAUFE_GROUP_DE_TEX)
+	(cd "$(OUT_DIR)" && pdflatex "Torsten Uhlmann Anschreiben Haufe Group.tex" && pdflatex "Torsten Uhlmann Anschreiben Haufe Group.tex")
 
 # ---- YAML → DOCX ----
 $(OUT_DIR)/Torsten\ Uhlmann\ CV\ Summary.docx: $(DATA_DIR)/summary-en.yaml $(DOCX) | $(OUT_DIR)
@@ -165,6 +176,9 @@ $(COVER_LETTER_EN_DOCX): $(DATA_DIR)/cover-letter-en.yaml $(DOCX) | $(OUT_DIR)
 
 $(COVER_LETTER_INES_SCHOLZ_DE_DOCX): $(DATA_DIR)/cover-letter-de.yaml $(DATA_DIR)/applications/ines-scholz-de.yaml $(DOCX) | $(OUT_DIR)
 	$(PYTHON) $(DOCX) "$(DATA_DIR)/cover-letter-de.yaml" "$@" --style styled --override "$(DATA_DIR)/applications/ines-scholz-de.yaml"
+
+$(COVER_LETTER_HAUFE_GROUP_DE_DOCX): $(DATA_DIR)/cover-letter-de.yaml $(DATA_DIR)/applications/haufe-group-de.yaml $(DOCX) | $(OUT_DIR)
+	$(PYTHON) $(DOCX) "$(DATA_DIR)/cover-letter-de.yaml" "$@" --style styled --override "$(DATA_DIR)/applications/haufe-group-de.yaml"
 
 # ---- YAML → JSON Resume ----
 json: $(RESUME_DE_JSON) $(RESUME_EN_JSON)
@@ -221,6 +235,9 @@ $(DIST_DIR)/Torsten\ Uhlmann\ Cover\ Letter.pdf: $(COVER_LETTER_EN_PDF) | $(DIST
 $(DIST_DIR)/Torsten\ Uhlmann\ Anschreiben\ Ines\ Scholz.pdf: $(COVER_LETTER_INES_SCHOLZ_DE_PDF) | $(DIST_DIR)
 	cp "$<" "$@"
 
+$(DIST_DIR)/Torsten\ Uhlmann\ Anschreiben\ Haufe\ Group.pdf: $(COVER_LETTER_HAUFE_GROUP_DE_PDF) | $(DIST_DIR)
+	cp "$<" "$@"
+
 $(DIST_DIR)/Torsten\ Uhlmann\ Anschreiben.docx: $(COVER_LETTER_DE_DOCX) | $(DIST_DIR)
 	cp "$<" "$@"
 
@@ -228,6 +245,9 @@ $(DIST_DIR)/Torsten\ Uhlmann\ Cover\ Letter.docx: $(COVER_LETTER_EN_DOCX) | $(DI
 	cp "$<" "$@"
 
 $(DIST_DIR)/Torsten\ Uhlmann\ Anschreiben\ Ines\ Scholz.docx: $(COVER_LETTER_INES_SCHOLZ_DE_DOCX) | $(DIST_DIR)
+	cp "$<" "$@"
+
+$(DIST_DIR)/Torsten\ Uhlmann\ Anschreiben\ Haufe\ Group.docx: $(COVER_LETTER_HAUFE_GROUP_DE_DOCX) | $(DIST_DIR)
 	cp "$<" "$@"
 
 summaries: $(SUMMARY_DIST)
@@ -250,9 +270,9 @@ lebenslauf-docx-styled: $(DIST_DIR)/Torsten\ Uhlmann\ Lebenslauf\ Styled.docx
 
 resume-docx-styled: $(DIST_DIR)/Torsten\ Uhlmann\ Resume\ Styled.docx
 
-docx: $(SUMMARY_DOCX) $(RESUME_DE_DOCX) $(RESUME_EN_DOCX) $(COVER_LETTER_DE_DOCX) $(COVER_LETTER_EN_DOCX) $(COVER_LETTER_INES_SCHOLZ_DE_DOCX)
+docx: $(SUMMARY_DOCX) $(RESUME_DE_DOCX) $(RESUME_EN_DOCX) $(COVER_LETTER_DE_DOCX) $(COVER_LETTER_EN_DOCX) $(COVER_LETTER_INES_SCHOLZ_DE_DOCX) $(COVER_LETTER_HAUFE_GROUP_DE_DOCX)
 
-docx-styled: $(RESUME_DE_DOCX_STYLED) $(RESUME_EN_DOCX_STYLED) $(COVER_LETTER_DE_DOCX) $(COVER_LETTER_EN_DOCX) $(COVER_LETTER_INES_SCHOLZ_DE_DOCX)
+docx-styled: $(RESUME_DE_DOCX_STYLED) $(RESUME_EN_DOCX_STYLED) $(COVER_LETTER_DE_DOCX) $(COVER_LETTER_EN_DOCX) $(COVER_LETTER_INES_SCHOLZ_DE_DOCX) $(COVER_LETTER_HAUFE_GROUP_DE_DOCX)
 
 $(OUT_DIR):
 	mkdir -p "$(OUT_DIR)"
