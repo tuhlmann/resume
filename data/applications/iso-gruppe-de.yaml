@@ -1,0 +1,65 @@
+# Bewerbungs-Override - ISO-Gruppe
+
+meta:
+  pdf_title: "Torsten Uhlmann -- Anschreiben ISO-Gruppe"
+
+application:
+  role: "Senior Full Stack Software Engineer / AI Integration Consultant"
+  company: "ISO-Gruppe"
+  company_website: "https://www.iso-gruppe.com/de"
+  engagement_type: "Festanstellung oder beratungsnaher Einstieg"
+
+letter:
+  subject: "Initiativbewerbung als Senior Full Stack Software Engineer"
+  greeting: "Sehr geehrte Damen und Herren,"
+  paragraphs:
+    - >
+      Katrin Stein, Senior Sales Managerin in Ihrem Unternehmen, hat mich ermutigt,
+      mich bei der ISO-Gruppe zu bewerben. Ich hatte das Glück, Katrin vor einigen
+      Jahren im Rahmen meiner Beratungstätigkeit für die Reutax AG kennenzulernen.
+      Diese persönliche Verbindung ist für mich ein guter Anlass, Ihnen mein Profil als
+      Senior Full Stack Software Engineer mit knapp 30 Jahren praktischer Erfahrung
+      vorzustellen.
+    - >
+      Ich sehe mich als guten Fit für die ISO-Gruppe, weil ich über viele Jahre genau an
+      der Schnittstelle gearbeitet habe, an der robuste Backend-Systeme, moderne
+      Frontends, Datenbanken und fachlich anspruchsvolle Geschäftsprozesse zusammenkommen.
+      Im Lebenslauf finden Sie dazu unter anderem langjährige JVM-Erfahrung mit Java,
+      Scala, Lift und Spring: von frühen J2EE- und Oracle-Systemen bei T-Systems über
+      Scala-/Lift-Plattformen bei Sgrouples, Ascendant, Scaled Agile und iCombine bis zu
+      meinem eigenen Produkt AGYNAMIX Net-Herald, einer Java-/Spring-/PostgreSQL-basierten
+      Serveranwendung.
+    - >
+      Auch die Frontend- und Datenbankseite ist ein durchgängiger Teil meiner Arbeit.
+      Bei iCombine habe ich als Senior Fullstack-Entwickler eine Plattform von AngularJS
+      zu React migriert und eine schrittweise Koexistenz beider Komponentenwelten
+      ermöglicht. Bei Scaled Agile arbeitete ich über mehrere Jahre an einer
+      Scala-/Lift-/PostgreSQL-Plattform mit Angular- und TypeScript-Frontend, während
+      Ascendant eine mandantenfähige SaaS-Suite mit Scala, Lift, AngularJS und MongoDB
+      umfasste. PostgreSQL, MongoDB, Oracle, MySQL und SQLite gehören ebenso zu meinem
+      praktischen Hintergrund wie React, Angular, VueJS und TypeScript.
+    - >
+      Meine freiberufliche Laufbahn seit 2004 hat mich außerdem geprägt: Ich bin es
+      gewohnt, Arbeit realistisch zu planen, Erwartungen früh zu klären und Verantwortung
+      für Ergebnisse zu übernehmen. Viele meiner Projekte liefen in verteilten Teams,
+      mit hoher fachlicher Unsicherheit und produktionsnaher Verantwortung. Im Lebenslauf
+      wird diese Arbeitsweise unter anderem durch die selbständige Umsetzung
+      unternehmenskritischer Features bei Sgrouples, die langjährige Mitarbeit in
+      internationalen Remote-Teams bei Scaled Agile und Ascendant sowie meine frühere
+      Teilprojektleitung bei T-Systems sichtbar. Probleme spreche ich lieber früh an und
+      löse sie pragmatisch, statt sie aufzuschieben.
+    - >
+      Gleichzeitig bleibe ich neugierig auf neue Technologien. Neben Java, Scala und
+      TypeScript habe ich begonnen, Rust praktisch einzusetzen, zum Beispiel in Symnix,
+      einer Cloud-Provisionierungsplattform mit Rust-/PostgreSQL-Backend, React-Frontend
+      und Docker-Deployment. Aktuell nutze ich Agentic Engineering auch für mein eigenes
+      Produkt AGYNAMIX Invoicer (https://invoicer.agynamix.de), eine
+      plattformübergreifende Rechnungsanwendung für Freiberufler und kleine Unternehmen
+      mit lokaler Datenspeicherung, GoBD-Fokus, E-Rechnungsunterstützung und KI-gestützter
+      Analyse eingehender Rechnungen.
+    - >
+      Gern würde ich mit Ihnen besprechen, wo meine Erfahrung in JVM-basierten
+      Backend-Systemen, React und modernen Frontends, Datenbanken, verantwortlicher
+      Umsetzung und angewandter KI für die ISO-Gruppe besonders wirksam werden kann.
+  closing: "Mit freundlichen Grüßen"
+  signature: "Torsten Uhlmann"
