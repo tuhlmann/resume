@@ -1,0 +1,91 @@
+# Bewerbungs-Override - P&T Software
+
+meta:
+  pdf_title: "Torsten Uhlmann -- Anschreiben P&T Software"
+
+application:
+  role: "Full Stack Developer"
+  company: "P&T Software"
+  company_website: "https://pt.software/bewerben/fullstack"
+  engagement_type: "Festanstellung"
+
+evidence:
+  - claim: "End-to-End-Fullstack-Erfahrung in kommerziellen, agilen Webprojekten mit Frontend, Backend, Architektur und Delivery-Verantwortung"
+    resume_refs:
+      - "data/resume-de.yaml:45-58"
+      - "data/resume-de.yaml:110-128"
+      - "data/resume-de.yaml:233-311"
+      - "data/resume-de.yaml:207-209"
+  - claim: "Relevante Technologien aus dem P&T-Umfeld: Java, JavaScript, TypeScript, Vue, Spring, SQL, NoSQL, AWS und Docker"
+    resume_refs:
+      - "data/resume-de.yaml:149-201"
+      - "data/resume-de.yaml:236-254"
+      - "data/resume-de.yaml:259-311"
+      - "data/resume-de.yaml:728-738"
+  - claim: "Freiberufliche Selbstdisziplin, verlässliche Commitments, klare Kommunikation und verantwortliche Arbeitsweise"
+    resume_refs:
+      - "data/resume-de.yaml:76-85"
+      - "data/resume-de.yaml:110-115"
+      - "data/resume-de.yaml:428-443"
+      - "data/resume-de.yaml:283-320"
+  - claim: "Neugier auf neue Technologien mit Rust und Agentic Engineering im eigenen Produkt AGYNAMIX Invoicer"
+    resume_refs:
+      - "data/resume-de.yaml:48-57"
+      - "data/resume-de.yaml:136-154"
+      - "data/resume-de.yaml:601-627"
+      - "data/resume-de.yaml:639-655"
+
+letter:
+  subject: "Bewerbung als Full Stack Developer"
+  greeting: "Sehr geehrte Damen und Herren,"
+  paragraphs:
+    - >
+      die Position als Full Stack Developer bei P&T Software spricht mich an, weil sie
+      genau die Art von Arbeit beschreibt, die mich seit vielen Jahren motiviert:
+      hochwertige Webanwendungen für anspruchsvolle Kunden, Verantwortung über den
+      gesamten Projektverlauf hinweg und ein professionelles Team, das Wert auf Qualität,
+      elegante Lösungen und saubere Kommunikation legt. Besonders angesprochen hat mich,
+      dass Sie Ihre Kunden nicht nur in der Umsetzung, sondern auch in Marktanalyse,
+      Prozess-Design, Technologieauswahl, Prototyping, agiler Entwicklung und Skalierung
+      begleiten.
+    - >
+      Ich bringe knapp 30 Jahre praktische Erfahrung in kommerziellen Softwareprojekten
+      mit und habe in dieser Zeit immer wieder an der Schnittstelle von Backend,
+      Frontend und Architektur gearbeitet. Im Lebenslauf finden Sie dafür unter anderem
+      aktuelle VueJS-3- und TypeScript-Arbeit bei TXODDS, die Migration einer Plattform
+      von AngularJS zu React bei iCombine sowie meine mehrjährige Tätigkeit für Scaled
+      Agile mit Scala-/Lift-Backend, PostgreSQL, AWS, Docker und Angular-/TypeScript-
+      Frontend. Java, JavaScript und TypeScript gehören ebenso zu meinem Kernprofil wie
+      Spring, SQL- und NoSQL-Datenbanken, Cloud-nahe Architekturen, HTML5 und CSS.
+    - >
+      Für Ihre Aufgaben in Architektur-Diskussion, Methodenverbesserung,
+      Kundenberatung und Anforderungsanalyse sehe ich mich ebenfalls gut aufgestellt.
+      Über AGYNAMIX begleite ich Projekte end-to-end von der Anforderungsanalyse bis zum
+      Deployment. In meinen Projekten ging es regelmäßig darum, fachliche Anforderungen
+      in belastbare technische Entscheidungen zu übersetzen, Systeme schrittweise zu
+      modernisieren und in verteilten Teams sauber abzustimmen. Diese Verbindung aus
+      Hands-on-Umsetzung und verantwortlicher Architekturarbeit passt sehr gut zu Ihrer
+      Beschreibung.
+    - >
+      Ein besonders wichtiger Grund, warum ich mich als guten Fit für P&T sehe, ist
+      meine freiberufliche Laufbahn seit 2004. Wer langfristig selbständig arbeitet,
+      lernt, realistisch zu planen, verlässlich zu liefern, Commitments ernst zu nehmen
+      und Probleme früh anzugehen, statt sie aufzuschieben. Genau diese Haltung prägt
+      meine Arbeit bis heute. Ich bin es gewohnt, Verantwortung zu übernehmen,
+      klar zu kommunizieren und auch in anspruchsvollen Situationen diszipliniert und
+      lösungsorientiert zu bleiben.
+    - >
+      Gleichzeitig bleibe ich bewusst neugierig auf neue Technologien. Neben meinem
+      langjährigen Schwerpunkt auf JVM- und Webtechnologien entwickle ich inzwischen auch
+      in Rust, etwa im Umfeld der Cloud-Provisionierungsplattform Symnix. Außerdem nutze
+      ich Agentic Engineering für mein eigenes Produkt AGYNAMIX Invoicer
+      (https://invoicer.agynamix.de), eine Rechnungsanwendung für Freiberufler und kleine
+      Unternehmen mit KI-gestützter Analyse eingehender Rechnungen. Für mich ist das
+      kein Selbstzweck, sondern Ausdruck einer Arbeitsweise, die neue Werkzeuge pragmatisch
+      dort einsetzt, wo sie Qualität, Tempo und Nutzerwert tatsächlich verbessern.
+    - >
+      Gern würde ich mit Ihnen besprechen, wie ich meine Erfahrung in Fullstack-
+      Entwicklung, Webarchitektur, kundenorientierter Umsetzung und verantwortlicher
+      Projektarbeit bei P&T Software einbringen kann.
+  closing: "Mit freundlichen Grüßen"
+  signature: "Torsten Uhlmann"

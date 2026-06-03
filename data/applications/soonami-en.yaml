@@ -1,0 +1,76 @@
+# Application override - soonami.io GmbH / LuniNora
+
+meta:
+  pdf_title: "Torsten Uhlmann -- Cover Letter soonami.io"
+
+application:
+  role: "Senior Fullstack Developer (m/w/d) - Claude Code Expert (Remote or Hybrid)"
+  company: "soonami.io GmbH"
+  company_website: "https://join.com/companies/soonami/16178319-senior-fullstack-developer-m-w-d-claude-code-expert-remote-or-hybrid"
+  engagement_type: "Employment"
+
+evidence:
+  - claim: "Applied AI, Agentic Engineering, and LLM-adjacent product work"
+    resume_refs:
+      - "data/resume-en.yaml:46-51"
+      - "data/resume-en.yaml:109-112"
+      - "data/resume-en.yaml:129-139"
+      - "data/resume-en.yaml:587-613"
+  - claim: "Fullstack experience with TypeScript, modern frontends, backends, and deployment"
+    resume_refs:
+      - "data/resume-en.yaml:230-248"
+      - "data/resume-en.yaml:253-275"
+      - "data/resume-en.yaml:282-304"
+      - "data/resume-en.yaml:621-640"
+  - claim: "Production ownership, remote collaboration, and launch/operations experience"
+    resume_refs:
+      - "data/resume-en.yaml:292-304"
+      - "data/resume-en.yaml:417-432"
+      - "data/resume-en.yaml:632-640"
+
+letter:
+  subject: "Application as Senior Fullstack Developer (m/w/d) - Claude Code Expert"
+  greeting: "Dear Hiring Team,"
+  paragraphs:
+    - >
+      I am applying for the Senior Fullstack Developer role at soonami.io because it is
+      focused on the exact phase where software has to become launch-ready: finalizing
+      the feature set, turning development processes into an operating mode, establishing
+      technical best practices, and assessing infrastructure and roadmap choices with a
+      clear engineering eye. LuniNora's goal of making coaching and counseling more
+      accessible, fair, and available also fits well with my preference for products that
+      create practical value rather than technology for its own sake.
+    - >
+      I bring nearly 30 years of experience as a senior fullstack developer, including
+      many years of building and modernizing production-oriented applications in
+      distributed teams. In my resume you will find, among others, my five-year
+      engagement on the Scaled Agile Collaborate platform with TypeScript, Angular,
+      Docker, PostgreSQL, and AWS; the migration of an iCombine platform from AngularJS
+      to React; and recent TypeScript and Docker work at TXODDS. These projects show that
+      I do not only implement isolated tasks, but can carry complex systems through
+      longer phases of product evolution.
+    - >
+      The AI-assisted development aspect of the role is especially close to my current
+      focus. In AGYNAMIX Invoicer I am building AI-assisted incoming invoice analysis
+      using structured PDF extraction, vision models, JSON schema outputs, semantic
+      checks, alternative candidates, and user-in-the-loop review across local and remote
+      OpenAI-compatible providers. I therefore see Claude Code not merely as a separate
+      tool, but as part of an engineering workflow where AI support has to be integrated
+      responsibly into architecture, review, testing, and delivery.
+    - >
+      For your backend requirements I bring strong foundations in API design,
+      HTTP-based systems, authentication concepts, databases, deployment, and CI/CD-close
+      engineering work. My historical backend experience is strongest in JVM, Rust, and
+      Scala/Lift systems, combined with modern web frontends; TypeScript has been a
+      recurring part of my work across several projects. I would ramp up quickly and
+      pragmatically on the Firebase/GCP, Node/Express, Stripe, or Twilio specifics of
+      your existing codebase while keeping operational reliability in view.
+    - >
+      I see my strongest contribution in the launch and post-launch phase: making
+      technical risks visible, establishing clean development and operating practices,
+      weighing roadmap decisions from both product and engineering perspectives, and
+      still delivering hands-on. I would be glad to bring that combination of seniority,
+      product responsibility, fullstack delivery, and AI-assisted engineering to
+      soonami.io and LuniNora.
+  closing: "Kind regards,"
+  signature: "Torsten Uhlmann"
