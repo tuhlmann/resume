@@ -1,4 +1,4 @@
-.PHONY: all build publish render-tex tex2pdf json clean clean-dist assets-pdf summaries resumes cover-letters summary-docx lebenslauf resume lebenslauf-docx resume-docx lebenslauf-docx-styled resume-docx-styled docx docx-styled pt-software
+.PHONY: all build publish render-tex tex2pdf json clean clean-dist assets-pdf summaries resumes cover-letters summary-docx lebenslauf resume lebenslauf-docx resume-docx lebenslauf-docx-styled resume-docx-styled docx docx-styled pt-software logic20-20
 
 PYTHON   := .venv/bin/python
 RENDER   := scripts/render.py
@@ -66,6 +66,7 @@ COVER_LETTER_ISO_GRUPPE_DE_TEX := $(OUT_DIR)/Torsten\ Uhlmann\ Anschreiben\ ISO-
 COVER_LETTER_PT_SOFTWARE_DE_TEX := $(OUT_DIR)/Torsten\ Uhlmann\ Anschreiben\ P&T\ Software.tex
 COVER_LETTER_SOONAMI_DE_TEX := $(OUT_DIR)/Torsten\ Uhlmann\ Anschreiben\ soonami.io.tex
 COVER_LETTER_SOONAMI_EN_TEX := $(OUT_DIR)/Torsten\ Uhlmann\ Cover\ Letter\ soonami.io.tex
+COVER_LETTER_LOGIC20_20_EN_TEX := $(OUT_DIR)/Torsten\ Uhlmann\ Cover\ Letter\ Logic20-20.tex
 
 COVER_LETTER_DE_PDF := $(OUT_DIR)/Torsten\ Uhlmann\ Anschreiben.pdf
 COVER_LETTER_EN_PDF := $(OUT_DIR)/Torsten\ Uhlmann\ Cover\ Letter.pdf
@@ -75,6 +76,7 @@ COVER_LETTER_ISO_GRUPPE_DE_PDF := $(OUT_DIR)/Torsten\ Uhlmann\ Anschreiben\ ISO-
 COVER_LETTER_PT_SOFTWARE_DE_PDF := $(OUT_DIR)/Torsten\ Uhlmann\ Anschreiben\ P&T\ Software.pdf
 COVER_LETTER_SOONAMI_DE_PDF := $(OUT_DIR)/Torsten\ Uhlmann\ Anschreiben\ soonami.io.pdf
 COVER_LETTER_SOONAMI_EN_PDF := $(OUT_DIR)/Torsten\ Uhlmann\ Cover\ Letter\ soonami.io.pdf
+COVER_LETTER_LOGIC20_20_EN_PDF := $(OUT_DIR)/Torsten\ Uhlmann\ Cover\ Letter\ Logic20-20.pdf
 
 COVER_LETTER_DE_DOCX := $(OUT_DIR)/Torsten\ Uhlmann\ Anschreiben.docx
 COVER_LETTER_EN_DOCX := $(OUT_DIR)/Torsten\ Uhlmann\ Cover\ Letter.docx
@@ -93,6 +95,7 @@ COVER_LETTER_DIST := \
 	$(DIST_DIR)/Torsten\ Uhlmann\ Anschreiben\ P&T\ Software.pdf \
 	$(DIST_DIR)/Torsten\ Uhlmann\ Anschreiben\ soonami.io.pdf \
 	$(DIST_DIR)/Torsten\ Uhlmann\ Cover\ Letter\ soonami.io.pdf \
+	$(DIST_DIR)/Torsten\ Uhlmann\ Cover\ Letter\ Logic20-20.pdf \
 	$(DIST_DIR)/Torsten\ Uhlmann\ Anschreiben.docx \
 	$(DIST_DIR)/Torsten\ Uhlmann\ Cover\ Letter.docx \
 	$(DIST_DIR)/Torsten\ Uhlmann\ Anschreiben\ Ines\ Scholz.docx \
@@ -101,7 +104,7 @@ COVER_LETTER_DIST := \
 	$(DIST_DIR)/Torsten\ Uhlmann\ Anschreiben\ soonami.io.docx \
 	$(DIST_DIR)/Torsten\ Uhlmann\ Cover\ Letter\ soonami.io.docx
 
-TARGET_ARTIFACTS := $(SUMMARY_PDF) $(SUMMARY_DOCX) $(RESUME_DE_PDF) $(RESUME_EN_PDF) $(RESUME_DE_DOCX) $(RESUME_EN_DOCX) $(RESUME_DE_DOCX_STYLED) $(RESUME_EN_DOCX_STYLED) $(RESUME_DE_JSON) $(RESUME_EN_JSON) $(COVER_LETTER_DE_PDF) $(COVER_LETTER_EN_PDF) $(COVER_LETTER_INES_SCHOLZ_DE_PDF) $(COVER_LETTER_HAUFE_GROUP_DE_PDF) $(COVER_LETTER_ISO_GRUPPE_DE_PDF) $(COVER_LETTER_PT_SOFTWARE_DE_PDF) $(COVER_LETTER_SOONAMI_DE_PDF) $(COVER_LETTER_SOONAMI_EN_PDF) $(COVER_LETTER_DE_DOCX) $(COVER_LETTER_EN_DOCX) $(COVER_LETTER_INES_SCHOLZ_DE_DOCX) $(COVER_LETTER_HAUFE_GROUP_DE_DOCX) $(COVER_LETTER_ISO_GRUPPE_DE_DOCX) $(COVER_LETTER_SOONAMI_DE_DOCX) $(COVER_LETTER_SOONAMI_EN_DOCX)
+TARGET_ARTIFACTS := $(SUMMARY_PDF) $(SUMMARY_DOCX) $(RESUME_DE_PDF) $(RESUME_EN_PDF) $(RESUME_DE_DOCX) $(RESUME_EN_DOCX) $(RESUME_DE_DOCX_STYLED) $(RESUME_EN_DOCX_STYLED) $(RESUME_DE_JSON) $(RESUME_EN_JSON) $(COVER_LETTER_DE_PDF) $(COVER_LETTER_EN_PDF) $(COVER_LETTER_INES_SCHOLZ_DE_PDF) $(COVER_LETTER_HAUFE_GROUP_DE_PDF) $(COVER_LETTER_ISO_GRUPPE_DE_PDF) $(COVER_LETTER_PT_SOFTWARE_DE_PDF) $(COVER_LETTER_SOONAMI_DE_PDF) $(COVER_LETTER_SOONAMI_EN_PDF) $(COVER_LETTER_LOGIC20_20_EN_PDF) $(COVER_LETTER_DE_DOCX) $(COVER_LETTER_EN_DOCX) $(COVER_LETTER_INES_SCHOLZ_DE_DOCX) $(COVER_LETTER_HAUFE_GROUP_DE_DOCX) $(COVER_LETTER_ISO_GRUPPE_DE_DOCX) $(COVER_LETTER_SOONAMI_DE_DOCX) $(COVER_LETTER_SOONAMI_EN_DOCX)
 DIST_ARTIFACTS := $(SUMMARY_DIST) $(RESUME_DIST) $(COVER_LETTER_DIST)
 
 all: publish
@@ -111,7 +114,7 @@ build: $(TARGET_ARTIFACTS)
 publish: $(DIST_ARTIFACTS)
 
 # ---- Render YAML → TeX ----
-render-tex: $(SUMMARY_TEX) $(RESUME_DE_TEX) $(RESUME_EN_TEX) $(COVER_LETTER_DE_TEX) $(COVER_LETTER_EN_TEX) $(COVER_LETTER_INES_SCHOLZ_DE_TEX) $(COVER_LETTER_HAUFE_GROUP_DE_TEX) $(COVER_LETTER_ISO_GRUPPE_DE_TEX) $(COVER_LETTER_PT_SOFTWARE_DE_TEX) $(COVER_LETTER_SOONAMI_DE_TEX) $(COVER_LETTER_SOONAMI_EN_TEX)
+render-tex: $(SUMMARY_TEX) $(RESUME_DE_TEX) $(RESUME_EN_TEX) $(COVER_LETTER_DE_TEX) $(COVER_LETTER_EN_TEX) $(COVER_LETTER_INES_SCHOLZ_DE_TEX) $(COVER_LETTER_HAUFE_GROUP_DE_TEX) $(COVER_LETTER_ISO_GRUPPE_DE_TEX) $(COVER_LETTER_PT_SOFTWARE_DE_TEX) $(COVER_LETTER_SOONAMI_DE_TEX) $(COVER_LETTER_SOONAMI_EN_TEX) $(COVER_LETTER_LOGIC20_20_EN_TEX)
 
 $(OUT_DIR)/Torsten\ Uhlmann\ CV\ Summary.tex: $(DATA_DIR)/summary-en.yaml $(SUMMARY_TEMPLATE) $(RENDER) | $(OUT_DIR)
 	$(PYTHON) $(RENDER) "$(DATA_DIR)/summary-en.yaml" "$(SUMMARY_TEMPLATE)" "$@"
@@ -149,8 +152,11 @@ $(COVER_LETTER_SOONAMI_DE_TEX): $(DATA_DIR)/cover-letter-de.yaml $(DATA_DIR)/app
 $(COVER_LETTER_SOONAMI_EN_TEX): $(DATA_DIR)/cover-letter-en.yaml $(DATA_DIR)/applications/soonami-en.yaml $(COVER_LETTER_TEMPLATE) $(RENDER) | $(OUT_DIR)
 	$(PYTHON) $(RENDER) "$(DATA_DIR)/cover-letter-en.yaml" "$(COVER_LETTER_TEMPLATE)" "$@" --override "$(DATA_DIR)/applications/soonami-en.yaml"
 
+$(COVER_LETTER_LOGIC20_20_EN_TEX): $(DATA_DIR)/cover-letter-en.yaml $(DATA_DIR)/applications/logic20-20-en.yaml $(COVER_LETTER_TEMPLATE) $(RENDER) | $(OUT_DIR)
+	$(PYTHON) $(RENDER) "$(DATA_DIR)/cover-letter-en.yaml" "$(COVER_LETTER_TEMPLATE)" "$@" --override "$(DATA_DIR)/applications/logic20-20-en.yaml"
+
 # ---- TeX → PDF ----
-tex2pdf: $(SUMMARY_PDF) $(RESUME_DE_PDF) $(RESUME_EN_PDF) $(COVER_LETTER_DE_PDF) $(COVER_LETTER_EN_PDF) $(COVER_LETTER_INES_SCHOLZ_DE_PDF) $(COVER_LETTER_HAUFE_GROUP_DE_PDF) $(COVER_LETTER_ISO_GRUPPE_DE_PDF) $(COVER_LETTER_PT_SOFTWARE_DE_PDF) $(COVER_LETTER_SOONAMI_DE_PDF) $(COVER_LETTER_SOONAMI_EN_PDF)
+tex2pdf: $(SUMMARY_PDF) $(RESUME_DE_PDF) $(RESUME_EN_PDF) $(COVER_LETTER_DE_PDF) $(COVER_LETTER_EN_PDF) $(COVER_LETTER_INES_SCHOLZ_DE_PDF) $(COVER_LETTER_HAUFE_GROUP_DE_PDF) $(COVER_LETTER_ISO_GRUPPE_DE_PDF) $(COVER_LETTER_PT_SOFTWARE_DE_PDF) $(COVER_LETTER_SOONAMI_DE_PDF) $(COVER_LETTER_SOONAMI_EN_PDF) $(COVER_LETTER_LOGIC20_20_EN_PDF)
 
 assets-pdf:
 	$(PYTHON) $(SVG)
@@ -190,6 +196,9 @@ $(COVER_LETTER_SOONAMI_DE_PDF): $(COVER_LETTER_SOONAMI_DE_TEX)
 
 $(COVER_LETTER_SOONAMI_EN_PDF): $(COVER_LETTER_SOONAMI_EN_TEX)
 	(cd "$(OUT_DIR)" && pdflatex "Torsten Uhlmann Cover Letter soonami.io.tex" && pdflatex "Torsten Uhlmann Cover Letter soonami.io.tex")
+
+$(COVER_LETTER_LOGIC20_20_EN_PDF): $(COVER_LETTER_LOGIC20_20_EN_TEX)
+	(cd "$(OUT_DIR)" && pdflatex "Torsten Uhlmann Cover Letter Logic20-20.tex" && pdflatex "Torsten Uhlmann Cover Letter Logic20-20.tex")
 
 # ---- YAML → DOCX ----
 $(OUT_DIR)/Torsten\ Uhlmann\ CV\ Summary.docx: $(DATA_DIR)/summary-en.yaml $(DOCX) | $(OUT_DIR)
@@ -322,6 +331,9 @@ $(DIST_DIR)/Torsten\ Uhlmann\ Anschreiben\ soonami.io.docx: $(COVER_LETTER_SOONA
 $(DIST_DIR)/Torsten\ Uhlmann\ Cover\ Letter\ soonami.io.docx: $(COVER_LETTER_SOONAMI_EN_DOCX) | $(DIST_DIR)
 	cp "$<" "$@"
 
+$(DIST_DIR)/Torsten\ Uhlmann\ Cover\ Letter\ Logic20-20.pdf: $(COVER_LETTER_LOGIC20_20_EN_PDF) | $(DIST_DIR)
+	cp "$<" "$@"
+
 summaries: $(SUMMARY_DIST)
 
 resumes: $(RESUME_DIST)
@@ -343,6 +355,8 @@ lebenslauf-docx-styled: $(DIST_DIR)/Torsten\ Uhlmann\ Lebenslauf\ Styled.docx
 resume-docx-styled: $(DIST_DIR)/Torsten\ Uhlmann\ Resume\ Styled.docx
 
 pt-software: $(DIST_DIR)/Torsten\ Uhlmann\ Anschreiben\ P&T\ Software.pdf
+
+logic20-20: $(DIST_DIR)/Torsten\ Uhlmann\ Cover\ Letter\ Logic20-20.pdf
 
 docx: $(SUMMARY_DOCX) $(RESUME_DE_DOCX) $(RESUME_EN_DOCX) $(COVER_LETTER_DE_DOCX) $(COVER_LETTER_EN_DOCX) $(COVER_LETTER_INES_SCHOLZ_DE_DOCX) $(COVER_LETTER_HAUFE_GROUP_DE_DOCX) $(COVER_LETTER_ISO_GRUPPE_DE_DOCX) $(COVER_LETTER_SOONAMI_DE_DOCX) $(COVER_LETTER_SOONAMI_EN_DOCX)
 

@@ -1,0 +1,87 @@
+# Application override - Logic20/20, Inc.
+
+meta:
+  pdf_title: "Torsten Uhlmann -- Cover Letter Logic20-20"
+
+application:
+  role: "Senior Full Stack Developer - Agentic AI"
+  company: "Logic20/20, Inc."
+  company_website: "https://www.logic2020.com"
+  engagement_type: "Employment"
+
+evidence:
+  - claim: "Agentic Engineering, LLM workflow, and document AI experience"
+    resume_refs:
+      - "data/resume-en.yaml:45-55"
+      - "data/resume-en.yaml:109-121"
+      - "data/resume-en.yaml:129-139"
+      - "data/resume-en.yaml:587-613"
+  - claim: "Full-stack delivery with TypeScript, React, cloud deployment, and product modernization"
+    resume_refs:
+      - "data/resume-en.yaml:116-121"
+      - "data/resume-en.yaml:140-170"
+      - "data/resume-en.yaml:252-275"
+      - "data/resume-en.yaml:279-304"
+      - "data/resume-en.yaml:621-640"
+  - claim: "Independent consulting, client-facing responsibility, and remote collaboration"
+    resume_refs:
+      - "data/resume-en.yaml:79-81"
+      - "data/resume-en.yaml:377-399"
+      - "data/resume-en.yaml:419-432"
+      - "data/resume-en.yaml:499-507"
+  - claim: "Breadth across Python, CI/CD, AWS, and emerging technologies including Rust"
+    resume_refs:
+      - "data/resume-en.yaml:152-170"
+      - "data/resume-en.yaml:189-202"
+      - "data/resume-en.yaml:279-304"
+      - "data/resume-en.yaml:621-640"
+
+letter:
+  subject: "Application as Senior Full Stack Developer - Agentic AI"
+  greeting: "Dear Logic20/20 Hiring Team,"
+  paragraphs:
+    - >
+      I am applying for the Senior Full Stack Developer - Agentic AI role because it
+      sits at the intersection where I currently do my strongest work: full-stack
+      engineering, practical AI integration, and responsible delivery in business
+      contexts. Through AGYNAMIX, and across nearly 30 years of software development,
+      I have repeatedly taken complex systems from prototype to production, working
+      hands-on while contributing to architecture, delivery practices, and technical
+      decision-making.
+    - >
+      Your focus on AI-powered applications, agent-based workflows, and automated
+      document generation aligns especially well with my recent work on AGYNAMIX
+      Invoicer, my own invoicing application at https://invoicer.agynamix.de. There
+      I built AI-assisted incoming invoice analysis using structured PDF extraction,
+      vision models for scanned documents, JSON schema outputs, semantic checks,
+      alternative candidates, and user-in-the-loop review across local and remote
+      OpenAI-compatible providers. That hands-on Agentic Engineering work has taught
+      me not only what AI can accelerate, but also what must be constrained,
+      evaluated, and reviewed so that automation remains dependable in real workflows.
+    - >
+      I also match the role from the full-stack side. My resume reflects substantial
+      TypeScript and modern frontend work across TXODDS, iCombine, Scaled Agile, and
+      Symnix, including React-based modernization, Angular and Vue applications,
+      Docker-based delivery, PostgreSQL-backed systems, and AWS deployments. While my
+      strongest recent backend production work has centered on Scala, Kotlin, and
+      Rust, Python is part of my working toolkit, and I am comfortable applying the
+      right language pragmatically to orchestration, integration, and AI-enabled
+      workflows.
+    - >
+      Another reason I see a strong fit is the consulting-style ownership this role
+      requires. Since starting my freelancing career in 2004, I have been used to
+      planning independently, taking responsibility early, and addressing issues
+      directly instead of letting them become delivery risks. That mindset is visible
+      throughout my resume in independent client work, remote international teams,
+      and recommendations that highlight reliability, initiative, and the ability to
+      identify errors and improvement potential beyond the immediate task.
+    - >
+      I am also genuinely curious about emerging technology rather than attached to a
+      single stack. In recent years that has meant going deeper into Rust as well as
+      applying Agentic Engineering in my own products and workflows. I would value the
+      opportunity to bring that combination of senior full-stack experience,
+      AI-assisted development practice, and pragmatic engineering judgment to
+      Logic20/20, while contributing in a way that fits your values of excellence,
+      integrity, and collaboration.
+  closing: "Kind regards,"
+  signature: "Torsten Uhlmann"
